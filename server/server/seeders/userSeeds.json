@@ -1,0 +1,14 @@
+[
+  {
+    "username": "worldsbestadmin",
+    "email": "admin@test.com",
+    "password": "password1",
+    "role": "Admin"
+  },
+  {
+    "username": "worldsbestteacher",
+    "email": "teacher@test.com",
+    "password": "password2",
+    "role": "Teacher"
+  }
+]

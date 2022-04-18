@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Spring Hill Elementry",
+    "principle": "Taylor Brown",
+    "budget": 250000
+  },
+  {
+    "name": "Lincon High School",
+    "principle": "George Jackson",
+    "budget": 500000
+  }
+]

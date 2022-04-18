@@ -34,9 +34,8 @@ type Department {
     department: String
 }
 type Query {
-    
-},
-type Mutation {
-
+    schools: [School]
 }
-}`
+`;
+
+module.exports = typeDefs;

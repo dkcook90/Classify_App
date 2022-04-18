@@ -1,24 +1,24 @@
 const db = require("../config/connection");
-const { ClassRoom, User, School, Teacher, Student } = require("../models");
-const schoolSeed = require("/schoolSeed.json");
-const teacherSeed = require("/teacherSeed.json");
-const classRoomSeed = require("/classRoomSeed.json");
+const { Department, User, School, Teacher, Student } = require("../models");
+const schoolSeed = require("./schoolSeed.json");
+const teacherSeed = require("./teacherSeed.json");
 const userSeed = require("./userSeeds.json");
 const studentSeed = require("./studentSeed.json");
+const departmentSeed = require("./department.json");
 
 db.once("open", async () => {
   try {
-    await ClassRoom.deleteMany({});
     await User.deleteMany({});
     await School.deleteMany({});
     await Teacher.deleteMany({});
     await Student.deleteMany({});
+    await Department.deleteMany({});
 
     await User.create(userSeed);
-    await ClassRoom.create(classRoomSeed);
     await Teacher.create(teacherSeed);
     await School.create(schoolSeed);
     await Student.create(studentSeed);
+    await Department.create(departmentSeed);
   } catch (err) {
     console.error(err);
     process.exit(1);

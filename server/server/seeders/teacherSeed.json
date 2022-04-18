@@ -1,0 +1,32 @@
+[
+    {
+        "name":"Marry Lou",
+        "grade":1,
+        "office":"SB1"
+    },
+    {
+        "name":"Bill Paxton",
+        "grade":3,
+        "office":"SB2"
+    },
+    {
+        "name":"Jennifer Matsui",
+        "grade":6,
+        "office":"SB3"
+    },
+    {
+        "name":"Jim Archer",
+        "grade":9,
+        "office":"SB3"
+    },
+    {
+        "name":"Ben Novinger",
+        "grade":12,
+        "office":"SB4"
+    },
+    {
+        "name":"Zach Pearl",
+        "grade":10,
+        "office":"SB5"
+    }
+]

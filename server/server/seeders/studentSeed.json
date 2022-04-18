@@ -1,0 +1,93 @@
+[
+    {
+        "name":"Timmy",
+        "grade":1,
+        "note":"Nut Allergy"
+    },
+    {
+        "name":"Jessica",
+        "grade":1,
+        "note":""
+    },
+    {
+        "name":"Eric",
+        "grade":3,
+        "note":"Hard of hearing"
+    },
+    {
+        "name":"Sam",
+        "grade":3,
+        "note":"Needs epi pen"
+    },
+    {
+        "name":"Don",
+        "grade":6,
+        "note":""
+    },
+    {
+        "name":"Rick",
+        "grade":6,
+        "note":"ICE Call Father@ 555-555-5555"
+    },
+    {
+        "name":"Caitlin",
+        "grade":9,
+        "note":""
+    },
+    {
+        "name":"Hannah",
+        "grade":9,
+        "note":"Early release for Band"
+    },
+    {
+        "name":"Gabe",
+        "grade":10,
+        "note":""
+    },
+    {
+        "name":"Cezar",
+        "grade":12,
+        "note":"Transfer Student"
+    },
+    {
+        "name":"Aki",
+        "grade":12,
+        "note":""
+    },
+    {
+        "name":"Tina",
+        "grade":12,
+        "note":""
+    },
+    {
+        "name":"Abby",
+        "grade":10,
+        "note":""
+    },
+    {
+        "name":"Jackie",
+        "grade":6,
+        "note":""
+    },
+    {
+        "name":"Laurn",
+        "grade":12,
+        "note":""
+    },
+    {
+        "name":"Drew",
+        "grade":9,
+        "note":""
+    },
+    {
+        "name":"Lucas",
+        "grade":9,
+        "note":""
+    },
+    {
+        "name":"Greg",
+        "grade":1,
+        "note":""
+    }
+
+]

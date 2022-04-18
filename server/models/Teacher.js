@@ -12,7 +12,13 @@ const teacherSchema = new Schema({
     office:{
         type: String,
         required: true
-    } 
+    } ,
+    students:[
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Student"
+        }
+    ]
 })
 
 const Teacher = model('Teacher', teacherSchema)

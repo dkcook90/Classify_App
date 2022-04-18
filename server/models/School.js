@@ -11,8 +11,7 @@ const schoolSchema = new Schema({
     principle: {
         type: String,
         required: true
-    },
-    classrooms:[ClassRoom]
+    }
 })
 const School = model('School', schoolSchema);
 module.exports = School;

@@ -1,12 +1,12 @@
 [
     {
-        "department": "Primary School"
-    },
-    {
         "department": "Admin"
     },
     {
         "department": "Custodial"
+    },
+    {
+        "department": "Science"
     },
     {
         "department": "English"

@@ -6,13 +6,9 @@ import reportWebVitals from "./reportWebVitals";
 import { Auth0Provider } from "@auth0/auth0-react";
 
 ReactDOM.render(
-	<Auth0Provider
-		domain="dev-3ir6wfrx.us.auth0.com"
-		clientId="vL0vRrTBKcmZEH4fswaLDKPoKbUMB7gH"
-		redirectUri={window.location.origin}
-	>
+	<React.StrictMode>
 		<App />
-	</Auth0Provider>,
+	</React.StrictMode>,
 	document.getElementById("root")
 );
 

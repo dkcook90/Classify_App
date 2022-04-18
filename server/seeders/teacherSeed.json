@@ -1,32 +1,32 @@
 [
     {
         "name":"Marry Lou",
-        "grade":1,
+        "department":"English",
         "office":"SB1"
     },
     {
         "name":"Bill Paxton",
-        "grade":3,
+        "department":"Math",
         "office":"SB2"
     },
     {
         "name":"Jennifer Matsui",
-        "grade":6,
+        "department":"Political Science",
         "office":"SB3"
     },
     {
         "name":"Jim Archer",
-        "grade":9,
+        "department":"Art",
         "office":"SB3"
     },
     {
         "name":"Ben Novinger",
-        "grade":12,
+        "department":"Computer Science",
         "office":"SB4"
     },
     {
         "name":"Zach Pearl",
-        "grade":10,
+        "department":"Science",
         "office":"SB5"
     }
 ]

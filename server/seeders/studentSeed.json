@@ -1,32 +1,32 @@
 [
     {
         "name":"Timmy",
-        "grade":1,
+        "grade":9,
         "note":"Nut Allergy"
     },
     {
         "name":"Jessica",
-        "grade":1,
+        "grade":10,
         "note":""
     },
     {
         "name":"Eric",
-        "grade":3,
+        "grade":11,
         "note":"Hard of hearing"
     },
     {
         "name":"Sam",
-        "grade":3,
+        "grade":12,
         "note":"Needs epi pen"
     },
     {
         "name":"Don",
-        "grade":6,
+        "grade":10,
         "note":""
     },
     {
         "name":"Rick",
-        "grade":6,
+        "grade":9,
         "note":"ICE Call Father@ 555-555-5555"
     },
     {
@@ -42,7 +42,7 @@
     {
         "name":"Gabe",
         "grade":10,
-        "note":""
+        "note":"TA for Jim Archer 4th Period"
     },
     {
         "name":"Cezar",
@@ -66,13 +66,13 @@
     },
     {
         "name":"Jackie",
-        "grade":6,
+        "grade":9,
         "note":""
     },
     {
         "name":"Laurn",
         "grade":12,
-        "note":""
+        "note":"Special Assistance Needed"
     },
     {
         "name":"Drew",
@@ -86,7 +86,7 @@
     },
     {
         "name":"Greg",
-        "grade":1,
+        "grade":10,
         "note":""
     }
 

@@ -5,8 +5,8 @@ const teacherSchema = new Schema({
         type: String,
         required: true,
     },
-    grade: {
-        type: Number,
+    department: {
+        type: String,
         required: true
     },
     office:{

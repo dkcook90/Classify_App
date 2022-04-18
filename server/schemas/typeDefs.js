@@ -13,14 +13,30 @@ type Student {
     name: String
     grade: Number
     note: String
+    
 }
 type Teacher {
+    _id: ID
     name: String
-    grade: Number
+    department: String
     office: String
+    students: [Student]
 }
 type School {
+    _id: ID
     name: String
     principle: String
-    class: [ClassRoom]
+    department:[Department]
+    teachers: [Teacher]
+}
+type Department {
+    _id: ID
+    department: String
+}
+type Query {
+    
+},
+type Mutation {
+
+}
 }`

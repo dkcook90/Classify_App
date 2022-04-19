@@ -23,3 +23,19 @@ export const ADD_USER = gql`
 		}
 	}
 `;
+
+export const ADD_SCHOOL = gql`
+	mutation addSchool($name: String!) {
+		addSchool(name: $name) {
+			_id
+			name
+			principle
+			budget
+			department
+			teachers
+		}
+	}
+`;
+
+export const EDIT_SCHOOL = gql`
+	mutation updateSchool()`;

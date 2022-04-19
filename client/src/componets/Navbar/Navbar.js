@@ -6,17 +6,17 @@ import './Navbar.css';
 function NavbarComp({ currentPage, handlePageChange }) {
   return (
     <div classname="navBarContainer">
-      <Navbar bg="light" variant="light" fixed="top" expand={false}>
+      <Navbar className="navbar" bg="danger" variant="light" expand={false}>
         <Container fluid>
           <Navbar.Brand href="#home">
             <img
               alt=""
-              src="../public/classifyLogo.png"
+              src="../../../../public/classifyLogo.png"
               width="80"
               height="80"
               className="d-inline-block align-top"
               />{' '}
-            classify
+            <span className="logoType">classify</span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="offcanvasNavbar" />
           <Navbar.Offcanvas

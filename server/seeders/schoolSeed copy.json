@@ -1,0 +1,280 @@
+[
+  {
+    "name": "Spring Hill High School",
+    "principle": "Taylor Brown",
+    "budget": 250000,
+    "teachers": [
+      {
+        "name": "Marry Lou",
+        "department": "English",
+        "office": "SB1",
+        "students": [
+          {
+            "name": "Timmy",
+            "grade": 9,
+            "note": "Nut Allergy"
+          },
+          {
+            "name": "Jessica",
+            "grade": 10,
+            "note": ""
+          },
+          {
+            "name": "Eric",
+            "grade": 11,
+            "note": "Hard of hearing"
+          }
+        ]
+      },
+      {
+        "name": "Bill Paxton",
+        "department": "Math",
+        "office": "SB2",
+        "students": [
+          {
+            "name": "Sam",
+            "grade": 12,
+            "note": "Needs epi pen"
+          },
+          {
+            "name": "Don",
+            "grade": 10,
+            "note": ""
+          },
+          {
+            "name": "Rick",
+            "grade": 9,
+            "note": "ICE Call Father@ 555-555-5555"
+          }
+        ]
+      },
+      {
+        "name": "Jennifer Matsui",
+        "department": "Political Science",
+        "office": "SB3",
+        "students": [
+          {
+            "name": "Caitlin",
+            "grade": 9,
+            "note": ""
+          },
+          {
+            "name": "Hannah",
+            "grade": 9,
+            "note": "Early release for Band"
+          },
+          {
+            "name": "Gabe",
+            "grade": 10,
+            "note": "TA for Jim Archer 4th Period"
+          }
+        ]
+      },
+      {
+        "name": "Jim Archer",
+        "department": "Art",
+        "office": "SB3",
+        "students": [
+          {
+            "name": "Cezar",
+            "grade": 12,
+            "note": "Transfer Student"
+          },
+          {
+            "name": "Aki",
+            "grade": 12,
+            "note": ""
+          },
+          {
+            "name": "Tina",
+            "grade": 12,
+            "note": ""
+          }
+        ]
+      },
+      {
+        "name": "Ben Novinger",
+        "department": "Computer Science",
+        "office": "SB4",
+        "students": [
+          {
+            "name": "Abby",
+            "grade": 10,
+            "note": ""
+          },
+          {
+            "name": "Jackie",
+            "grade": 9,
+            "note": ""
+          },
+          {
+            "name": "Laurn",
+            "grade": 12,
+            "note": "Special Assistance Needed"
+          }
+        ]
+      },
+      {
+        "name": "Zach Pearl",
+        "department": "Science",
+        "office": "SB5",
+        "students": [
+          {
+            "name": "Drew",
+            "grade": 9,
+            "note": ""
+          },
+          {
+            "name": "Lucas",
+            "grade": 9,
+            "note": ""
+          },
+          {
+            "name": "Greg",
+            "grade": 10,
+            "note": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Lincon High School",
+    "principle": "George Jackson",
+    "budget": 500000,
+    "teachers": [
+      {
+        "name": "Terry Sue",
+        "department": "English",
+        "office": "SB1",
+        "students": [
+          {
+            "name": "Timmy",
+            "grade": 9,
+            "note": "Nut Allergy"
+          },
+          {
+            "name": "Jessica",
+            "grade": 10,
+            "note": ""
+          },
+          {
+            "name": "Eric",
+            "grade": 11,
+            "note": "Hard of hearing"
+          }
+        ]
+      },
+      {
+        "name": "Pax Sivir",
+        "department": "Math",
+        "office": "SB2",
+        "students": [
+          {
+            "name": "Sam",
+            "grade": 12,
+            "note": "Needs epi pen"
+          },
+          {
+            "name": "Don",
+            "grade": 10,
+            "note": ""
+          },
+          {
+            "name": "Rick",
+            "grade": 9,
+            "note": "ICE Call Father@ 555-555-5555"
+          }
+        ]
+      },
+      {
+        "name": "Alice Nakamoto",
+        "department": "Political Science",
+        "office": "SB3",
+        "students": [
+          {
+            "name": "Caitlin",
+            "grade": 9,
+            "note": ""
+          },
+          {
+            "name": "Hannah",
+            "grade": 9,
+            "note": "Early release for Band"
+          },
+          {
+            "name": "Gabe",
+            "grade": 10,
+            "note": "TA for Ms. Sivir 4th Period"
+          }
+        ]
+      },
+      {
+        "name": "Joanna Arch",
+        "department": "Art",
+        "office": "SB3",
+        "students": [
+          {
+            "name": "Cezar",
+            "grade": 12,
+            "note": "Transfer Student"
+          },
+          {
+            "name": "Aki",
+            "grade": 12,
+            "note": ""
+          },
+          {
+            "name": "Tina",
+            "grade": 12,
+            "note": ""
+          }
+        ]
+      },
+      {
+        "name": "Keri Alderman",
+        "department": "Computer Science",
+        "office": "SB4",
+        "students": [
+          {
+            "name": "Abby",
+            "grade": 10,
+            "note": ""
+          },
+          {
+            "name": "Jackie",
+            "grade": 9,
+            "note": ""
+          },
+          {
+            "name": "Laurn",
+            "grade": 12,
+            "note": "Special Assistance Needed"
+          }
+        ]
+      },
+      {
+        "name": "Zach Galaffanacis",
+        "department": "Science",
+        "office": "SB5",
+        "students": [
+          {
+            "name": "Drew",
+            "grade": 9,
+            "note": ""
+          },
+          {
+            "name": "Lucas",
+            "grade": 9,
+            "note": ""
+          },
+          {
+            "name": "Greg",
+            "grade": 10,
+            "note": ""
+          }
+        ]
+      }
+    ]
+  }
+]

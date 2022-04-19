@@ -18,7 +18,7 @@ const typeDefs = gql`
 
 	type Teacher {
 		_id: ID!
-		name: String!
+		name: String
 		department: String!
 		office: String!
 		students: [Student]

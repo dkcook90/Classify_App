@@ -3,10 +3,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Nav, Container, Offcanvas } from 'react-bootstrap'
 import './Navbar.css';
 
+
 function NavbarComp({ currentPage, handlePageChange }) {
 	return (
 		<div classname="navBarContainer">
-			<Navbar bg="light" variant="light" fixed="top">
+			<Navbar bg="light" variant="light" fixed="top" expand={false}>
 				<Container>
 					<Navbar.Brand href="#home">
 						<img
@@ -19,6 +20,7 @@ function NavbarComp({ currentPage, handlePageChange }) {
 						classify
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls="offcanvasNavbar" />
+
 						<Navbar.Offcanvas
 						id="offcanvasNavbar"
 						aria-labelledby="offcanvasNavbarLabel"
@@ -38,12 +40,13 @@ function NavbarComp({ currentPage, handlePageChange }) {
 								>
 									Schools
 								</Nav.Link>
-
 								<Nav.Link
 									href="#departments"
 									onClick={() => handlePageChange("Departments")}
 									className={
-										currentPage === "Departments" ? "nav-link active" : "nav-link"
+										currentPage === "Departments"
+											? "nav-link active"
+											: "nav-link"
 									}
 								>
 									Departments

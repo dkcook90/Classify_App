@@ -9,7 +9,7 @@ import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Login from "./componets/Login/Login";
-import Navbar from "./componets/Navbar/Navbar";
+import NavbarComp from "./componets/Navbar/Navbar";
 import Footer from "./componets/Footer/Footer";
 
 // Construct our main GraphQL API endpoint
@@ -41,7 +41,7 @@ function App() {
 		<ApolloProvider client={client}>
 			<Router>
 				<div className="flex-column justify-flex-start min-100-vh">
-					<Navbar />
+					<NavbarComp />
 					<div className="container">
 						<Routes>
 							<Route path="/" element={<Login />} />

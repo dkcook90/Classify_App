@@ -1,6 +1,5 @@
-const { School, Department, Teacher, Student } = require('../models');
+const { User, School, Department, Teacher, Student } = require('../models');
 const { AuthenticationError } = require("apollo-server-express");
-const { User, School } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -29,8 +28,7 @@ const resolvers = {
         student: async (parent, {studentId}) => {
             return Student.findOne({_id: studentId});
         },
-    }
-}
+    },
 
 	Mutation: {
 		addUser: async (parent, { username, email, password }) => {

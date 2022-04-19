@@ -1,13 +1,22 @@
 import React from "react";
+<<<<<<< HEAD
 import Navbar from 'react-bootstrap/Navbar';
 import { Nav, Container, Offcanvas } from 'react-bootstrap'
 import './Navbar.css';
+=======
+import { Nav, Navbar, Container, Offcanvas } from "react-bootstrap";
+>>>>>>> main
 
 function NavbarComp({ currentPage, handlePageChange }) {
 	return (
 		<div classname="navBarContainer">
+<<<<<<< HEAD
 			<Navbar bg="light" variant="light" fixed="top">
 				<Container>
+=======
+			<Navbar bg="light" variant="light" fixed="top" expand={false}>
+				<Container fluid>
+>>>>>>> main
 					<Navbar.Brand href="#home">
 						<img
 							alt=""
@@ -19,6 +28,7 @@ function NavbarComp({ currentPage, handlePageChange }) {
 						classify
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls="offcanvasNavbar" />
+<<<<<<< HEAD
 						<Navbar.Offcanvas
 						id="offcanvasNavbar"
 						aria-labelledby="offcanvasNavbarLabel"
@@ -26,6 +36,15 @@ function NavbarComp({ currentPage, handlePageChange }) {
 						>
 						<Offcanvas.Header closeButton>
 							<Offcanvas.Title id="offcanvasNavbarLabel">Offcanvas</Offcanvas.Title>
+=======
+					<Navbar.Offcanvas
+						id="offcanvasNavbar"
+						aria-labelledby="offcanvasNavbarLabel"
+						placement="end"
+					>
+						<Offcanvas.Header closeButton>
+							<Offcanvas.Title id="offcanvasNavbarLabel"></Offcanvas.Title>
+>>>>>>> main
 						</Offcanvas.Header>
 						<Offcanvas.Body>
 							<Nav className="me-auto">
@@ -38,12 +57,21 @@ function NavbarComp({ currentPage, handlePageChange }) {
 								>
 									Schools
 								</Nav.Link>
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 								<Nav.Link
 									href="#departments"
 									onClick={() => handlePageChange("Departments")}
 									className={
+<<<<<<< HEAD
 										currentPage === "Departments" ? "nav-link active" : "nav-link"
+=======
+										currentPage === "Departments"
+											? "nav-link active"
+											: "nav-link"
+>>>>>>> main
 									}
 								>
 									Departments

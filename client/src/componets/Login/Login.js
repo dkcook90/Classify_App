@@ -1,5 +1,6 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
+import "./Login.css";
 
 function Login() {
 	return (

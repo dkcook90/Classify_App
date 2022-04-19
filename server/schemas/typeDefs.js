@@ -50,10 +50,21 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-	addSchool(name: String!, principle: String!): School
-	addDepartment(department: String!): Department
-	addTeacher(name: String!, department: String!, office: String!): Teacher
-	addStudent(name: String!, grade: Int!, note: String): Student
+
+    addSchool(name: String!, principle: String!): School
+    addDepartment(department: String!): Department
+    addTeacher(name: String!, department: String!, office: String!): Teacher
+    addStudent(name: String!, grade: Int!, note: String): Student
+
+    removeSchool(schoolId: ID!): School
+    removeDepartment(departmentId: ID!): Department
+    removeTeacher(teacherId: ID!): Teacher
+    removeStudent(studentId: ID!): Student
+
+    updateSchool(schoolId: ID!, name: String, principle: String): School
+    updateDepartment(departmentId: ID!, department: String): Department
+    updateTeacher(teacherId: ID!, name: String, department: String, office: String): Teacher
+    updateStudent(stundentId: ID!, name: String, grade: String, note: String): Student
   }
 `;
 

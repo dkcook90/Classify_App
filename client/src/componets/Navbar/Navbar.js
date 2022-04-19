@@ -1,5 +1,7 @@
 import React from "react";
-import { Nav, Navbar, Container, Offcanvas } from "react-bootstrap";
+import Navbar from 'react-bootstrap/Navbar';
+import { Nav, Container, Offcanvas } from 'react-bootstrap'
+import './Navbar.css';
 
 function NavbarComp({ currentPage, handlePageChange }) {
   return (

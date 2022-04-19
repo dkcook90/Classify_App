@@ -1,19 +1,25 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
 const teacherSchema = new Schema({
-    name: {
-        type: String,
-        required: true,
+  name: {
+    type: String,
+    // required: true,
+  },
+  department: {
+    type: String,
+    required: true,
+  },
+  office: {
+    type: String,
+    required: true,
+  },
+  students: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Student",
     },
-    department: {
-        type: String,
-        required: true
-    },
-    office:{
-        type: String,
-        required: true
-    } 
-})
+  ],
+});
 
-const Teacher = model('Teacher', teacherSchema)
+const Teacher = model("Teacher", teacherSchema);
 module.exports = Teacher;

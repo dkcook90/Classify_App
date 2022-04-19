@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "install": "cd server && npm i && cd ../client && npm i",
     "seed": "node seeds/seed.js",
     "watch": "nodemon server.js"
   },

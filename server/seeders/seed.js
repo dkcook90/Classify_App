@@ -20,18 +20,20 @@ db.once("open", async () => {
     const schools = await School.insertMany(schoolSeed);
     const students = await Student.insertMany(studentSeed);
 
-    for (newTeacher of teachers) {
-      const tempSchool = schools[Math.floor(Math.random() * schools.length)];
-      tempSchool.teachers.push(newTeacher);
-      await tempSchool.save();
-      const tempStudent = students[Math.floor(Math.random() * students.length)];
-      console.log("weeeeeeeeeeeeeeeeeeeeeeeee", tempStudent);
-      // newTeacher.student.push(tempStudent);
-      newTeacher.student = [];
-      newTeacher.student.push(tempStudent);
-      // console.log("look at me ma", newTeacher.student);
-      await newTeacher.save();
-    }
+//     for (newTeacher of teachers) {
+//       const tempSchool = schools[Math.floor(Math.random() * schools.length)];
+//       tempSchool.teachers.push(newTeacher.id);
+//       tempSchool.departments.push(department.id);
+//       await tempSchool.save();
+
+//       const tempStudent = students[Math.floor(Math.random() * students.length)];
+//       console.log("weeeeeeeeeeeeeeeeeeeeeeeee", tempStudent);
+//       // newTeacher.student.push(tempStudent);
+//       newTeacher.student = [];
+//       newTeacher.student.push(tempStudent);
+//       // console.log("look at me ma", newTeacher.student);
+//       await newTeacher.save();
+    // }
   } catch (err) {
     console.error(err);
     process.exit(1);

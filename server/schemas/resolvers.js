@@ -56,6 +56,15 @@ const resolvers = {
     addSchool: async (parent, {name, principle}) => {
         return School.create({name, principle});
     },
+    addDepartment: async (parent, {department}) => {
+        return School.create({department});
+    },
+    addTeacher: async (parent, {name, department, office}) => {
+        return School.create({name, department, office});
+    },
+    addStudent: async (parent, {name, grade, note}) => {
+        return School.create({name, grade, note});
+    },
   },
 };
 

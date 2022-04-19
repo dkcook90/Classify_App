@@ -1,29 +1,33 @@
 import React from "react";
-import { Nav, Navbar, Container, Offcanvas } from "react-bootstrap";
+import Navbar from 'react-bootstrap/Navbar';
+import { Nav, Container, Offcanvas } from 'react-bootstrap'
+import './Navbar.css';
+
 
 function NavbarComp({ currentPage, handlePageChange }) {
 	return (
 		<div classname="navBarContainer">
 			<Navbar bg="light" variant="light" fixed="top" expand={false}>
-				<Container fluid>
+				<Container>
 					<Navbar.Brand href="#home">
 						<img
 							alt=""
 							src="../public/classifyLogo.png"
-							width="80"
+							width="auto"
 							height="80"
 							className="d-inline-block align-top"
 						/>{" "}
 						classify
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls="offcanvasNavbar" />
-					<Navbar.Offcanvas
+
+						<Navbar.Offcanvas
 						id="offcanvasNavbar"
 						aria-labelledby="offcanvasNavbarLabel"
 						placement="end"
-					>
+						>
 						<Offcanvas.Header closeButton>
-							<Offcanvas.Title id="offcanvasNavbarLabel"></Offcanvas.Title>
+							<Offcanvas.Title id="offcanvasNavbarLabel">Offcanvas</Offcanvas.Title>
 						</Offcanvas.Header>
 						<Offcanvas.Body>
 							<Nav className="me-auto">

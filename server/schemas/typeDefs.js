@@ -35,6 +35,13 @@ type Department {
 }
 type Query {
     schools: [School]!
+	school(schoolId: ID!): School
+    departments: [Department]!
+	department(departmentId: ID!): Department
+    teachers: [Teacher]!
+	teacher(teacherId: ID!): Teacher
+    students: [Student]!
+	student(studentId: ID!): Student
 }
 `;
 

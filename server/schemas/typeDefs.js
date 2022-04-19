@@ -1,57 +1,60 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-type User {
+  type User {
     _id: ID!
     username: String!
     email: String!
     password: String!
     role: String!
-}
-type Student {
+  }
+  type Student {
     _id: ID!
     name: String!
     grade: Int!
     note: String
-    
-}
-type Teacher {
+  }
+  type Teacher {
     _id: ID!
     name: String!
     department: String!
     office: String!
     students: [Student]
-}
-type School {
+  }
+  type School {
     _id: ID!
     name: String!
     principle: String!
-    department:[Department]
+    department: [Department]
     teachers: [Teacher]
-}
-type Department {
+  }
+  type Department {
     _id: ID!
     department: String!
-}
-type Query {
+  }
+  type Query {
     schools: [School]!
-	school(schoolId: ID!): School
+    school(schoolId: ID!): School
     departments: [Department]!
-	department(departmentId: ID!): Department
+    department(departmentId: ID!): Department
     teachers: [Teacher]!
-	teacher(teacherId: ID!): Teacher
+    teacher(teacherId: ID!): Teacher
     students: [Student]!
-	student(studentId: ID!): Student
-}
-	type Auth {
-		token: ID!
-		user: User
-	}
+    student(studentId: ID!): Student
+  }
+  type Auth {
+    token: ID!
+    user: User
+  }
 
-	type Mutation {
-		addUser(username: String!, email: String!, password: String!): Auth
-		login(email: String!, password: String!): Auth
-	}
+  type Mutation {
+    addUser(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+	addSchool(name: String!, principle: String!): School
+	addDepartment(department: String!): Department
+	addTeacher(name: String!, department: String!, office: String!): Teacher
+	addStudent(name: String!, grade: Int!, note: String): Student
+  }
 `;
 
 module.exports = typeDefs;

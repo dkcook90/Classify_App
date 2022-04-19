@@ -4,12 +4,17 @@ function Login() {
     return(
         <>
             <div className= 'loginContainer'>
-            <form className='loginForm'>
-                <input placeholder='USERNAME'></input>
-                <input placeholder='EMAIL'></input>
-                <input placeholder='PASSWORD'></input>
-                <button className='loginSubmitBtn'>Login</button>
-            </form>
+                <Form className='loginForm'>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Please enter credentials to log in.</Form.Label>
+                        <Form.Control type="user" placeholder='USERNAME' />
+                        <Form.Control type="email" placeholder='EMAIL' />
+                        <Form.Control type="password" placeholder='PASSWORD' />
+                    </Form.Group>
+                    <Button variant="secondary" type="submit">
+                        Log In
+                    </Button>
+                </Form>
             </div>
         </>
     )

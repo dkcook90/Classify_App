@@ -17,10 +17,10 @@ const resolvers = {
       return await Department.findOne({ _id: departmentId });
     },
     teachers: async () => {
-      return await Teacher.find().populate('Students');
+      return await Teacher.find().populate('students');
     },
     teacher: async (parent, { teacherId }) => {
-      return await Teacher.findOne({ _id: teacherId });
+      return await Teacher.findOne({ _id: teacherId }).populate('students');
     },
     students: async () => {
       return await Student.find();

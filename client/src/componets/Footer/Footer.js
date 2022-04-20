@@ -4,8 +4,8 @@ import './Footer.css';
 function Footer() {
 	return (
 		<footer class="footer">
-			This project was created by the Classify Team find our repo @
-			<a href="https://github.com/dkcook90/Classify_App">GitHub</a>
+			<p>This project was created by the Classify Team.</p>
+			<p>Find our repo @ <a href="https://github.com/dkcook90/Classify_App">GitHub</a></p>
 		</footer>
 	);
 }

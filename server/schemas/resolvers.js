@@ -17,10 +17,10 @@ const resolvers = {
       return await Department.findOne({ _id: departmentId });
     },
     teachers: async () => {
-      return await Teacher.find().populate('students');
+      return await Teacher.find().populate("students");
     },
     teacher: async (parent, { teacherId }) => {
-      return await Teacher.findOne({ _id: teacherId }).populate('students');
+      return await Teacher.findOne({ _id: teacherId }).populate("students");
     },
     students: async () => {
       return await Student.find();
@@ -67,10 +67,14 @@ const resolvers = {
       return await Student.create({ name, grade, note });
     },
 
-    updateSchool: async (parent, { schoolId, name, principle }) => {
+    updateSchool: async (parent, { schoolId, name, principle, department }) => {
       const schoolData = await School.findOneAndUpdate(
         { _id: schoolId },
-        { name: name, principle: principle },
+        {
+          name: name,
+          principle: principle,
+          $push: { department: department },
+        },
         { new: true }
       );
       return schoolData;

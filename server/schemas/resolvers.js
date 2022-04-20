@@ -17,10 +17,10 @@ const resolvers = {
       return await Department.findOne({ _id: departmentId });
     },
     teachers: async () => {
-      return await Teacher.find().populate('students');
+      return await Teacher.find().populate("students");
     },
     teacher: async (parent, { teacherId }) => {
-      return await Teacher.findOne({ _id: teacherId }).populate('students');
+      return await Teacher.findOne({ _id: teacherId }).populate("students");
     },
     students: async () => {
       return await Student.find();
@@ -54,66 +54,75 @@ const resolvers = {
       return { token, user };
     },
 
+    addSchool: async (parent, { name, principle }) => {
+      return await School.create({ name, principle });
+    },
+    addDepartment: async (parent, { department }) => {
+      return await Department.create({ department });
+    },
+    addTeacher: async (parent, { name, department, office }) => {
+      return await Teacher.create({ name, department, office });
+    },
+    addStudent: async (parent, { name, grade, note }) => {
+      return await Student.create({ name, grade, note });
+    },
 
-    addSchool: async (parent, {name, principle}) => {
-        return await School.create({name, principle});
-    },
-    addDepartment: async (parent, {department}) => {
-        return await Department.create({department});
-    },
-    addTeacher: async (parent, {name, department, office}) => {
-        return await Teacher.create({name, department, office});
-    },
-    addStudent: async (parent, {name, grade, note}) => {
-        return await Student.create({name, grade, note});
-    },
-
-
-    updateSchool: async (parent, {schoolId, name, principle}) => {
+    updateSchool: async (parent, { schoolId, name, principle, department }) => {
       const schoolData = await School.findOneAndUpdate(
-        {_id: schoolId},
-        {name: name, principle: principle},
-        {new: true}
+        { _id: schoolId },
+        {
+          name: name,
+          principle: principle,
+          $push: { department: department },
+        },
+        { new: true }
       );
-      return schoolData
+      return schoolData;
     },
-    updateDepartment: async (parent, {departmentId, department}) => {
+    updateDepartment: async (parent, { departmentId, department }) => {
       const departmentData = await Department.findOneAndUpdate(
-        {_id: departmentId},
-        {department: department},
-        {new: true}
+        { _id: departmentId },
+        { department: department },
+        { new: true }
       );
-      return departmentData
+      return departmentData;
     },
-    updateTeacher: async (parent, {teacherId, name, department, office, students}) => {
+    updateTeacher: async (
+      parent,
+      { teacherId, name, department, office, students }
+    ) => {
       const teacherData = await Teacher.findOneAndUpdate(
-        {_id: teacherId},
-        {name: name, department: department, office: office, $push: {students: students}},
-        {new: true}
+        { _id: teacherId },
+        {
+          name: name,
+          department: department,
+          office: office,
+          $push: { students: students },
+        },
+        { new: true }
       );
-      return teacherData
+      return teacherData;
     },
-    updateStudent: async (parent, {studentId, name, grade, note}) => {
+    updateStudent: async (parent, { studentId, name, grade, note }) => {
       const studentData = await Student.findOneAndUpdate(
-        {_id: studentId},
-        {name: name, grade: grade, note: note},
-        {new: true}
+        { _id: studentId },
+        { name: name, grade: grade, note: note },
+        { new: true }
       );
-      return studentData
+      return studentData;
     },
 
-
-    removeSchool: async (parent, {schoolId}) => {
-      return await School.findOneAndDelete({_id: schoolId})
+    removeSchool: async (parent, { schoolId }) => {
+      return await School.findOneAndDelete({ _id: schoolId });
     },
-    removeDepartment: async (parent, {departmentId}) => {
-      return await Department.findOneAndDelete({_id: departmentId})
+    removeDepartment: async (parent, { departmentId }) => {
+      return await Department.findOneAndDelete({ _id: departmentId });
     },
-    removeTeacher: async (parent, {teacherId}) => {
-      return await Teacher.findOneAndDelete({_id: teacherId})
+    removeTeacher: async (parent, { teacherId }) => {
+      return await Teacher.findOneAndDelete({ _id: teacherId });
     },
-    removeStudent: async (parent, {studentId}) => {
-      return await Student.findOneAndDelete({_id: studentId})
+    removeStudent: async (parent, { studentId }) => {
+      return await Student.findOneAndDelete({ _id: studentId });
     },
   },
 };

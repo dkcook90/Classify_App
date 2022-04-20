@@ -15,10 +15,9 @@ const studentSchema = new Schema({
   teachers: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Teacher'
-    }
-  ]
-
+      ref: "Teacher",
+    },
+  ],
 });
 
 const Student = model("Student", studentSchema);

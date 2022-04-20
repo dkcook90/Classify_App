@@ -10,8 +10,8 @@ const typeDefs = gql`
   }
   type Student {
     _id: ID!
-    name: String!
-    grade: Int!
+    name: String
+    grade: Int
     note: String
   }
   type Teacher {
@@ -63,7 +63,7 @@ const typeDefs = gql`
 
     updateSchool(schoolId: ID!, name: String, principle: String): School
     updateDepartment(departmentId: ID!, department: String): Department
-    updateTeacher(teacherId: ID!, name: String, department: String, office: String): Teacher
+    updateTeacher(teacherId: ID!, name: String, department: String, office: String, students: ID): Teacher
     updateStudent(stundentId: ID!, name: String, grade: String, note: String): Student
   }
 `;

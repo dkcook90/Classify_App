@@ -1,0 +1,11 @@
+.navbar {
+    padding: 1rem;
+    background-color: #43aa8b;
+    height: auto;
+}
+
+.logoType {
+    font-size: 2rem;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+}

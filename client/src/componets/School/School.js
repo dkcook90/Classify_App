@@ -5,38 +5,54 @@ import { useQuery } from "@apollo/client";
 import { Auth } from "../../utils/auth";
 import { QUERY_SCHOOL } from "../../utils/queries";
 import { ADD_SCHOOL, UPDATE_SCHOOL, REMOVE_SCHOOL } from "../../utils/mutation";
-import { Button } from "react-bootstrap";
 
-function Schools() {
+import { Form, Button, Card } from "react-bootstrap";
+import "./School.css";
+
+function School() {
 	return (
 		<>
-			<section className="schoolsContainer">
-				{console.log(state)}
-				{state.Schools.map((school) => (
-					<div key={school.id} id={school.id} className="card mb-3">
-						<h4 className="card-header bg-primary text-light p-2 m-0">
-							{school.name}
-						</h4>
-						<div className="card-body bg-light p-2">
-							<p>{school.principle}</p>
-							<code>
-								Assigned Budget:
-								{school.budget}
-							</code>
-							<code>
-								Departments:
-								{school.department}
-							</code>
-							<code>
-								Teachers:
-								{school.teachers}
-							</code>
-						</div>
-						<span style={{ fontSize: "1rem" }}></span>
-					</div>
-				))}
-			</section>
+			<div className="schoolContainer">
+                <Card style={{ width: '18rem' }}>
+                    <Card.Img variant="top" src="holder.js/100px180" />
+                    <Card.Body>
+                        <Card.Title>Spring Hill High School</Card.Title>
+                        <Card.Text>
+                            Text with address or other school info like head Admin Taylor Brown and budget of $250000. Need to make these cards dynamically by mapping through each item in the array.
+                        </Card.Text>
+                        <ListGroup className="list-group-flush">
+                            <ListGroupItem>
+                                <Card.Link href="#">Link to school's departments</Card.Link>
+                            </ListGroupItem>
+                            <ListGroupItem>
+                                <Card.Link href="#">Link to school's teachers</Card.Link>
+                            </ListGroupItem>
+                            <ListGroupItem>
+                                <Card.Link href="#">Link to school's students</Card.Link>
+                            </ListGroupItem>
+                        </ListGroup>
+                        <Button variant="primary">Back to Home</Button>
+                    </Card.Body>
+                </Card>
+                
+                <Form className="schoolForm">
+					<Form.Group className="m-3" controlId="form">
+						<Form.Label>School Name:</Form.Label>
+						<Form.Control className="mb-2" type="input" placeholder="School Name" />
+                        <Form.Label>Principal:</Form.Label>
+						<Form.Control className="mb-2" type="input" placeholder="School Name" />
+                        <Form.Label>Budget:</Form.Label>
+						<Form.Control className="mb-2" type="input" placeholder="School Name" />
+					<Button variant="secondary" type="submit">
+						ADD SCHOOL
+					</Button>
+                    <Button variant="secondary" type="submit">
+						Edit SCHOOL
+					</Button>
+					</Form.Group>
+				</Form>
+			</div>
 		</>
 	);
 }
-export default Schools;
+export default School;

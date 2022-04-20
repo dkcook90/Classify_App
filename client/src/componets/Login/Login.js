@@ -7,15 +7,14 @@ function Login() {
 		<>
 			<div className="loginContainer">
 				<Form className="loginForm">
-					<Form.Group className="mb-3" controlId="formBasicEmail">
-						<Form.Label>Please enter credentials to log in.</Form.Label>
-						<Form.Control type="user" placeholder="USERNAME" />
-						<Form.Control type="email" placeholder="EMAIL" />
-						<Form.Control type="password" placeholder="PASSWORD" />
-					</Form.Group>
+					<Form.Group className="m-3" controlId="formBasicEmail">
+						<Form.Label>Please enter credentials to log in:</Form.Label>
+						<Form.Control className="mb-2" type="email" placeholder="EMAIL" />
+						<Form.Control className="mb-2" type="password" placeholder="PASSWORD" />
 					<Button variant="secondary" type="submit">
 						Log In
 					</Button>
+					</Form.Group>
 				</Form>
 			</div>
 		</>

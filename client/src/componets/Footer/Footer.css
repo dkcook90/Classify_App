@@ -1,4 +1,8 @@
 .footer {
+    margin-top: 1rem;
+    padding: 1rem;
     background-color: #43aa8b;
-    height: 2rem;
+    height: auto;
+    font-family: 'Sintony', sans-serif;
+    color: white;
 }

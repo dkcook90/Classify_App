@@ -17,10 +17,10 @@ const resolvers = {
       return await Department.findOne({ _id: departmentId });
     },
     teachers: async () => {
-      return await Teacher.find();
+      return await Teacher.find().populate('students');
     },
     teacher: async (parent, { teacherId }) => {
-      return await Teacher.findOne({ _id: teacherId });
+      return await Teacher.findOne({ _id: teacherId }).populate('students');
     },
     students: async () => {
       return await Student.find();
@@ -85,10 +85,10 @@ const resolvers = {
       );
       return departmentData
     },
-    updateTeacher: async (parent, {teacherId, name, department, office}) => {
+    updateTeacher: async (parent, {teacherId, name, department, office, students}) => {
       const teacherData = await Teacher.findOneAndUpdate(
         {_id: teacherId},
-        {name: name, department: department, office: office},
+        {name: name, department: department, office: office, $push: {students: students}},
         {new: true}
       );
       return teacherData

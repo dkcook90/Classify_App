@@ -11,7 +11,7 @@ function NavbarComp({ currentPage, handlePageChange }) {
           <Navbar.Brand href="#home">
             <img
               alt=""
-              src="../../../../public/classifyLogo.png"
+              src="../../public/classifyLogo.png"
               width="80"
               height="80"
               className="d-inline-block align-top"

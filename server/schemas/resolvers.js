@@ -92,6 +92,8 @@ const resolvers = {
         {_id: teacherId},
         {name: name, department: department, office: office},
         {new: true}
+      );
+      return teacherData
     },
     updateStudent: async (parent, { studentId, name, grade, note }) => {
       const studentData = await Student.findOneAndUpdate(

@@ -14,6 +14,7 @@ import Footer from "./componets/Footer/Footer";
 import Login from "./componets/Login/Login";
 import School from "./componets/School/School";
 import Department from "./componets/Department/Department";
+import Classroom from "./componets/Classroom/Classroom";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -49,7 +50,8 @@ function App() {
 						<Routes>
 							<Route path="/login" element={<Login />} />
 							<Route path="/schools" element={<School />} />
-							<Route path="/departments" element={<Department />} />
+							<Route path="/:SchoolId/departments" element={<Department />} />
+							<Route path="/:SchoolId/classrooms" element={<Classroom />} />
 						</Routes>
 					</div>
 					<Footer />

@@ -5,7 +5,7 @@ import "./Navbar.css";
 
 function NavbarComp({ currentPage, handlePageChange }) {
 	return (
-		<div classname="navBarContainer">
+		<div className="navBarContainer">
 			<Navbar className="navbar" bg="danger" variant="light" expand={false}>
 				<Container fluid>
 					<Navbar.Brand href="/home">

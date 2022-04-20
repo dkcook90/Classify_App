@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const QUERY_USER = gql`
-	query user($_id: Number!) {
+	query User($_id: Number!) {
 		user(_id: $_id) {
 			_id
 			username
@@ -25,14 +25,12 @@ export const QUERY_SCHOOL = gql`
 `;
 
 export const QUERY_ALLSCHOOLS = gql`
-	query getSchools {
-		schools {
+	query schools {
+		school {
 			_id
 			name
 			principle
 			budget
-			department
-			teachers
 		}
 	}
 `;

@@ -15,11 +15,10 @@ const studentSchema = new Schema({
   teachers: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Teacher'
-    }
-  ]
-
+      ref: "Teacher",
+    },
+  ],
 });
 
-const Student = model("Student", studentSchema, 'Teachers');
+const Student = model("Student", studentSchema);
 module.exports = Student;

@@ -5,10 +5,10 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     schools: async () => {
-      return await School.find().populate('department').populate('teachers');
+      return await School.find().populate('department').populate('teachers').populate({path: 'teachers', populate: 'students'});
     },
     school: async (parent, { schoolId }) => {
-      return await School.findOne({ _id: schoolId }).populate('department').populate('teachers');
+      return await School.findOne({ _id: schoolId }).populate('department').populate('teachers').populate({path: 'teachers', populate: 'students'});
     },
     departments: async () => {
       return await Department.find();

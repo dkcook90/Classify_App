@@ -31,6 +31,9 @@ export const QUERY_ALLSCHOOLS = gql`
 			name
 			principle
 			budget
+			teachers {
+				students
+			}
 		}
 	}
 `;

@@ -23,3 +23,49 @@ export const ADD_USER = gql`
 		}
 	}
 `;
+
+// export const REMOVE_USER = gql`
+// 	mutation removeUser($email: String!) {
+// 		removeUser(email: $email) {
+// 		}
+// 	}
+// `;
+
+export const ADD_SCHOOL = gql`
+	mutation addSchool($name: String!) {
+		addSchool(name: $name) {
+			_id
+			name
+			principle
+			budget
+			department
+			teachers
+		}
+	}
+`;
+
+export const UPDATE_SCHOOL = gql`
+	mutation updateSchool($name: String!) {
+		updateSchool(name: $name) {
+			_id
+			name
+			principle
+			budget
+			department
+			teachers
+		}
+	}
+`;
+
+export const REMOVE_SCHOOL = gql`
+	mutation removeSchool($name: String!) {
+		removeSchool(name: $name) {
+			_id
+			name
+			principle
+			budget
+			department
+			teachers
+		}
+	}
+`;

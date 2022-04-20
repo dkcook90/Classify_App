@@ -32,6 +32,10 @@ function School() {
 					<Form.Group className="m-3" controlId="form">
 						<Form.Label>School Name:</Form.Label>
 						<Form.Control className="mb-2" type="input" placeholder="School Name" />
+                        <Form.Label>Principal:</Form.Label>
+						<Form.Control className="mb-2" type="input" placeholder="School Name" />
+                        <Form.Label>Budget:</Form.Label>
+						<Form.Control className="mb-2" type="input" placeholder="School Name" />
 					<Button variant="secondary" type="submit">
 						ADD SCHOOL
 					</Button>

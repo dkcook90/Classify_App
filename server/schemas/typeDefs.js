@@ -61,10 +61,25 @@ const typeDefs = gql`
     removeTeacher(teacherId: ID!): Teacher
     removeStudent(studentId: ID!): Student
 
-    updateSchool(schoolId: ID!, name: String, principle: String): School
+    updateSchool(
+      schoolId: ID!
+      name: String
+      principle: String
+      department: String
+    ): School
     updateDepartment(departmentId: ID!, department: String): Department
-    updateTeacher(teacherId: ID!, name: String, department: String, office: String, students: ID): Teacher
+    updateTeacher(teacherId: ID!, name: String, department: String, office: String): Teacher
     updateStudent(stundentId: ID!, name: String, grade: String, note: String): Student
+
+    addDepToSchool(schoolId: ID!, department: ID): School
+    rmvDepFrmSchool(schoolId: ID!, department: ID): School
+    addTeachToSchool(schoolId: ID!, teachers: ID): School
+    rmvTeachFrmSchool(schoolId: ID!, teachers: ID): School
+
+    addStuToTeacher(teacherId: ID!, students: ID): Teacher
+    rmvStuFrmTeacher(teacherId: ID!, students: ID): Teacher
+    addTeachToStudent(studentId: ID!, teachers: ID): Student
+    rmvTeachFrmStudent(studentId: ID!, teachers: ID): Student
   }
 `;
 

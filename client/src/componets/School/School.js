@@ -6,7 +6,7 @@ import { useQuery } from "@apollo/client";
 import { QUERY_ALLSCHOOLS } from "../../utils/queries";
 // import { ADD_SCHOOL, UPDATE_SCHOOL, REMOVE_SCHOOL } from "../../utils/mutation";
 
-import { Form, Button, ListGroupItem, ListGroup, Card } from "react-bootstrap";
+import { Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import "./School.css";
 
 function School() {

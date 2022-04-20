@@ -6,7 +6,7 @@ import { Auth } from "../../utils/auth";
 import { QUERY_SCHOOL } from "../../utils/queries";
 import { ADD_SCHOOL, UPDATE_SCHOOL, REMOVE_SCHOOL } from "../../utils/mutation";
 
-import { Form, Button, Card } from "react-bootstrap";
+import { Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import "./School.css";
 
 function School() {

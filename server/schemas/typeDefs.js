@@ -25,7 +25,7 @@ const typeDefs = gql`
     _id: ID!
     name: String!
     principle: String!
-    budget:Int
+    budget: Int
     department: [Department]
     teachers: [Teacher]
   }
@@ -35,7 +35,7 @@ const typeDefs = gql`
   }
   type Query {
     schools: [School]!
-    school(schoolId: ID!): School
+    school(_id: String!): School
     departments: [Department]!
     department(departmentId: ID!): Department
     teachers: [Teacher]!
@@ -62,10 +62,25 @@ const typeDefs = gql`
     removeTeacher(teacherId: ID!): Teacher
     removeStudent(studentId: ID!): Student
 
-    updateSchool(schoolId: ID!, name: String, principle: String, department: String): School
+    updateSchool(
+      schoolId: ID!
+      name: String
+      principle: String
+      department: String
+    ): School
     updateDepartment(departmentId: ID!, department: String): Department
-    updateTeacher(teacherId: ID!, name: String, department: String, office: String): Teacher
-    updateStudent(studentId: ID!, name: String, grade: String, note: String): Student
+    updateTeacher(
+      teacherId: ID!
+      name: String
+      department: String
+      office: String
+    ): Teacher
+    updateStudent(
+      studentId: ID!
+      name: String
+      grade: String
+      note: String
+    ): Student
 
     addDepToSchool(schoolId: ID!, departmentId: ID): School
     rmvDepFrmSchool(schoolId: ID!, departmentId: ID): School

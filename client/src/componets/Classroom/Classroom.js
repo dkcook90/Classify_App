@@ -3,12 +3,10 @@ import { Form, Button, Card, ListGroupItem, ListGroup } from "react-bootstrap";
 import "./Classroom.css";
 
 import { useQuery } from "@apollo/client";
-import { QUERY_ALLTEACHERS } from "../../utils/queries";
+
 
 function Classroom() {
-  const { data } = useQuery(QUERY_ALLTEACHERS);
-  const teachers = data?.teachers || [];
-  console.log(teachers);
+ 
   return (
     <>
       <div className="schoolContainer">

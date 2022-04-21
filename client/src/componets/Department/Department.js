@@ -1,8 +1,13 @@
 import React from "react";
 import { Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import "./Department.css";
+import {useQuery} from '@apollo/client';
+import {QUERY_ALLDEPT, QUERY_DEPT} from '../../utils/queries'
 
 function Department() {
+	const {data} = useQuery(QUERY_ALLDEPT)
+	const departments = data?.departments || [];
+	console.log(departments)
 	return (
 		<>
 			<div className="departmentContainer">

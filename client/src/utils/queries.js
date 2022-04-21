@@ -55,4 +55,19 @@ export const QUERY_TEACHER = gql`
     }
   }
 `;
-//hello world please delete this at a later date
+export const QUERY_ALLDEPT = gql`
+  query getDepartments {
+    departments {
+      _id
+      department
+    }
+  }
+`;
+export const QUERY_DEPT = gql`
+  query department($name: String!) {
+    department(name: $name) {
+      _id
+      department
+    }
+  }
+`;

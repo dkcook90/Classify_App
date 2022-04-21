@@ -25,15 +25,11 @@ export const QUERY_SCHOOL = gql`
 `;
 
 export const QUERY_ALLSCHOOLS = gql`
-	query schools {
-		school {
+	query getSchools {
+		schools {
 			_id
 			name
 			principle
-			budget
-			teachers {
-				students
-			}
 		}
 	}
 `;

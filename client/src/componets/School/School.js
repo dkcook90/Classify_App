@@ -16,8 +16,8 @@ function School() {
 	const schools = data?.schools || [];
 	console.log(schools);
 
-	if (loading) return "Loading...";
-	if (error) return `Error! ${error.message}`;
+	// if (loading) return "Loading...";
+	// if (error) return `Error! ${error.message}`;
 
 	return (
 		<>

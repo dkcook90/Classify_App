@@ -16,8 +16,8 @@ function School() {
 	const schools = data?.schools || [];
 	console.log(schools);
 
-	// if (loading) return "Loading...";
-	// if (error) return `Error! ${error.message}`;
+	if (loading) return "Loading...";
+	if (error) return `Error! ${error.message}`;
 
 	return (
 		<>
@@ -35,25 +35,25 @@ function School() {
 								</Card.Text>
 								<ListGroup className="list-group-flush">
 									<ListGroupItem>
-										<Card.Link href={`"/"${school._id}"/departments"`}>
+										<Card.Link href={`"/departments/:${school._id}"`}>
 											Link to school's departments
 										</Card.Link>
 									</ListGroupItem>
 									<ListGroupItem>
-										<Card.Link href={`"/"${school._id}"/classrooms"`}>
+										<Card.Link href={`"/classrooms/:${school._id}"`}>
 											Link to school's classrooms
 										</Card.Link>
 									</ListGroupItem>
 									<ListGroupItem>
 										<Button
-											className="mx-2 bg-warning"
+											className="mx-2 editbtn"
 											variant="secondary"
 											type=""
 										>
 											<img alt="edit school" src={editIcon}></img>
 										</Button>
 										<Button
-											className="mx-2 bg-danger"
+											className="mx-2 deletebtn"
 											variant="secondary"
 											type=""
 										>
@@ -89,7 +89,7 @@ function School() {
 							type="input"
 							placeholder="School Name"
 						/>
-						<Button variant="secondary" type="submit">
+						<Button className="addbtn" variant="secondary" type="submit">
 							ADD SCHOOL
 						</Button>
 					</Form.Group>

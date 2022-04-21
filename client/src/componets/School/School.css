@@ -1,2 +1,14 @@
 .card {
 display: flex;}
+
+.addbtn {
+	background-color: #43AA8B;
+}
+
+.editbtn{
+	background-color: #F8961E;
+}
+
+.deletebtn{
+	background-color: #F94144;
+}

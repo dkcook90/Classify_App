@@ -1,8 +1,12 @@
 .footer {
     margin-top: 1rem;
     padding: 1rem;
-    background-color: #43aa8b;
+    background-color: #555;
     height: auto;
     font-family: 'Sintony', sans-serif;
     color: white;
+}
+
+.copyright {
+    color: #999;
 }

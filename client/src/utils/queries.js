@@ -18,8 +18,21 @@ export const QUERY_SCHOOL = gql`
       name
       principle
       budget
-      department
-      teachers
+      department {
+        _id
+        department
+      }
+      teachers {
+        _id
+        name
+        department
+        office
+        students {
+          _id
+          name
+          grade
+          note
+        }
     }
   }
 `;
@@ -31,6 +44,22 @@ export const QUERY_ALLSCHOOLS = gql`
       name
       principle
       budget
+      department {
+        _id
+        department
+      }
+      teachers {
+        _id
+        name
+        department
+        office
+        students {
+          _id
+          name
+          grade
+          note
+        }
+      }
     }
   }
 `;
@@ -64,8 +93,8 @@ export const QUERY_ALLDEPT = gql`
   }
 `;
 export const QUERY_DEPT = gql`
-  query department($name: String!) {
-    department(name: $name) {
+  query department($department: String!) {
+    department(department: $department) {
       _id
       department
     }

@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const QUERY_USER = gql`
-  query User($_id: Number!) {
+  query User($_id: String!) {
     user(_id: $_id) {
       _id
       username
@@ -12,8 +12,8 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_SCHOOL = gql`
-  query school($name: String!) {
-    school(name: $name) {
+  query school($_id: String!) {
+    school(_id: $_id) {
       _id
       name
       principle
@@ -33,6 +33,7 @@ export const QUERY_SCHOOL = gql`
           grade
           note
         }
+      }
     }
   }
 `;
@@ -60,43 +61,6 @@ export const QUERY_ALLSCHOOLS = gql`
           note
         }
       }
-    }
-  }
-`;
-export const QUERY_ALLTEACHERS = gql`
-  query getTeachers {
-    teachers {
-      _id
-      name
-      department
-      office
-    }
-  }
-`;
-export const QUERY_TEACHER = gql`
-  query teacher($name: String!) {
-    teacher(name: $name) {
-      _id
-      name
-      department
-      office
-      students
-    }
-  }
-`;
-export const QUERY_ALLDEPT = gql`
-  query getDepartments {
-    departments {
-      _id
-      department
-    }
-  }
-`;
-export const QUERY_DEPT = gql`
-  query department($department: String!) {
-    department(department: $department) {
-      _id
-      department
     }
   }
 `;

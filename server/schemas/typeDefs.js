@@ -25,6 +25,7 @@ const typeDefs = gql`
     _id: ID!
     name: String!
     principle: String!
+    budget:Int
     department: [Department]
     teachers: [Teacher]
   }

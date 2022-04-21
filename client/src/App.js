@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavbarComp from "./componets/Navbar/Navbar";
 import Footer from "./componets/Footer/Footer";
 
+import Home from "./componets/Home/Home";
 import Login from "./componets/Login/Login";
 import School from "./componets/School/School";
 import Department from "./componets/Department/Department";
@@ -48,10 +49,11 @@ function App() {
 					<NavbarComp />
 					<div className="container">
 						<Routes>
+							<Route path="/home" element={<Home />} />
 							<Route path="/login" element={<Login />} />
 							<Route path="/schools" element={<School />} />
-							<Route path="/:SchoolId/departments" element={<Department />} />
-							<Route path="/:SchoolId/classrooms" element={<Classroom />} />
+							<Route path="/departments/:SchoolId" element={<Department />} />
+							<Route path="/classrooms/:SchoolId" element={<Classroom />} />
 						</Routes>
 					</div>
 					<Footer />

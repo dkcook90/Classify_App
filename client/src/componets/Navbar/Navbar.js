@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import { Nav, Container, Offcanvas } from "react-bootstrap";
 import "./Navbar.css";
+import Logo from "../../img/classifyLogo.png";
 
 function NavbarComp({ currentPage, handlePageChange }) {
 	return (
@@ -11,7 +12,7 @@ function NavbarComp({ currentPage, handlePageChange }) {
 					<Navbar.Brand href="/home">
 						<img
 							alt=""
-							src="../../public/classifyLogo.png"
+							src={Logo}
 							width="80"
 							height="80"
 							className="d-inline-block align-top"
@@ -29,6 +30,15 @@ function NavbarComp({ currentPage, handlePageChange }) {
 						</Offcanvas.Header>
 						<Offcanvas.Body>
 							<Nav className="me-auto">
+								<Nav.Link
+									href="/"
+									onClick={() => handlePageChange("Home")}
+									className={
+										currentPage === "Home" ? "nav-link active" : "nav-link"
+									}
+								>
+									Home
+								</Nav.Link>
 								<Nav.Link
 									href="/schools"
 									onClick={() => handlePageChange("Schools")}

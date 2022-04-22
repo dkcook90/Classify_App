@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col'
 import GitHubLogo from "../../img/githubLogoWhite.png"
 function Footer() {
 	return (
-		<footer className="footer mt-auto">
+		<footer className="footer mt-200px">
 			<Row className="justify-content-start">
 				<Col>
 					<p>This project was created by the Classify Team:</p>
@@ -17,10 +17,10 @@ function Footer() {
 			<Row className="justify-content-start my-2">
 				<Col>
 					<p>
-						<a href="https://github.com/eeoerkeedu" className="teamLinks" target="_blank">Erik Oerke</a><br/>
-						<a href="https://github.com/confusedicarus" className="teamLinks" target="_blank">Rick Morrissette</a><br/>
-						<a href="https://github.com/dkcook90" className="teamLinks" target="_blank">Donald Cook</a><br/>
-						<a href="https://github.com/Michael-Bee" className="teamLinks" target="_blank">Michael Bee</a><br/>
+						<a href="https://github.com/eeoerkeedu" className="teamLinks" rel="noopener noreferrer">Erik Oerke</a><br/>
+						<a href="https://github.com/confusedicarus" className="teamLinks" target="_blank" rel="noopener noreferrer">Rick Morrissette</a><br/>
+						<a href="https://github.com/dkcook90" className="teamLinks" target="_blank" rel="noopener noreferrer">Donald Cook</a><br/>
+						<a href="https://github.com/Michael-Bee" className="teamLinks" target="_blank" rel="noopener noreferrer">Michael Bee</a><br/>
 					</p>
 				</Col>
 				<Col>

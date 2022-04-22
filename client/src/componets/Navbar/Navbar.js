@@ -69,7 +69,7 @@ function NavbarComp({ currentPage, handlePageChange }) {
 									Classrooms
 								</Nav.Link>
 								<Nav.Link
-									href="#logout"
+									href="/"
 									onClick={() => handlePageChange("Logout")}
 									className={
 										currentPage === "Logout" ? "nav-link active" : "nav-link"

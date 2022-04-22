@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/client";
 import { Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import "./Classroom.css";
 import { QUERY_SCHOOL } from "../../utils/queries";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 function SchoolClassrooms() {
   let { id } = useParams();
@@ -37,6 +37,7 @@ function SchoolClassrooms() {
           })}
         </ListGroup>
       </Card.Body>
+      <Button variant="primary"><Link className="backHome" to={'/schools'}> Back to Schools</Link></Button>
     </div>
   );
 }

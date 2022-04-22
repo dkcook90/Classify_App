@@ -87,3 +87,18 @@ query getAllClassrooms {
     }
   }
 }`
+export const QUERY_SINGLE_TEACHER = gql`
+  query getSingleTeacher($teacherId: ID!) {
+    teacher(teacherId: $teacherId) {
+      _id
+      name
+      department
+      office
+      students {
+        _id
+        name
+        grade
+        note
+      }
+    }
+  }`

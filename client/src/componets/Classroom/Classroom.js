@@ -1,35 +1,64 @@
 import React from "react";
-import { Form, Button, Card, ListGroupItem, ListGroup } from "react-bootstrap";
+import { Form, Button, Card, ListGroupItem, ListGroup, Container } from "react-bootstrap";
 import "./Classroom.css";
-
+import { QUERY_SINGLE_TEACHER } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
+import { useParams } from 'react-router-dom'
+import editIcon from "../../img/twotone_edit_white_24dp.png";
+import deleteIcon from "../../img/twotone_delete_forever_white_24dp.png";
 
 
 function Classroom() {
+  const {teacherId} = useParams();
+  const {loading, error, data } = useQuery(QUERY_SINGLE_TEACHER, {variables: {teacherId: teacherId}});
+  console.log(data);
+  const teacher = data?.teacher || [];
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
+  console.log(teacher);
  
   return (
     <>
-      <div className="schoolContainer">
-        <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src="holder.js/100px180" />
+    <Container className="justify-content-center text-center">
+        <Card className="border-end-0 border-start-0">
           <Card.Body>
-            <Card.Title>Mr. Paxton's Math Class </Card.Title>
-            <Card.Text>Text with info about teacher and class.</Card.Text>
+            <Card.Header>
+            <Card.Title className="fs-2 text-decoration-underline">{teacher.name}'s {teacher.department} class</Card.Title>
+            <Card.Subtitle>Text with info about teacher and class.</Card.Subtitle>
+            </Card.Header>
             <ListGroup className="list-group-flush">
-              <ListGroupItem>
-                <Card.Link href="#">Student 1</Card.Link>
-              </ListGroupItem>
-              <ListGroupItem>
-                <Card.Link href="#">Student 1</Card.Link>
-              </ListGroupItem>
-              <ListGroupItem>
-                <Card.Link href="#">Student 1</Card.Link>
-              </ListGroupItem>
+              {teacher.students.map((student) => {
+                return (
+                  <ListGroupItem>
+                    <Card.Link className="fs-4" href="#">{student.name}</Card.Link>
+                    <Card.Text>Grade: {student.grade}</Card.Text>
+                    <Card.Text>Notes: {student.note}</Card.Text>
+                    <Button
+                      className="mx-2 btn-sm bg-warning"
+                      variant="secondary"
+                      type=""
+                    >
+                      <img alt="edit school" src={editIcon}></img>
+                    </Button>
+                    <Button
+                      className="mx-2 btn-sm bg-danger"
+                      variant="secondary"
+                      type=""
+                    >
+                      <img alt="delete school" src={deleteIcon}></img>
+                    </Button>
+                  </ListGroupItem>
+                )
+              })}
             </ListGroup>
-            <Button variant="primary">Back to Home</Button>
+            <Card.Footer>
+            <Button variant="primary" href="/classroom">Back to All Classrooms</Button>
+            </Card.Footer>
           </Card.Body>
         </Card>
+        </Container>
 
+        <div className="schoolContainer">
         <Form className="teacherForm">
           <Form.Group className="m-3" controlId="form">
             <Form.Label>Teacher Name:</Form.Label>
@@ -88,7 +117,8 @@ function Classroom() {
           </Form.Group>
         </Form>
       </div>
-    </>
+      </>
+    
   );
 }
 export default Classroom;

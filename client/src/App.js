@@ -16,6 +16,8 @@ import Login from "./componets/Login/Login";
 import School from "./componets/School/School";
 import Department from "./componets/Department/Department";
 import Classroom from "./componets/Classroom/Classroom";
+import AllDepartments from "./componets/Department/AllDepartments.js";
+import AllClassrooms from "./componets/Classroom/AllClassrooms.js";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -49,11 +51,14 @@ function App() {
 					<NavbarComp />
 					<div className="container">
 						<Routes>
-							<Route path="/home" element={<Home />} />
 							<Route path="/" element={<Login />} />
+							<Route path="/home" element={<Home />} />
+							<Route path="/login" element={<Login />} />
 							<Route path="/schools" element={<School />} />
 							<Route path="/departments/:id" element={<Department />} />
-							<Route path="/classrooms/:SchoolId" element={<Classroom />} />
+							<Route path="/classroom/:teacherId" element={<Classroom />} />
+							<Route path="/classroom" element={<AllClassrooms />} />
+							<Route path="/departments" element={<AllDepartments />} />
 						</Routes>
 					</div>
 					<Footer />

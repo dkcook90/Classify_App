@@ -4,7 +4,6 @@ import "./Department.css";
 import { useQuery } from "@apollo/client";
 import { QUERY_SCHOOL } from "../../utils/queries";
 import { useParams } from "react-router-dom";
-import DepartmentList from './DepartmentList'
 
 function Department() {
   let { id } = useParams();
@@ -13,12 +12,13 @@ function Department() {
   });
   const school = data?.school || [];
   console.log(school);
-
+  const deptList = school.department
+  console.log(deptList)
   return (
     <>
       <div className="departmentContainer">
         <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src="holder.js/100px180" />
+          {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
           <Card.Body>
             <Card.Title>{school.name}</Card.Title>
             <Card.Text>
@@ -27,41 +27,18 @@ function Department() {
               and the list items to be teachers in that department.)
             </Card.Text>
             <ListGroup className="list-group-flush">
-				{/* <DepartmentList departments= {school.department}/> */}
-              {/* {school.map((school) => {
-                return (
-                  <ListGroupItem>
-                    <Card.Link href="#">{school.department}</Card.Link>
-                  </ListGroupItem>
-                );
-              })} */}
-              <ListGroupItem>
-                <Card.Link href="#">Custodial</Card.Link>
-              </ListGroupItem>
-              <ListGroupItem>
-                <Card.Link href="#">Science</Card.Link>
-              </ListGroupItem>
-              <ListGroupItem>
-                <Card.Link href="#">English</Card.Link>
-              </ListGroupItem>
-              <ListGroupItem>
-                <Card.Link href="#">Math</Card.Link>
-              </ListGroupItem>
-              <ListGroupItem>
-                <Card.Link href="#">Political Science</Card.Link>
-              </ListGroupItem>
-              <ListGroupItem>
-                <Card.Link href="#">History</Card.Link>
-              </ListGroupItem>
-              <ListGroupItem>
-                <Card.Link href="#">Art</Card.Link>
-              </ListGroupItem>
-              <ListGroupItem>
-                <Card.Link href="#">Computer Science</Card.Link>
-              </ListGroupItem>
-              <ListGroupItem>
-                <Card.Link href="#">Physical Education</Card.Link>
-              </ListGroupItem>
+              {deptList ? (
+                school.department.map((school) => {
+                  return (
+                    <ListGroupItem>
+                      <Card.Link href="#">{school.department}</Card.Link>
+                    </ListGroupItem>
+                  );
+                })
+              ) : (
+                <h1>test</h1>
+              )}
+              
             </ListGroup>
             <Button variant="primary">Back to Home</Button>
           </Card.Body>

@@ -7,7 +7,7 @@ import Logo from "../../img/classifyLogo.png";
 function NavbarComp({ currentPage, handlePageChange }) {
 	return (
 		<div className="navBarContainer">
-			<Navbar className="navbar" bg="danger" variant="light" expand={false}>
+			<Navbar className="navbar" bg="danger" variant="light" expand={false} >
 				<Container fluid>
 					<Navbar.Brand href="/home">
 						<img

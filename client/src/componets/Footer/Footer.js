@@ -6,16 +6,16 @@ import GitHubLogo from "../../img/githubLogoWhite.png";
 function Footer() {
 	return (
 		<footer class="footer">
-			<Row class="d-flex justify-content-center">
-				<Col className="col-6">
+			<Row className="justify-content-start">
+				<Col>
 					<p>This project was created by the Classify Team:</p>
 				</Col>
 				<Col>
 					<p>Find the Classify repo @ GitHub.</p>
 				</Col>
 			</Row>
-			<Row className="my-2">
-				<Col className="col-6">
+			<Row className="justify-content-start my-2">
+				<Col>
 					<p>
 						<a
 							href="https://github.com/eeoerkeedu"
@@ -24,8 +24,7 @@ function Footer() {
 						>
 							Erik Oerke
 						</a>
-					</p>
-					<p>
+						<br />
 						<a
 							href="https://github.com/confusedicarus"
 							className="teamLinks"
@@ -33,8 +32,7 @@ function Footer() {
 						>
 							Rick Morrissette
 						</a>
-					</p>
-					<p>
+						<br />
 						<a
 							href="https://github.com/dkcook90"
 							className="teamLinks"
@@ -42,8 +40,7 @@ function Footer() {
 						>
 							Donald Cook
 						</a>
-					</p>
-					<p>
+						<br />
 						<a
 							href="https://github.com/Michael-Bee"
 							className="teamLinks"
@@ -51,6 +48,7 @@ function Footer() {
 						>
 							Michael Bee
 						</a>
+						<br />
 					</p>
 				</Col>
 				<Col>
@@ -65,12 +63,14 @@ function Footer() {
 					</a>
 				</Col>
 			</Row>
-			<Row>
-				<p>
-					<span className="copyright">
-						© Copyright 2022 Classify. All Rights Reserved.
-					</span>
-				</p>
+			<Row className="justify-content-md-center">
+				<Col>
+					<p>
+						<span className="copyright">
+							© Copyright 2022 Classify. All Rights Reserved.
+						</span>
+					</p>
+				</Col>
 			</Row>
 		</footer>
 	);

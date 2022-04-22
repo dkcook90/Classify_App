@@ -32,6 +32,7 @@ const typeDefs = gql`
   type Department {
     _id: ID!
     department: String!
+    budget:Int
   }
   type Query {
     schools: [School]!

@@ -64,3 +64,41 @@ export const QUERY_ALLSCHOOLS = gql`
     }
   }
 `;
+export const QUERY_ALLDEPT = gql`
+query getDepartments {
+  departments {
+    _id
+    department
+    budget
+  }
+}`
+export const QUERY_ALLCLASSROOMS = gql`
+query getAllClassrooms {
+  teachers {
+    _id
+    name
+    department
+    office
+    students{
+      _id
+      name
+      grade
+      note
+    }
+  }
+}`
+export const QUERY_SINGLE_TEACHER = gql`
+  query getSingleTeacher($teacherId: ID!) {
+    teacher(teacherId: $teacherId) {
+      _id
+      name
+      department
+      office
+      students {
+        _id
+        name
+        grade
+        note
+      }
+    }
+  }`

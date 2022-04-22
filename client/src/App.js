@@ -56,7 +56,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/schools" element={<School />} />
               <Route path="/departments/:id" element={<Department />} />
-              <Route path="/classrooms/:SchoolId" element={<Classroom />} />
+              <Route path="/classroom/:teacherId" element={<Classroom />} />
               <Route path="/classroom" element={<AllClassrooms />} />
 			  <Route path="/departments" element={<AllDepartments />} />
 

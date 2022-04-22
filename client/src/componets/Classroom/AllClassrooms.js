@@ -22,7 +22,7 @@ function AllClassrooms() {
           {teachers.map((teacher) => {
             return (
               <ListGroupItem>
-                <Card.Link href="#">{teacher.name}</Card.Link>
+                <Card.Link href={`/classroom/${teacher._id}`}>{teacher.name}</Card.Link>
               </ListGroupItem>
             );
           })}

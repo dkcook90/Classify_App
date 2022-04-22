@@ -5,9 +5,8 @@ import Col from 'react-bootstrap/Col'
 import GitHubLogo from "../../img/githubLogoWhite.png"
 function Footer() {
 	return (
-
 		<footer class="footer">
-			<Row className="justify-content-md-center">
+			<Row className="justify-content-start">
 				<Col>
 					<p>This project was created by the Classify Team:</p>
 				</Col>
@@ -15,12 +14,14 @@ function Footer() {
 					<p>Find the Classify repo @ GitHub.</p>
 				</Col>
 			</Row>
-			<Row className="justify-content-md-center my-2">
+			<Row className="justify-content-start my-2">
 				<Col>
-					<p><a href="https://github.com/eeoerkeedu" className="teamLinks" target="_blank">Erik Oerke</a></p>
-					<p><a href="https://github.com/confusedicarus" className="teamLinks" target="_blank">Rick Morrissette</a></p> 
-					<p><a href="https://github.com/dkcook90" className="teamLinks" target="_blank">Donald Cook</a></p>
-					<p><a href="https://github.com/Michael-Bee" className="teamLinks" target="_blank">Michael Bee</a></p>
+					<p>
+						<a href="https://github.com/eeoerkeedu" className="teamLinks" target="_blank">Erik Oerke</a><br/>
+						<a href="https://github.com/confusedicarus" className="teamLinks" target="_blank">Rick Morrissette</a><br/>
+						<a href="https://github.com/dkcook90" className="teamLinks" target="_blank">Donald Cook</a><br/>
+						<a href="https://github.com/Michael-Bee" className="teamLinks" target="_blank">Michael Bee</a><br/>
+					</p>
 				</Col>
 				<Col>
 					<a href="https://github.com/dkcook90/Classify_App" target="_blank"><img alt=""

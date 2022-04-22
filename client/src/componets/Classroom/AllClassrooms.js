@@ -14,9 +14,9 @@ function AllClassrooms() {
     <div className="allDepartmentContainer">
       <Card style={{ width: "18rem" }}></Card>
       <Card.Body>
-        <Card.Title>Department</Card.Title>
+        <Card.Title>Classrooms:</Card.Title>
         <Card.Text>
-          Use links listed below to access the departments for each school.
+          Use links listed below to any of the classrooms for each school.
         </Card.Text>
         <ListGroup className="list-group-flush">
           {teachers.map((teacher) => {

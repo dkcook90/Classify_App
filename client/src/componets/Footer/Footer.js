@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col'
 import GitHubLogo from "../../img/githubLogoWhite.png"
 function Footer() {
 	return (
-		<footer class="footer">
+		<footer className="footer mt-auto">
 			<Row className="justify-content-start">
 				<Col>
 					<p>This project was created by the Classify Team:</p>

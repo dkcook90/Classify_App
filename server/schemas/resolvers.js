@@ -10,8 +10,8 @@ const resolvers = {
 				.populate("teachers")
 				.populate({ path: "teachers", populate: "students" });
 		},
-		school: async (parent, { schoolId }) => {
-			return await School.findOne({ _id: schoolId })
+		school: async (parent, { _id }) => {
+			return await School.findOne({ _id: _id })
 				.populate("department")
 				.populate("teachers")
 				.populate({ path: "teachers", populate: "students" });

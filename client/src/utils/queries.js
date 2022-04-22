@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const QUERY_USER = gql`
-  query User($_id: Number!) {
+  query User($_id: String!) {
     user(_id: $_id) {
       _id
       username
@@ -12,14 +12,28 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_SCHOOL = gql`
-  query school($name: String!) {
-    school(name: $name) {
+  query school($_id: String!) {
+    school(_id: $_id) {
       _id
       name
       principle
       budget
-      department
-      teachers
+      department {
+        _id
+        department
+      }
+      teachers {
+        _id
+        name
+        department
+        office
+        students {
+          _id
+          name
+          grade
+          note
+        }
+      }
     }
   }
 `;
@@ -31,28 +45,22 @@ export const QUERY_ALLSCHOOLS = gql`
       name
       principle
       budget
+      department {
+        _id
+        department
+      }
+      teachers {
+        _id
+        name
+        department
+        office
+        students {
+          _id
+          name
+          grade
+          note
+        }
+      }
     }
   }
 `;
-export const QUERY_ALLTEACHERS = gql`
-  query getTeachers {
-    teachers {
-      _id
-      name
-      department
-      office
-    }
-  }
-`;
-export const QUERY_TEACHER = gql`
-  query teacher($name: String!) {
-    teacher(name: $name) {
-      _id
-      name
-      department
-      office
-      students
-    }
-  }
-`;
-//hello world please delete this at a later date

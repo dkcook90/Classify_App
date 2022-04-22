@@ -13,7 +13,7 @@ function NavbarComp({ currentPage, handlePageChange }) {
 						<img
 							alt="home"
 							src={Logo}
-							width="80"
+							width="auto"
 							height="80"
 							className="d-inline-block align-top"
 						/>{" "}

@@ -11,3 +11,10 @@
 .copyright {
     color: #999;
 }
+
+.teamLinks {
+    text-decoration: none;
+    color: #5E9BC1;
+    font-weight: bold;
+    line-height: 10px;
+}

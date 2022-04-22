@@ -3,11 +3,10 @@ import './Footer.css';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import GitHubLogo from "../../img/githubLogoWhite.png"
+import { Container } from "react-bootstrap";
 function Footer() {
 	return (
-
-		<footer className="footer mt-200px">
-
+		<Container>
 			<Row className="justify-content-start">
 				<Col>
 					<p>This project was created by the Classify Team:</p>
@@ -40,7 +39,7 @@ function Footer() {
 					<p><span className="copyright">© Copyright 2022 Classify. All Rights Reserved.</span></p>
 				</Col>
 			</Row>
-		</footer>
+		</Container>
 	);
 }
 export default Footer;

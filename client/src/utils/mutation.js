@@ -67,3 +67,30 @@ export const REMOVE_SCHOOL = gql`
 		}
 	}
 `;
+
+export const ADD_DEPT_SCHOOL = gql`
+	mutation addDepToSchool($schoolId: String!, $departmentId: String!){
+		addDeptToSchool(schoolId: $schoolId, departmentId: $departmentId){
+			_id
+			name
+			principle
+			budget
+			department{
+				_id
+				department
+				budget
+			}
+			teachers{
+				_id
+				name
+				department
+				office
+				students{
+					_id
+					name
+					grade
+					note
+				}
+			}
+		}
+	}`

@@ -14,7 +14,7 @@ function AllDepartments() {
     <div className="allDepartmentContainer">
       <Card style={{ width: "18rem" }}></Card>
       <Card.Body>
-        <Card.Title>Department</Card.Title>
+        <Card.Title>Departments:</Card.Title>
         <Card.Text>
           Use links listed below to access the departments for each school.
         </Card.Text>

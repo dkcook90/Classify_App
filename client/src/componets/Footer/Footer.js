@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col'
 import GitHubLogo from "../../img/githubLogoWhite.png"
 function Footer() {
 	return (
+
 		<footer class="footer">
 			<Row class="d-flex justify-content-center">
 				<Col className="col-6">

@@ -4,7 +4,7 @@ import "./Department.css";
 import { useQuery } from "@apollo/client";
 import { QUERY_SCHOOL } from "../../utils/queries";
 import { useParams } from "react-router-dom";
-import DepartmentList from './DepartmentList'
+
 
 function Department() {
   let { id } = useParams();
@@ -18,7 +18,7 @@ function Department() {
     <>
       <div className="departmentContainer">
         <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src="holder.js/100px180" />
+          {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
           <Card.Body>
             <Card.Title>{school.name}</Card.Title>
             <Card.Text>
@@ -27,14 +27,13 @@ function Department() {
               and the list items to be teachers in that department.)
             </Card.Text>
             <ListGroup className="list-group-flush">
-				{/* <DepartmentList departments= {school.department}/> */}
-              {/* {school.map((school) => {
+              {/* {school.department.map((school) => {
                 return (
                   <ListGroupItem>
                     <Card.Link href="#">{school.department}</Card.Link>
                   </ListGroupItem>
                 );
-              })} */}
+              })}  */}
               <ListGroupItem>
                 <Card.Link href="#">Custodial</Card.Link>
               </ListGroupItem>

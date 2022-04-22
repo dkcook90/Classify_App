@@ -5,7 +5,17 @@
 }
 
 .logoType {
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: white;
     font-family: 'Ubuntu', sans-serif;
+}
+
+#offcanvasNavbar {
+    background-color: #0C4767;
+}
+
+.nav-link {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.6rem;
+    color: white;
 }

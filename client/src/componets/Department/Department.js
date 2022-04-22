@@ -31,9 +31,8 @@ function Department() {
 
   const handleFormSubmit = async (e) =>{
     e.preventDefault();
-    console.log(departmentState)
   }
-
+  console.log(departmentState)
   return (
     <>
       <div className="departmentContainer">

@@ -1,13 +1,13 @@
 import React from "react";
 import { Form, Button, ButtonGroup } from "react-bootstrap";
 import "./Home.css";
+import QUERY_USER from "../../utils/queries";
 
 function Home() {
 	return (
 		<>
 			<div className="Container">
-				<img>Placeholder for large graphic/photo element here.</img>
-				<h1>Welcome to District 925!</h1>
+				<h1>Welcome user.role, user.username</h1>
 				<ButtonGroup className="mb-2">
 					<Button>Schools</Button>
 					<Button>Departments</Button>

@@ -11,7 +11,7 @@ function NavbarComp({ currentPage, handlePageChange }) {
 				<Container fluid>
 					<Navbar.Brand href="/home">
 						<img
-							alt=""
+							alt="home"
 							src={Logo}
 							width="80"
 							height="80"
@@ -31,7 +31,7 @@ function NavbarComp({ currentPage, handlePageChange }) {
 						<Offcanvas.Body>
 							<Nav className="me-auto">
 								<Nav.Link
-									href="/"
+									href="/home"
 									onClick={() => handlePageChange("Home")}
 									className={
 										currentPage === "Home" ? "nav-link active" : "nav-link"

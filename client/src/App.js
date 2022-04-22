@@ -7,7 +7,7 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import './App.css';
 import NavbarComp from "./componets/Navbar/Navbar";
 import Footer from "./componets/Footer/Footer";
 
@@ -48,7 +48,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="d-flex flex-column justify-flex-start min-100-vh">
+        <div className="content-container d-flex flex-column justify-flex-start">
           <NavbarComp />
           <div className="container mb-5">
             <Routes>
@@ -63,8 +63,8 @@ function App() {
               <Route path="/departments" element={<AllDepartments />} />
             </Routes>
           </div>
-          <Footer />
         </div>
+        <div className="footer"><Footer /></div>
       </Router>
     </ApolloProvider>
   );

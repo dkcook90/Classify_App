@@ -1,23 +1,111 @@
-import React from "react";
-import { Form, Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { Form, Button, Alert } from "react-bootstrap";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../../utils/mutation";
 import "./Login.css";
 
-function Login() {
+import Auth from "../../utils/auth";
+
+const LoginForm = () => {
+	const [userFormData, setUserFormData] = useState({ email: "", password: "" });
+	const [validated] = useState(false);
+	const [showAlert, setShowAlert] = useState(false);
+	const [loginUser, { error }] = useMutation(LOGIN_USER);
+
+	const handleInputChange = (event) => {
+		const { name, value } = event.target;
+		setUserFormData({ ...userFormData, [name]: value });
+	};
+
+	const handleFormSubmit = async (event) => {
+		event.preventDefault();
+		console.log(userFormData);
+
+		// check if form has everything (as per react-bootstrap docs)
+		const form = event.currentTarget;
+		if (form.checkValidity() === false) {
+			event.preventDefault();
+			event.stopPropagation();
+		}
+
+		try {
+			const { data } = await loginUser({ variables: { ...userFormData } });
+
+			// if (!response.ok) {
+			// 	throw new Error("something went wrong!");
+			// }
+
+			// const { token, user } = await data.json();
+			// console.log(user);
+			Auth.login(data.loginUser.token);
+		} catch (err) {
+			console.error(err);
+			setShowAlert(true);
+		}
+
+		setUserFormData({
+			email: "",
+			password: "",
+		});
+	};
+
 	return (
 		<>
 			<div className="loginContainer">
-				<Form className="loginForm">
-					<Form.Group className="m-3" controlId="formBasicEmail">
+				<Form
+					className="border bg-light p-5 loginForm"
+					noValidate
+					validated={validated}
+					onSubmit={handleFormSubmit}
+				>
+					<Alert
+						dismissible
+						onClose={() => setShowAlert(false)}
+						show={showAlert}
+						variant="danger"
+					>
+						Something went wrong with your login credentials!
+					</Alert>
+					<Form.Group className="m-3" controlId="formEmail">
 						<Form.Label>Please enter credentials to log in:</Form.Label>
-						<Form.Control className="mb-2" type="email" placeholder="EMAIL" />
-						<Form.Control className="mb-2" type="password" placeholder="PASSWORD" />
-					<Button variant="secondary" type="submit">
+						<Form.Control
+							className="mb-2"
+							type="email"
+							name="email"
+							placeholder="EMAIL"
+							onChange={handleInputChange}
+							value={userFormData.email}
+							required
+						/>
+						<Form.Control.Feedback type="invalid">
+							Email is required!
+						</Form.Control.Feedback>
+					</Form.Group>
+					<Form.Group className="m-3" controlId="formPassword">
+						<Form.Control
+							className="mb-2"
+							type="password"
+							name="password"
+							placeholder="PASSWORD"
+							onChange={handleInputChange}
+							value={userFormData.password}
+							required
+						/>
+						<Form.Control.Feedback type="invalid">
+							Password is required!
+						</Form.Control.Feedback>
+					</Form.Group>
+					<Button
+						className="loginbtn"
+						variant="success"
+						type="submit"
+						disabled={!(userFormData.email && userFormData.password)}
+					>
 						Log In
 					</Button>
-					</Form.Group>
 				</Form>
 			</div>
 		</>
 	);
-}
-export default Login;
+};
+export default LoginForm;

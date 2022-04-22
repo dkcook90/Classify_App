@@ -34,6 +34,12 @@ const resolvers = {
 		student: async (parent, { studentId }) => {
 			return await Student.findOne({ _id: studentId }).populate("teachers");
 		},
+		users: async () => {
+			return await User.find();
+		},
+		user: async (parent, { email }) => {
+			return User.findOne({ email });
+		},
 	},
 
 	Mutation: {
@@ -42,6 +48,7 @@ const resolvers = {
 			const token = signToken(user);
 			return { token, user };
 		},
+
 		login: async (parent, { email, password }) => {
 			const user = await User.findOne({ email });
 
@@ -50,6 +57,7 @@ const resolvers = {
 			}
 
 			const correctPw = await user.isCorrectPassword(password);
+			console.log(password);
 
 			if (!correctPw) {
 				throw new AuthenticationError("Incorrect credentials");

@@ -1,19 +1,35 @@
 import React from "react";
 import { Form, Button, ButtonGroup } from "react-bootstrap";
 import "./Home.css";
-import Image from 'react-bootstrap/Image'
-import {Link} from 'react-router-dom'
+import Image from "react-bootstrap/Image";
+import { Link } from "react-router-dom";
 
 function Home() {
 	return (
-		<> 
+		<>
 			<div className="Container">
-			<Image className="homeBackground" src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c2Nob29sfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" fluid='true'></Image>
+				<Image
+					className="homeBackground"
+					src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c2Nob29sfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+					fluid="true"
+				></Image>
 				<h1>Welcome to District 925!</h1>
 				<ButtonGroup className="mb-2">
-					<Button variant="primary"><Link className="backHome" to={'/schools'}>Schools</Link></Button>
-					<Button variant="primary"><Link className="backHome" to={'/departments'}>Departments</Link></Button>
-					<Button variant="primary"><Link className="backHome" to={'/classroom'}>Classrooms</Link></Button>
+					<Button variant="primary">
+						<Link className="backHome" to={"/schools"}>
+							Schools
+						</Link>
+					</Button>
+					<Button variant="primary">
+						<Link className="backHome" to={"/departments"}>
+							Departments
+						</Link>
+					</Button>
+					<Button variant="primary">
+						<Link className="backHome" to={"/classroom"}>
+							Classrooms
+						</Link>
+					</Button>
 				</ButtonGroup>
 
 				<Form>

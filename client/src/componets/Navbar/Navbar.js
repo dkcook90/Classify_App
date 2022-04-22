@@ -11,7 +11,7 @@ function NavbarComp({ currentPage, handlePageChange }) {
 				<Container fluid>
 					<Navbar.Brand href="/home">
 						<img
-							alt=""
+							alt="home"
 							src={Logo}
 							width="auto"
 							height="80"
@@ -69,7 +69,7 @@ function NavbarComp({ currentPage, handlePageChange }) {
 									Classrooms
 								</Nav.Link>
 								<Nav.Link
-									href="#logout"
+									href="/"
 									onClick={() => handlePageChange("Logout")}
 									className={
 										currentPage === "Logout" ? "nav-link active" : "nav-link"

@@ -1,0 +1,9 @@
+.content-container {
+    min-height: calc(100vh - 222px);
+}
+
+.footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+}

@@ -3,9 +3,10 @@ import "./Footer.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import GitHubLogo from "../../img/githubLogoWhite.png";
+import { Container } from "react-bootstrap";
 function Footer() {
 	return (
-		<footer class="footer">
+		<Container>
 			<Row className="justify-content-start">
 				<Col>
 					<p>This project was created by the Classify Team:</p>
@@ -20,7 +21,7 @@ function Footer() {
 						<a
 							href="https://github.com/eeoerkeedu"
 							className="teamLinks"
-							target="_blank"
+							rel="noopener noreferrer"
 						>
 							Erik Oerke
 						</a>
@@ -29,6 +30,7 @@ function Footer() {
 							href="https://github.com/confusedicarus"
 							className="teamLinks"
 							target="_blank"
+							rel="noopener noreferrer"
 						>
 							Rick Morrissette
 						</a>
@@ -37,6 +39,7 @@ function Footer() {
 							href="https://github.com/dkcook90"
 							className="teamLinks"
 							target="_blank"
+							rel="noopener noreferrer"
 						>
 							Donald Cook
 						</a>
@@ -45,6 +48,7 @@ function Footer() {
 							href="https://github.com/Michael-Bee"
 							className="teamLinks"
 							target="_blank"
+							rel="noopener noreferrer"
 						>
 							Michael Bee
 						</a>
@@ -72,7 +76,7 @@ function Footer() {
 					</p>
 				</Col>
 			</Row>
-		</footer>
+		</Container>
 	);
 }
 export default Footer;

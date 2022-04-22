@@ -39,33 +39,6 @@ db.once("open", async () => {
 			{ $push: { department: dIdArr, teachers: tIdArr } },
 			{ new: true }
 		);
-		// const randomTeacher = (teachers) => {
-		//   const tempSchool = schools[Math.floor(Math.random() * schools.length)];
-		//   console.log("weeeee", tempSchool);
-		//   console.log("look at all these teachers!", teachers);
-		//   console.log(teachers[0]._id);
-		//   tempSchool.teachers.push(teachers[0]._id);
-		//   // tempSchool.departments.push(department.id);
-		//   console.log("after the push", tempSchool);
-		//   tempSchool.save();
-		// };
-		// console.log(randomTeacher(teachers));
-
-		// for (newTeacher of teachers) {
-		//   const tempSchool = schools[Math.floor(Math.random() * schools.length)];
-		//   tempSchool.teachers.push(newTeacher.id);
-		//   tempSchool.departments.push(department.id);
-		//   console.log(tempSchool);
-		//   // await tempSchool.save();
-
-		//   // const tempStudent = students[Math.floor(Math.random() * students.length)];
-		//   // console.log("weeeeeeeeeeeeeeeeeeeeeeeee", tempStudent);
-		//   // // newTeacher.student.push(tempStudent);
-		//   // newTeacher.student = [];
-		//   // newTeacher.student.push(tempStudent);
-		//   // // console.log("look at me ma", newTeacher.student);
-		//   // await newTeacher.save();
-		// }
 	} catch (err) {
 		console.error(err);
 		process.exit(1);

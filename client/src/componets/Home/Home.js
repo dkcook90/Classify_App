@@ -2,6 +2,7 @@ import React from "react";
 import { Form, Button, ButtonGroup } from "react-bootstrap";
 import "./Home.css";
 import Image from "react-bootstrap/Image";
+import { Link } from "react-router-dom";
 
 function Home() {
 	return (
@@ -14,10 +15,21 @@ function Home() {
 				></Image>
 				<h1>Welcome to District 925!</h1>
 				<ButtonGroup className="mb-2">
-					<Button>Schools</Button>
-					<Button>Departments</Button>
-					<Button>Classrooms</Button>
-					<Button>Students</Button>
+					<Button variant="primary">
+						<Link className="backHome" to={"/schools"}>
+							Schools
+						</Link>
+					</Button>
+					<Button variant="primary">
+						<Link className="backHome" to={"/departments"}>
+							Departments
+						</Link>
+					</Button>
+					<Button variant="primary">
+						<Link className="backHome" to={"/classroom"}>
+							Classrooms
+						</Link>
+					</Button>
 				</ButtonGroup>
 
 				<Form>

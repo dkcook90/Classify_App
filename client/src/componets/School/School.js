@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 // import { useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
+import { REMOVE_SCHOOL } from "../../utils/mutation";
 
 // import { Auth } from "../../utils/auth";
-import { QUERY_ALLSCHOOLS } from "../../utils/queries";
+import { QUERY_ALLSCHOOLS, QUERY_SCHOOL } from "../../utils/queries";
 // import { ADD_SCHOOL, UPDATE_SCHOOL, REMOVE_SCHOOL } from "../../utils/mutation";
 
 import { Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
@@ -15,6 +16,8 @@ function School() {
 	const { loading, error, data } = useQuery(QUERY_ALLSCHOOLS);
 	const schools = data?.schools || [];
 	console.log(schools);
+
+	const [removeSchool, { err }] = useMutation(REMOVE_SCHOOL);
 
 	if (loading) return "Loading...";
 	if (error) return `Error! ${error.message}`;
@@ -56,6 +59,9 @@ function School() {
 											className="mx-2 bg-danger"
 											variant="secondary"
 											type=""
+											onClick={() => {
+												removeSchool({ variables: { schoolId: school._id } });
+											}}
 										>
 											<img alt="delete school" src={deleteIcon}></img>
 										</Button>

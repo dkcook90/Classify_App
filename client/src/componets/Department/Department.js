@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import "./Department.css";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_SCHOOL } from "../../utils/queries";
-import { useParams } from "react-router-dom";
+import { ADD_DEPT_SCHOOL } from "../../utils/mutation";
+import { useParams, Link } from "react-router-dom";
 
 function Department() {
   let { id } = useParams();
@@ -12,8 +13,26 @@ function Department() {
   });
   const school = data?.school || [];
   console.log(school);
-  const deptList = school.department
-  console.log(deptList)
+  const deptList = school.department;
+  console.log(deptList);
+
+  const [departmentState, setDepartmentState] = useState({
+    schoolId: "",
+    departmentId: "",
+  });
+  const addDepartment = useMutation(ADD_DEPT_SCHOOL);
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setDepartmentState({
+      ...departmentState,
+      [id]: value,
+    });
+  };
+
+  const handleFormSubmit = async (e) =>{
+    e.preventDefault();
+  }
+  console.log(departmentState)
   return (
     <>
       <div className="departmentContainer">
@@ -31,16 +50,20 @@ function Department() {
                 school.department.map((school) => {
                   return (
                     <ListGroupItem>
-                      <Card.Link href="#">{school.department}</Card.Link>
+                      <Card.Link key={school.department._id} href="#">{school.department}</Card.Link>
                     </ListGroupItem>
                   );
                 })
               ) : (
                 <h1>test</h1>
               )}
-              
             </ListGroup>
-            <Button variant="primary">Back to Home</Button>
+            <Button variant="primary">
+              <Link className="backHome" to={"/schools"}>
+                {" "}
+                Back to Schools
+              </Link>
+            </Button>
           </Card.Body>
         </Card>
 

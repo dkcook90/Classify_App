@@ -5,13 +5,17 @@
 }
 
 .logoType {
+    height: 80px;
     font-size: 2.2rem;
     color: white;
     font-family: 'Ubuntu', sans-serif;
+    text-align: center;
 }
 
 #offcanvasNavbar {
     background-color: #0C4767;
+    padding: 1rem;
+    border-left: 10px solid #43aa8b;
 }
 
 .nav-link {
@@ -19,3 +23,7 @@
     font-size: 1.6rem;
     color: white;
 }
+
+.nav-link:hover {
+    color: #F8961E;
+  }

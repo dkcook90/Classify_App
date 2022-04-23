@@ -3,7 +3,8 @@ import { Form, Button, Card, ListGroupItem, ListGroup, Container } from "react-b
 import { Link } from "react-router-dom";
 import "./Classroom.css";
 import { QUERY_SINGLE_TEACHER } from "../../utils/queries";
-import { useQuery } from "@apollo/client";
+import { REMOVE_STUDENT } from "../../utils/mutation";
+import { useQuery, useMutation } from "@apollo/client";
 import { useParams } from 'react-router-dom'
 import  Auth  from "../../utils/auth";
 import editIcon from "../../img/twotone_edit_white_24dp.png";
@@ -13,11 +14,13 @@ import deleteIcon from "../../img/twotone_delete_forever_white_24dp.png";
 function Classroom() {
   const {teacherId} = useParams();
   const {loading, error, data } = useQuery(QUERY_SINGLE_TEACHER, {variables: {teacherId: teacherId}});
+  const [removeStudent, { err }] = useMutation(REMOVE_STUDENT);
   console.log(data);
   const teacher = data?.teacher || [];
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
   console.log(teacher);
+
  
   return (
     <>
@@ -49,6 +52,10 @@ function Classroom() {
                           className="mx-2 btn-sm bg-danger"
                           variant="secondary"
                           type=""
+                          onClick={() => {
+												    removeStudent({ variables: { studentId: student._id } })
+												    window.location.reload()
+											    }}
                         >
                           <img alt="delete school" src={deleteIcon}></img>
                         </Button>

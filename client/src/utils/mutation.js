@@ -72,6 +72,17 @@ export const REMOVE_SCHOOL = gql`
 	}
 `;
 
+export const REMOVE_STUDENT = gql`
+	mutation removeStudent($studentId: ID!) {
+		removeStudent(studentId: $studentId) {
+			_id
+			name
+			grade
+			note
+		}
+	}
+`;
+
 export const ADD_DEPT_SCHOOL = gql`
 	mutation addDepToSchool($schoolId: String!, $departmentId: String!) {
 		addDeptToSchool(schoolId: $schoolId, departmentId: $departmentId) {

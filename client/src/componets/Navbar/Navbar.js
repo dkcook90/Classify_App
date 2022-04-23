@@ -3,8 +3,14 @@ import Navbar from "react-bootstrap/Navbar";
 import { Nav, Container, Offcanvas } from "react-bootstrap";
 import "./Navbar.css";
 import Logo from "../../img/classifyLogo.png";
+import Auth from '../../utils/auth';
 
 function NavbarComp({ currentPage, handlePageChange }) {
+	const logout = (event) => {
+		event.preventDefault();
+		Auth.logout();
+	};
+	
 	return (
 		<div className="navBarContainer">
 			<Navbar className="navbar" bg="danger" variant="light" expand={false} >
@@ -70,7 +76,7 @@ function NavbarComp({ currentPage, handlePageChange }) {
 								</Nav.Link>
 								<Nav.Link
 									href="/"
-									onClick={() => handlePageChange("Logout")}
+									onClick={logout}
 									className={
 										currentPage === "Logout" ? "nav-link active" : "nav-link"
 									}

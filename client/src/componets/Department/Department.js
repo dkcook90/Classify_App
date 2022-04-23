@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import "./Department.css";
 import { useQuery, useMutation } from "@apollo/client";
+import  Auth  from "../../utils/auth";
 import { QUERY_SCHOOL } from "../../utils/queries";
 import { ADD_DEPT_SCHOOL } from "../../utils/mutation";
 import { useParams, Link } from "react-router-dom";
@@ -35,7 +36,9 @@ function Department() {
   console.log(departmentState)
   return (
     <>
-      <div className="departmentContainer">
+      <div className="m-3 departmentContainer">
+      {Auth.loggedIn() ? (
+				<>
         <Card style={{ width: "18rem" }}>
           {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
           <Card.Body>
@@ -83,6 +86,10 @@ function Department() {
             </Button>
           </Form.Group>
         </Form>
+        </>
+				) : (
+					<Link to="/">You need to be logged in to view this page. Please 
+					login.</Link>)}
       </div>
     </>
   );

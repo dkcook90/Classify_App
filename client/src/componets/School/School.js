@@ -14,7 +14,7 @@ import deleteIcon from "../../img/twotone_delete_forever_white_24dp.png";
 
 function School() {
 	const { loading, error, data } = useQuery(QUERY_ALLSCHOOLS);
-	const schools = data?.schools || [];
+	const schools = data?.schools
 	console.log(schools);
 
 	const [removeSchool, { err }] = useMutation(REMOVE_SCHOOL);
@@ -60,7 +60,8 @@ function School() {
 											variant="secondary"
 											type=""
 											onClick={() => {
-												removeSchool({ variables: { schoolId: school._id } });
+												removeSchool({ variables: { schoolId: school._id } })
+												window.location.reload()
 											}}
 										>
 											<img alt="delete school" src={deleteIcon}></img>

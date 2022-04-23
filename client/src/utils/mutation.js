@@ -8,6 +8,7 @@ export const LOGIN_USER = gql`
 				_id
 				username
 				email
+				role
 			}
 		}
 	}
@@ -20,6 +21,8 @@ export const ADD_USER = gql`
 			user {
 				_id
 				username
+				email
+				role
 			}
 		}
 	}
@@ -81,23 +84,23 @@ export const REMOVE_STUDENT = gql`
 `;
 
 export const ADD_DEPT_SCHOOL = gql`
-	mutation addDepToSchool($schoolId: String!, $departmentId: String!){
-		addDeptToSchool(schoolId: $schoolId, departmentId: $departmentId){
+	mutation addDepToSchool($schoolId: String!, $departmentId: String!) {
+		addDeptToSchool(schoolId: $schoolId, departmentId: $departmentId) {
 			_id
 			name
 			principle
 			budget
-			department{
+			department {
 				_id
 				department
 				budget
 			}
-			teachers{
+			teachers {
 				_id
 				name
 				department
 				office
-				students{
+				students {
 					_id
 					name
 					grade
@@ -105,4 +108,5 @@ export const ADD_DEPT_SCHOOL = gql`
 				}
 			}
 		}
-	}`
+	}
+`;

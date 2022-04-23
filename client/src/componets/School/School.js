@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { REMOVE_SCHOOL } from "../../utils/mutation";
 
-// import { Auth } from "../../utils/auth";
+import  Auth  from "../../utils/auth";
 import { QUERY_ALLSCHOOLS, QUERY_SCHOOL } from "../../utils/queries";
 // import { ADD_SCHOOL, UPDATE_SCHOOL, REMOVE_SCHOOL } from "../../utils/mutation";
 
 import { Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./School.css";
 import editIcon from "../../img/twotone_edit_white_24dp.png";
 import deleteIcon from "../../img/twotone_delete_forever_white_24dp.png";
@@ -24,7 +25,9 @@ function School() {
 
 	return (
 		<>
-			<div className="schoolContainer">
+			<div className="m-3 schoolContainer">
+			{Auth.loggedIn() ? (
+				<>
 				<section className="container row m-3">
 					<h1>Schools in District:</h1>
 					{schools.map((school) => (
@@ -101,6 +104,10 @@ function School() {
 						</Button>
 					</Form.Group>
 				</Form>
+				</>
+				) : (
+					<Link to="/">You need to be logged in to view this page. Please 
+					login.</Link>)}
 			</div>
 		</>
 	);

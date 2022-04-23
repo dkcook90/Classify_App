@@ -10,5 +10,11 @@
     "email": "teacher@test.com",
     "password": "password2",
     "role": "Teacher"
+  },
+  {
+    "username": "demo",
+    "email": "demo@demo.demo",
+    "password": "$2b$10$DKNZqb.nfZHQdFyRemxJH.edBWUT3upXro4kDzV9LOzd6lmONaKkm",
+    "role": "Admin"
   }
 ]

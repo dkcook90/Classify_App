@@ -45,7 +45,7 @@ function Department() {
                   );
                 })
               ) : (
-                <h1>test</h1>
+                <>loading...</>
               )}
             </ListGroup>
             <Button variant="primary">

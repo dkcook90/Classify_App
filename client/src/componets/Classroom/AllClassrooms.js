@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import  Auth  from "../../utils/auth";
-import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Form, Card, ListGroup, ListGroupItem, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Classroom";
 import { QUERY_ALLCLASSROOMS } from "../../utils/queries";
@@ -12,6 +12,7 @@ function AllClassrooms() {
   if (loading) return "Loading...";
   if (error) return `Error! ${error.message}`;
   console.log(teachers);
+  
   return (
     <div className="m-3 allDepartmentContainer">
       {Auth.loggedIn() ? (
@@ -37,7 +38,36 @@ function AllClassrooms() {
 				) : (
 					<Link to="/">You need to be logged in to view this page. Please 
 					login.</Link>)}
-    </div>
+    
+          <Form className="teacherForm bg-light m-2 p-3 rounded">
+              <Form.Label className="mx-3">
+                <h4>Add New Classroom:</h4>
+              </Form.Label>
+              <Form.Group className="mx-3" controlId="form">
+                <Form.Label>Teacher Name:</Form.Label>
+                <Form.Control
+                  className="mb-2"
+                  type="input"
+                  placeholder="Teacher Name"
+                />
+                <Form.Label>Department:</Form.Label>
+                <Form.Control
+                  className="mb-2"
+                  type="input"
+                  placeholder="Department"
+                />
+                <Form.Label>Office/Classroom:</Form.Label>
+                <Form.Control
+                  className="mb-2"
+                  type="input"
+                  placeholder="Office/Classroom"
+                />
+                <Button variant="secondary" type="submit">
+                  ADD CLASSROOM
+                </Button>
+              </Form.Group>
+            </Form>
+</div>
   );
 }
 

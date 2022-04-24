@@ -27,20 +27,18 @@ function Classroom() {
       <div className="m-3">
         {Auth.loggedIn() ? (
 				<>
-        <Container className="justify-content-center text-center">
-            <Card className="border-end-0 border-start-0">
+        <Container className="justify-content-center text-center container row mb-3">
+          <h1 className="">{teacher.name}'s {teacher.department} Class</h1>
+          {teacher.students.map((student) => (
+            <Card className="col-12 m-2">
               <Card.Body>
                 <Card.Header>
-                <Card.Title className="fs-2 text-decoration-underline">{teacher.name}'s {teacher.department} class</Card.Title>
-                <Card.Subtitle>Text with info about teacher and class.</Card.Subtitle>
+                  <Card.Title>{student.name}</Card.Title>
                 </Card.Header>
                 <ListGroup className="list-group-flush">
-                  {teacher.students.map((student) => {
-                    return (
                       <ListGroupItem>
-                        <Card.Link className="fs-4" href="#">{student.name}</Card.Link>
-                        <Card.Text>Grade: {student.grade}</Card.Text>
-                        <Card.Text>Notes: {student.note}</Card.Text>
+                        <Card.Text><b>Grade Level:</b> {student.grade}</Card.Text>
+                        <Card.Text><b>Notes:</b> {student.note}</Card.Text>
                         <Button
                           className="mx-2 btn-sm bg-warning"
                           variant="secondary"
@@ -53,55 +51,25 @@ function Classroom() {
                           variant="secondary"
                           type=""
                           onClick={() => {
-												    removeStudent({ variables: { studentId: student._id } })
-												    window.location.reload()
-											    }}
+                            removeStudent({ variables: { studentId: student._id } })
+                            window.location.reload()
+                          }}
                         >
                           <img alt="delete school" src={deleteIcon}></img>
                         </Button>
                       </ListGroupItem>
-                    )
-                  })}
                 </ListGroup>
-                <Card.Footer>
-                <Button variant="primary" href="/classroom">Back to All Classrooms</Button>
-                </Card.Footer>
               </Card.Body>
             </Card>
-            </Container>
+          ))}
+        </Container>
 
-          <div className="schoolContainer">
-            <Form className="teacherForm">
-              <Form.Group className="m-3" controlId="form">
-                <Form.Label>Teacher Name:</Form.Label>
-                <Form.Control
-                  className="mb-2"
-                  type="input"
-                  placeholder="Teacher Name"
-                />
-                <Form.Label>Department:</Form.Label>
-                <Form.Control
-                  className="mb-2"
-                  type="input"
-                  placeholder="Teacher Name"
-                />
-                <Form.Label>Office/Classroom:</Form.Label>
-                <Form.Control
-                  className="mb-2"
-                  type="input"
-                  placeholder="Teacher Name"
-                />
-                <Button variant="secondary" type="submit">
-                  ADD TEACHER
-                </Button>
-                <Button variant="secondary" type="submit">
-                  EDIT TEACHER
-                </Button>
-              </Form.Group>
-            </Form>
-
-            <Form className="studentForm">
-              <Form.Group className="m-3" controlId="form">
+        <div className="schoolContainer">
+            <Form className="studentForm bg-light m-2 p-3 rounded">
+              <Form.Label className="mx-3">
+                <h4>Add New Student</h4>
+              </Form.Label>
+              <Form.Group className="mx-3" controlId="form">
                 <Form.Label>Student Name:</Form.Label>
                 <Form.Control
                   className="mb-2"
@@ -123,11 +91,9 @@ function Classroom() {
                 <Button variant="secondary" type="submit">
                   ADD STUDENT
                 </Button>
-                <Button variant="secondary" type="submit">
-                  EDIT STUDENT
-                </Button>
               </Form.Group>
             </Form>
+            <Button className="m-2" variant="primary" href="/classroom">Back to All Classrooms</Button>
           </div>
         </>
 				) : (

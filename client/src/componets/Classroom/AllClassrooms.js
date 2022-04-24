@@ -17,7 +17,7 @@ function AllClassrooms() {
     <div className="m-3 allDepartmentContainer">
       {Auth.loggedIn() ? (
 				<>
-      <Card className="col-12 my-1">
+      <Card className="col-12 m-2">
         <Card.Body>
           <Card.Title>Classrooms:</Card.Title>
           <Card.Text>
@@ -62,7 +62,7 @@ function AllClassrooms() {
                   type="input"
                   placeholder="Office/Classroom"
                 />
-                <Button variant="secondary" type="submit">
+                <Button className="addbtn" variant="secondary" type="submit">
                   ADD CLASSROOM
                 </Button>
               </Form.Group>

@@ -42,12 +42,12 @@ function School() {
 								<ListGroup className="list-group-flush">
 									<ListGroupItem>
 										<Card.Link href={`departments/${school._id}`}>
-											Link to school's departments
+											{school.name}'s Departments
 										</Card.Link>
 									</ListGroupItem>
 									<ListGroupItem>
 										<Card.Link href={`classrooms/${school._id}`}>
-											Link to school's classrooms
+										{school.name}'s Classrooms
 										</Card.Link>
 									</ListGroupItem>
 									<ListGroupItem>
@@ -76,7 +76,7 @@ function School() {
 					))}
 				</Container>
 
-				<Form className="schoolForm bg-light m-2 p-3 rounded">
+				<Form className="schoolForm bg-light m-3 p-3 rounded">
 					<Form.Label className="mx-3">
 						<h4>Create a New School</h4>
 					</Form.Label>
@@ -99,7 +99,7 @@ function School() {
 							type="input"
 							placeholder="Budget"
 						/>
-						<Button variant="secondary" type="submit">
+						<Button className="addbtn" variant="secondary" type="submit">
 							ADD SCHOOL
 						</Button>
 					</Form.Group>

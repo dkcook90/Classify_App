@@ -60,6 +60,7 @@ function AddDepartmentToSchool() {
               )}
             </Form.Select>
             <Button
+              className="addbtn"
               variant="secondary"
               type="submit"
               onClick={() => {

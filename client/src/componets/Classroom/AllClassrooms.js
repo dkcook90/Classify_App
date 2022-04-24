@@ -1,6 +1,8 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
+import  Auth  from "../../utils/auth";
 import { Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./Classroom";
 import { QUERY_ALLCLASSROOMS } from "../../utils/queries";
 function AllClassrooms() {
@@ -11,7 +13,9 @@ function AllClassrooms() {
   if (error) return `Error! ${error.message}`;
   console.log(teachers);
   return (
-    <div className="allDepartmentContainer">
+    <div className="m-3 allDepartmentContainer">
+      {Auth.loggedIn() ? (
+				<>
       <Card style={{ width: "18rem" }}></Card>
       <Card.Body>
         <Card.Title>Classrooms:</Card.Title>
@@ -28,6 +32,10 @@ function AllClassrooms() {
           })}
         </ListGroup>
       </Card.Body>
+      </>
+				) : (
+					<Link to="/">You need to be logged in to view this page. Please 
+					login.</Link>)}
     </div>
   );
 }

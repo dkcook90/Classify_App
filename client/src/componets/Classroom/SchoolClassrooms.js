@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 import { Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import "./Classroom.css";
 import { QUERY_SCHOOL } from "../../utils/queries";
+import  Auth  from "../../utils/auth";
 import { useParams, Link } from "react-router-dom";
 
 function SchoolClassrooms() {
@@ -18,7 +19,9 @@ function SchoolClassrooms() {
   if (error) return `Error! ${error.message}`;
 
   return (
-    <div className="schoolClassroomContainer">
+    <div className="m-3 schoolClassroomContainer">
+      {Auth.loggedIn() ? (
+				<>
       <Card style={{ width: "18rem" }}></Card>
       <Card.Body>
         <Card.Title>Classrooms for {school.name}</Card.Title>
@@ -38,6 +41,10 @@ function SchoolClassrooms() {
         </ListGroup>
       </Card.Body>
       <Button variant="primary"><Link className="backHome" to={'/schools'}> Back to Schools</Link></Button>
+      </>
+				) : (
+					<Link to="/">You need to be logged in to view this page. Please 
+					login.</Link>)}
     </div>
   );
 }

@@ -80,13 +80,13 @@ function Classroom() {
                 <Form.Control
                   className="mb-2"
                   type="input"
-                  placeholder="Student Name"
+                  placeholder="Grade Level"
                 />
                 <Form.Label>Notes:</Form.Label>
                 <Form.Control
                   className="mb-2"
                   type="input"
-                  placeholder="Student Name"
+                  placeholder="Notes"
                 />
                 <Button variant="secondary" type="submit">
                   ADD STUDENT

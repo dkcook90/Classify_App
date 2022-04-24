@@ -13,7 +13,6 @@ export const LOGIN_USER = gql`
     }
   }
 `;
-
 export const ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {
     addUser(username: $username, email: $email, password: $password) {
@@ -47,7 +46,6 @@ export const ADD_SCHOOL = gql`
     }
   }
 `;
-
 export const UPDATE_SCHOOL = gql`
   mutation updateSchool($name: String!) {
     updateSchool(name: $name) {
@@ -60,7 +58,6 @@ export const UPDATE_SCHOOL = gql`
     }
   }
 `;
-
 export const REMOVE_SCHOOL = gql`
   mutation removeSchool($schoolId: ID!) {
     removeSchool(schoolId: $schoolId) {

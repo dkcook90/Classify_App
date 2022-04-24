@@ -3,7 +3,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import { Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import "./Department.css";
 import { QUERY_ALLDEPT } from "../../utils/queries";
-import { ADD_DEPT_SCHOOL, ADD_DEPT } from "../../utils/mutation";
+import { ADD_DEPT } from "../../utils/mutation";
 function AllDepartments() {
   const { loading, error, data } = useQuery(QUERY_ALLDEPT);
   const dept = data?.departments || [];
@@ -11,19 +11,17 @@ function AllDepartments() {
   const [departmentState, setDepartmentState] = useState({
     department: "",
   });
-  const [addDepartment, { err }] = useMutation(ADD_DEPT);
+  const [addDepartment, { err }] = useMutation(ADD_DEPT)
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    console.log(departmentState);
-    console.log(ADD_DEPT);
     try {
       const results = await addDepartment({
-        variable: { departmentState },
+        department: { departmentState },
       });
       console.log(results);
       setDepartmentState("");
     } catch (err) {
-      console.error("is this the one", err);
+      console.error(err);
     }
   };
 
@@ -60,7 +58,10 @@ function AllDepartments() {
             value={departmentState.department}
             onChange={(e) => setDepartmentState(e.target.value)}
           />
-          <Button variant="secondary" type="submit">
+          <Button variant="secondary" type="submit" onClick={() => {
+												addDepartment({ variables: { department: departmentState } })
+												window.location.reload()
+											}}>
             ADD DEPARTMENT
           </Button>
           {/* <Button variant="secondary" type="submit">

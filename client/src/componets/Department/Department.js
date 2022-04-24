@@ -4,8 +4,8 @@ import "./Department.css";
 import { useQuery, useMutation } from "@apollo/client";
 import  Auth  from "../../utils/auth";
 import { QUERY_SCHOOL } from "../../utils/queries";
-import { ADD_DEPT_SCHOOL, ADD_DEPT } from "../../utils/mutation";
 import { useParams, Link } from "react-router-dom";
+import AddDepartmentToSchool from "./AddDepartmentSchool";
 
 function Department() {
   let { id } = useParams();
@@ -15,30 +15,8 @@ function Department() {
   });
   const school = data?.school || [];
   const deptList = school.department;
-  const [departmentState, setDepartmentState] = useState({
-    department: "",
-  });
-  const [addDepartment, { error }] = useMutation(ADD_DEPT);
-  // const handleChange = (e) => {
-  //   const { department, value } = e.target;
-  //   setDepartmentState({
-  //     ...departmentState,
-  //     [department]: value,
-  //   });
-  // };
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    console.log(departmentState);
-    try {
-      const { data } = await addDepartment({
-        variable: { departmentState },
-      });
-      console.log(data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  
 
   return (
     <>
@@ -79,7 +57,9 @@ function Department() {
           </Card.Body>
         </Card>
 
-        <Form className="departmentForm" onSubmit={handleFormSubmit}>
+          <AddDepartmentToSchool/>
+
+        {/* <Form className="departmentForm" onSubmit={handleFormSubmit}>
           <Form.Group className="m-3" controlId="form">
             <Form.Label>Department Name:</Form.Label>
             <Form.Control
@@ -92,11 +72,8 @@ function Department() {
             <Button variant="secondary" type="submit">
               ADD DEPARTMENT
             </Button>
-            {/* <Button variant="secondary" type="submit">
-              EDIT DEPARTMENT
-            </Button> */}
           </Form.Group>
-        </Form>
+        </Form> */}
         </>
 				) : (
 					<Link to="/">You need to be logged in to view this page. Please 

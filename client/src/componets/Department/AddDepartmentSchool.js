@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, DropdownButton, Dropdown } from "react-bootstrap";
 import "./Department.css";
 import { useQuery, useMutation } from "@apollo/client";
 
@@ -16,8 +16,9 @@ function AddDepartmentToSchool() {
   const [departmentState, setDepartmentState] = useState({
     departmentId: "",
   });
+
   const [addDepartment, { err }] = useMutation(ADD_DEPT_SCHOOL, {
-    variables: { schoolId: id, departmentId: departmentState },
+    variables: { schoolId: id, departmentId: departmentState.departmentId },
   });
 
   const handleFormSubmit = async (e) => {
@@ -33,19 +34,26 @@ function AddDepartmentToSchool() {
     }
   };
 
+  const handleSelect = (e) => {
+    console.log(e);
+    setDepartmentState(e);
+    console.log(departmentState);
+    addDepartment({
+      variables: { schoolId: id, departmentId: departmentState.departmentId },
+    });
+  };
+
   if (deptResults) {
     return (
       <>
         <Form.Label>Please Choose A Department to Add</Form.Label>
         <Form className="addDepartmentOption" onSubmit={handleFormSubmit}>
-          <Form.Group className="m-3" controlId="form">
-            <Form.Select>
-              <Form.Control
-                className="mb-2"
-                type="select"
-                value={departmentState.departmentId}
-                onChange={(e) => setDepartmentState(e.target.value)}
-              />
+          {/* <Form.Group className="m-3" controlId="form">
+            <Form.Select
+              value={this.departmentState.selectValue}
+              onChange={this.handleChange}
+            >
+              <Form.Control value={departmentState} />
               <option>Choose a Department</option>
               {deptResults ? (
                 deptResults.map((data) => {
@@ -56,20 +64,36 @@ function AddDepartmentToSchool() {
                   );
                 })
               ) : (
-                <h1>test</h1>
+                <>loading...</>
               )}
             </Form.Select>
-            <Button
-              className="addbtn"
-              variant="secondary"
-              type="submit"
-              onClick={() => {
-                addDepartment({ variables: { department: departmentState } });
-              }}
-            >
-              ADD DEPARTMENT
-            </Button>
-          </Form.Group>
+
+            
+          </Form.Group> */}
+          <DropdownButton
+            alignRight
+            title="Click to Add a Department"
+            id="dropdown-menu-align-right"
+            onSelect={handleSelect}
+          >
+            {deptResults ? (
+              deptResults.map((data) => {
+                return (
+                  <Dropdown.Item
+                    eventKey={data._id}
+                    key={data._id}
+                    value={data.department}
+                  >
+                    {data.department}
+                  </Dropdown.Item>
+                );
+              })
+            ) : (
+              <>loading...</>
+            )}
+          </DropdownButton>
+          {/* <h4>You selected {departmentState}</h4> */}
+
         </Form>
       </>
     );

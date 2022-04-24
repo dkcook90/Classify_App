@@ -88,7 +88,7 @@ function Classroom() {
                   type="input"
                   placeholder="Notes"
                 />
-                <Button variant="secondary" type="submit">
+                <Button className="addbtn" variant="secondary" type="submit">
                   ADD STUDENT
                 </Button>
               </Form.Group>

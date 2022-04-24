@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import  Auth  from "../../utils/auth";
-import { Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Classroom";
 import { QUERY_ALLCLASSROOMS } from "../../utils/queries";
@@ -16,22 +16,23 @@ function AllClassrooms() {
     <div className="m-3 allDepartmentContainer">
       {Auth.loggedIn() ? (
 				<>
-      <Card style={{ width: "18rem" }}></Card>
-      <Card.Body>
-        <Card.Title>Classrooms:</Card.Title>
-        <Card.Text>
-          Use links listed below to any of the classrooms for each school.
-        </Card.Text>
-        <ListGroup className="list-group-flush">
-          {teachers.map((teacher) => {
-            return (
-              <ListGroupItem>
-                <Card.Link href={`/classroom/${teacher._id}`}>{teacher.name}</Card.Link>
-              </ListGroupItem>
-            );
-          })}
-        </ListGroup>
+      <Card className="col-12 my-1">
+        <Card.Body>
+          <Card.Title>Classrooms:</Card.Title>
+          <Card.Text>
+            Use links listed below to any of the classrooms for each school.
+          </Card.Text>
+          <ListGroup className="list-group-flush">
+            {teachers.map((teacher) => {
+              return (
+                <ListGroupItem>
+                  <Card.Link href={`/classroom/${teacher._id}`}>{teacher.name}</Card.Link>
+                </ListGroupItem>
+              );
+            })}
+          </ListGroup>
       </Card.Body>
+      </Card>
       </>
 				) : (
 					<Link to="/">You need to be logged in to view this page. Please 

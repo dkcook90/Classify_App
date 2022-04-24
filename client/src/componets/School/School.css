@@ -1,5 +1,7 @@
 .card {
-display: flex;}
+display: flex;
+width: 18rem;
+}
 
 .addbtn {
 	background-color: #43AA8B;
@@ -12,3 +14,7 @@ display: flex;}
 .deletebtn{
 	background-color: #F94144;
 }
+
+.schoolForm {
+	max-width: 40rem;
+	}

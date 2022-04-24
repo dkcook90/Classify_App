@@ -7,7 +7,7 @@ import  Auth  from "../../utils/auth";
 import { QUERY_ALLSCHOOLS, QUERY_SCHOOL } from "../../utils/queries";
 // import { ADD_SCHOOL, UPDATE_SCHOOL, REMOVE_SCHOOL } from "../../utils/mutation";
 
-import { Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Container, Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./School.css";
 import editIcon from "../../img/twotone_edit_white_24dp.png";
@@ -25,10 +25,10 @@ function School() {
 
 	return (
 		<>
-			<div className="m-3 schoolContainer">
+			<div className="schoolContainer m-3">
 			{Auth.loggedIn() ? (
 				<>
-				<section className="container row m-3">
+				<Container className="container row mb-3">
 					<h1>Schools in District:</h1>
 					{schools.map((school) => (
 						<Card className="col-12 m-1" key={school._id}>
@@ -74,13 +74,13 @@ function School() {
 							</Card.Body>
 						</Card>
 					))}
-				</section>
+				</Container>
 
-				<Form className="schoolForm">
-					<Form.Label style={{ fontWeight: "bold" }}>
-						Create a New School
+				<Form className="schoolForm bg-light m-2 p-3 rounded">
+					<Form.Label className="mx-3">
+						<h4>Create a New School</h4>
 					</Form.Label>
-					<Form.Group className="m-3" controlId="form">
+					<Form.Group className="mx-3" controlId="form">
 						<Form.Label>School Name:</Form.Label>
 						<Form.Control
 							className="mb-2"
@@ -91,13 +91,13 @@ function School() {
 						<Form.Control
 							className="mb-2"
 							type="input"
-							placeholder="School Name"
+							placeholder="Principal"
 						/>
 						<Form.Label>Budget:</Form.Label>
 						<Form.Control
 							className="mb-2"
 							type="input"
-							placeholder="School Name"
+							placeholder="Budget"
 						/>
 						<Button variant="secondary" type="submit">
 							ADD SCHOOL

@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
-import { REMOVE_SCHOOL } from "../../utils/mutation";
 
 import  Auth  from "../../utils/auth";
 import { QUERY_ALLSCHOOLS, QUERY_SCHOOL } from "../../utils/queries";
-// import { ADD_SCHOOL, UPDATE_SCHOOL, REMOVE_SCHOOL } from "../../utils/mutation";
+import { ADD_SCHOOL, UPDATE_SCHOOL, REMOVE_SCHOOL } from "../../utils/mutation";
 
 import { Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -19,6 +18,21 @@ function School() {
 	console.log(schools);
 
 	const [removeSchool, { err }] = useMutation(REMOVE_SCHOOL);
+
+	const [addSchool, {er}] = useMutation(ADD_SCHOOL, {
+		update(cache, { data: { addSchool } }) {
+			try {
+				const { thoughts } = cache.readQuery({ query: QUERY_ALLSCHOOLS });
+		
+			cache.writeQuery({
+				query: QUERY_ALLSCHOOLS,
+				data: { thoughts: [addSchool, ...schools] },
+			});
+			} catch (e) {
+			console.error(e);
+			}
+		}
+	});
 
 	if (loading) return "Loading...";
 	if (error) return `Error! ${error.message}`;
@@ -76,7 +90,9 @@ function School() {
 					))}
 				</section>
 
-				<Form className="schoolForm">
+				<Form className="schoolForm" onSubmit={
+					addSchool.then(window.location.reload)
+				}>
 					<Form.Label style={{ fontWeight: "bold" }}>
 						Create a New School
 					</Form.Label>

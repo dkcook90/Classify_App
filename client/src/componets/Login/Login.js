@@ -67,7 +67,7 @@ const LoginForm = () => {
 					>
 						Something went wrong with your login credentials!
 					</Alert>
-					<Form.Group className="m-3" controlId="formEmail">
+					<Form.Group controlId="formEmail">
 						<Form.Label>Please enter credentials to log in:</Form.Label>
 						<Form.Control
 							className="mb-2"
@@ -82,7 +82,7 @@ const LoginForm = () => {
 							Email is required!
 						</Form.Control.Feedback>
 					</Form.Group>
-					<Form.Group className="m-3" controlId="formPassword">
+					<Form.Group controlId="formPassword">
 						<Form.Control
 							className="mb-2"
 							type="password"

@@ -5,7 +5,7 @@ import  Auth  from "../../utils/auth";
 import { QUERY_ALLSCHOOLS, QUERY_SCHOOL } from "../../utils/queries";
 import { ADD_SCHOOL, REMOVE_SCHOOL } from "../../utils/mutation";
 
-import { Form, Button, Card, ListGroup, Alert, ListGroupItem } from "react-bootstrap";
+import { Alert, Container, Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./School.css";
 import editIcon from "../../img/twotone_edit_white_24dp.png";
@@ -61,10 +61,10 @@ function School() {
 
 	return (
 		<>
-			<div className="m-3 schoolContainer">
+			<div className="schoolContainer m-3">
 			{Auth.loggedIn() ? (
 				<>
-				<section className="container row m-3">
+				<Container className="container row mb-3">
 					<h1>Schools in District:</h1>
 					{schools.map((school) => (
 						<Card className="col-12 m-1" key={school._id}>
@@ -78,12 +78,12 @@ function School() {
 								<ListGroup className="list-group-flush">
 									<ListGroupItem>
 										<Card.Link href={`departments/${school._id}`}>
-											Link to school's departments
+											{school.name}'s Departments
 										</Card.Link>
 									</ListGroupItem>
 									<ListGroupItem>
 										<Card.Link href={`classrooms/${school._id}`}>
-											Link to school's classrooms
+										{school.name}'s Classrooms
 										</Card.Link>
 									</ListGroupItem>
 									<ListGroupItem>
@@ -110,9 +110,9 @@ function School() {
 							</Card.Body>
 						</Card>
 					))}
-				</section>
+				</Container>
 
-				<Form className="border bg-light p-5 loginForm schoolForm" onSubmit={handleFormSubmit}>
+				<Form className="schoolForm bg-light m-3 p-3 rounded" onSubmit={handleFormSubmit}>
 				<Alert
 					dismissible
 					onClose={() => setShowAlert(false)}
@@ -121,10 +121,10 @@ function School() {
 				>
 					Something went wrong with your school input!
 				</Alert>
-					<Form.Label style={{ fontWeight: "bold" }}>
+					<Form.Label className="mx-3">
 						Create a New School
 					</Form.Label>
-					<Form.Group className="m-3" controlId="form">
+					<Form.Group className="mx-3" controlId="form">
 						<Form.Label>School Name:</Form.Label>
 						<Form.Control
 							className="mb-2"

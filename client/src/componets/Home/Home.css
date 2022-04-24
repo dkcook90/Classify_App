@@ -1,0 +1,22 @@
+.homeBackground {
+    width: 100%;
+    max-height: 600px;
+}
+
+.groupbtn {
+    background-color: #F8961E;
+    border-color: #F8961E;
+}
+
+.groupbtn:hover {
+    background-color: #F94144;
+    border-color: #F8961E;
+}
+
+.backHome {
+    text-decoration: none;
+}
+
+.backHome:hover {
+    color: white;
+}

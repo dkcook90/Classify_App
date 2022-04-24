@@ -21,6 +21,7 @@ export const QUERY_SCHOOL = gql`
       department {
         _id
         department
+        budget
       }
       teachers {
         _id

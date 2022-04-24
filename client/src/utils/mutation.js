@@ -1,31 +1,31 @@
 import { gql } from "@apollo/client";
 
 export const LOGIN_USER = gql`
-	mutation loginUser($email: String!, $password: String!) {
-		login(email: $email, password: $password) {
-			token
-			user {
-				_id
-				username
-				email
-				role
-			}
-		}
-	}
+  mutation loginUser($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
+        email
+        role
+      }
+    }
+  }
 `;
 
 export const ADD_USER = gql`
-	mutation addUser($username: String!, $email: String!, $password: String!) {
-		addUser(username: $username, email: $email, password: $password) {
-			token
-			user {
-				_id
-				username
-				email
-				role
-			}
-		}
-	}
+  mutation addUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
+        email
+        role
+      }
+    }
+  }
 `;
 
 // export const REMOVE_USER = gql`
@@ -72,38 +72,39 @@ export const REMOVE_SCHOOL = gql`
   }
 `;
 export const ADD_DEPT = gql`
-  mutation addDept($department: String!) {
+  mutation addDepartment($department: String!) {
     addDepartment(department: $department) {
       _id
       department
+      budget
     }
   }
 `;
 
 export const ADD_DEPT_SCHOOL = gql`
-	mutation addDepToSchool($schoolId: String!, $departmentId: String!) {
-		addDeptToSchool(schoolId: $schoolId, departmentId: $departmentId) {
-			_id
-			name
-			principle
-			budget
-			department {
-				_id
-				department
-				budget
-			}
-			teachers {
-				_id
-				name
-				department
-				office
-				students {
-					_id
-					name
-					grade
-					note
-				}
-			}
-		}
-	}
+  mutation addDepToSchool($schoolId: String!, $departmentId: String!) {
+    addDeptToSchool(schoolId: $schoolId, departmentId: $departmentId) {
+      _id
+      name
+      principle
+      budget
+      department {
+        _id
+        department
+        budget
+      }
+      teachers {
+        _id
+        name
+        department
+        office
+        students {
+          _id
+          name
+          grade
+          note
+        }
+      }
+    }
+  }
 `;

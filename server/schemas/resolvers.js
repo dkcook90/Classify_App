@@ -67,8 +67,8 @@ const resolvers = {
 			return { token, user };
 		},
 
-		addSchool: async (parent, { name, principle }) => {
-			return await School.create({ name, principle });
+		addSchool: async (parent, { name, principle, budget }) => {
+			return await School.create({ name, principle, budget });
 		},
 		addDepartment: async (parent, { department }) => {
 			return await Department.create({ department });

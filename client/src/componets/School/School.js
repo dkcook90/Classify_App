@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 
 import  Auth  from "../../utils/auth";
 import { QUERY_ALLSCHOOLS, QUERY_SCHOOL } from "../../utils/queries";
-import { ADD_SCHOOL, UPDATE_SCHOOL, REMOVE_SCHOOL } from "../../utils/mutation";
+import { ADD_SCHOOL, REMOVE_SCHOOL } from "../../utils/mutation";
 
-import { Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Form, Button, Card, ListGroup, Alert, ListGroupItem } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./School.css";
 import editIcon from "../../img/twotone_edit_white_24dp.png";
@@ -17,22 +16,45 @@ function School() {
 	const schools = data?.schools
 	console.log(schools);
 
-	const [removeSchool, { err }] = useMutation(REMOVE_SCHOOL);
+	const [schoolFormData, setSchoolFormData] = useState({ name: "", principle: "", budget:"" });
+	const [showAlert, setShowAlert] = useState(false);
+	const [addSchool, {er}] = useMutation(ADD_SCHOOL);
 
-	const [addSchool, {er}] = useMutation(ADD_SCHOOL, {
-		update(cache, { data: { addSchool } }) {
-			try {
-				const { thoughts } = cache.readQuery({ query: QUERY_ALLSCHOOLS });
-		
-			cache.writeQuery({
-				query: QUERY_ALLSCHOOLS,
-				data: { thoughts: [addSchool, ...schools] },
-			});
-			} catch (e) {
-			console.error(e);
-			}
+	const handleInputChange = (event) => {
+		const { name, value } = event.target;
+		setSchoolFormData({ ...schoolFormData, [name]: value });
+	};
+
+	const handleFormSubmit = async (event) => {
+		event.preventDefault();
+		console.log(schoolFormData);
+
+		const form = event.currentTarget;
+		if (form.checkValidity() === false) {
+			event.preventDefault();
+			event.stopPropagation();
 		}
-	});
+
+		// console.log("reached try/catch")
+		try {
+			const { data } = await addSchool({
+				variables: { ...schoolFormData },
+			});
+
+			if (!data) {
+				throw new Error("something went wrong!");
+			}
+		} catch (err) {
+			console.error(err);
+			setShowAlert(true);
+		}
+
+		setSchoolFormData({
+			name: "", principle: "", budget:"",
+		});
+	}
+
+	const [removeSchool, { err }] = useMutation(REMOVE_SCHOOL);
 
 	if (loading) return "Loading...";
 	if (error) return `Error! ${error.message}`;
@@ -90,9 +112,15 @@ function School() {
 					))}
 				</section>
 
-				<Form className="schoolForm" onSubmit={
-					addSchool.then(window.location.reload)
-				}>
+				<Form className="border bg-light p-5 loginForm schoolForm" onSubmit={handleFormSubmit}>
+				<Alert
+					dismissible
+					onClose={() => setShowAlert(false)}
+					show={showAlert}
+					variant="danger"
+				>
+					Something went wrong with your school input!
+				</Alert>
 					<Form.Label style={{ fontWeight: "bold" }}>
 						Create a New School
 					</Form.Label>
@@ -100,22 +128,34 @@ function School() {
 						<Form.Label>School Name:</Form.Label>
 						<Form.Control
 							className="mb-2"
-							type="input"
+							name="name"
+							onChange={handleInputChange}
+							value={schoolFormData.name}
+							required
+							type="text"
 							placeholder="School Name"
 						/>
-						<Form.Label>Principal:</Form.Label>
+						<Form.Label>Principle:</Form.Label>
 						<Form.Control
 							className="mb-2"
-							type="input"
-							placeholder="School Name"
+							name="principle"
+							onChange={handleInputChange}
+							value={schoolFormData.principle}
+							required
+							type="text"
+							placeholder="Principal"
 						/>
 						<Form.Label>Budget:</Form.Label>
 						<Form.Control
 							className="mb-2"
-							type="input"
-							placeholder="School Name"
+							name="budget"
+							onChange={handleInputChange}
+							value={schoolFormData.budget}
+							required
+							type="number"
+							placeholder="Budget"
 						/>
-						<Button variant="secondary" type="submit">
+						<Button variant="success" type="submit">
 							ADD SCHOOL
 						</Button>
 					</Form.Group>

@@ -36,7 +36,7 @@ export const ADD_USER = gql`
 // `;
 
 export const ADD_SCHOOL = gql`
-	mutation addSchool($name: String!) {
+	mutation addSchool($name: String!, $principle: String!, $budget: Int!) {
 		addSchool(name: $name) {
 			_id
 			name

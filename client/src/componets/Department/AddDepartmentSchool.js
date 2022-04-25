@@ -5,7 +5,8 @@ import { useQuery, useMutation } from "@apollo/client";
 
 import { QUERY_ALLDEPT } from "../../utils/queries";
 import { ADD_DEPT_SCHOOL } from "../../utils/mutation";
-import { useParams } from "react-router-dom";
+import  Auth  from "../../utils/auth";
+import { useParams, Link } from "react-router-dom";
 
 function AddDepartmentToSchool() {
   let { id } = useParams();
@@ -46,6 +47,9 @@ function AddDepartmentToSchool() {
   if (deptResults) {
     return (
       <>
+      <div className="m-3">
+      {Auth.loggedIn() ? (
+				<>
         <Form.Label>Please Choose A Department to Add</Form.Label>
         <Form className="addDepartmentOption" onSubmit={handleFormSubmit}>
          
@@ -75,10 +79,18 @@ function AddDepartmentToSchool() {
 
         </Form>
       </>
+  ) : (
+    <Link to="/">You need to be logged in to view this page. Please 
+    login.</Link>)}
+  </div>
+  </>
     );
+
   } else {
     return <h1>loading</h1>;
   }
+  
 }
+
 
 export default AddDepartmentToSchool;

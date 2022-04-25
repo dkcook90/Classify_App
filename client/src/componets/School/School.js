@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
+import { Alert, Container, Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import  Auth  from "../../utils/auth";
 import { QUERY_ALLSCHOOLS, QUERY_SCHOOL } from "../../utils/queries";
 import { ADD_SCHOOL, REMOVE_SCHOOL } from "../../utils/mutation";
 
-import { Alert, Container, Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import AddSchoolForm from "./AddSchoolForm"
 import "./School.css";
 import editIcon from "../../img/twotone_edit_white_24dp.png";
 import deleteIcon from "../../img/twotone_delete_forever_white_24dp.png";
+import Img1 from "../../img/Spring Hill High School.jpg";
 
 function School() {
 	const { loading, error, data } = useQuery(QUERY_ALLSCHOOLS);
 	const schools = data?.schools
+
 	console.log(schools);
 
 	const [schoolFormData, setSchoolFormData] = useState({ name: "", principal: "", budget:"" });
@@ -54,6 +57,7 @@ function School() {
 		});
 	}
 
+
 	const [removeSchool, { err }] = useMutation(REMOVE_SCHOOL);
 
 	if (loading) return "Loading...";
@@ -68,6 +72,7 @@ function School() {
 					<h1>Schools in District:</h1>
 					{schools.map((school) => (
 						<Card className="col-12 m-1" key={school._id}>
+							<Card.Img className="cardImage" variant="top" src={Img1}/>
 							<Card.Body>
 								<Card.Title>{school.name}</Card.Title>
 								<Card.Text>
@@ -83,7 +88,7 @@ function School() {
 									</ListGroupItem>
 									<ListGroupItem>
 										<Card.Link href={`classrooms/${school._id}`}>
-										{school.name}'s Classrooms
+											{school.name}'s Classrooms
 										</Card.Link>
 									</ListGroupItem>
 									<ListGroupItem>
@@ -112,7 +117,8 @@ function School() {
 					))}
 				</Container>
 
-				<Form className="schoolForm bg-light m-3 p-3 rounded" onSubmit={handleFormSubmit}>
+
+				{/* <Form className="schoolForm bg-light m-3 p-3 rounded" onSubmit={handleFormSubmit}>
 				<Alert
 					dismissible
 					onClose={() => setShowAlert(false)}
@@ -122,7 +128,7 @@ function School() {
 					Something went wrong with your school input!
 				</Alert>
 					<Form.Label className="mx-3">
-						Create a New School
+						<h4>Create a New School:</h4>
 					</Form.Label>
 					<Form.Group className="mx-3" controlId="form">
 						<Form.Label>School Name:</Form.Label>
@@ -159,7 +165,10 @@ function School() {
 							ADD SCHOOL
 						</Button>
 					</Form.Group>
-				</Form>
+				</Form> */}
+
+				<AddSchoolForm></AddSchoolForm>
+
 				</>
 				) : (
 					<Link to="/">You need to be logged in to view this page. Please 

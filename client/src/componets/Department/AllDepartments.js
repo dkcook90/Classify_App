@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
+import { Link } from "react-router-dom";
 import { Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import "./Department.css";
 import { QUERY_ALLDEPT } from "../../utils/queries";
 import { ADD_DEPT } from "../../utils/mutation";
+import  Auth  from "../../utils/auth";
+
 function AllDepartments() {
   const { loading, error, data } = useQuery(QUERY_ALLDEPT);
   const dept = data?.departments || [];
@@ -30,23 +33,27 @@ function AllDepartments() {
 
   return (
     <>
+    <div className="m-3">
+      {Auth.loggedIn() ? (
+				<>
       <div className="allDepartmentContainer">
-        <Card style={{ width: "18rem" }}></Card>
-        <Card.Body>
-          <Card.Title>Departments:</Card.Title>
-          <Card.Text>
-            Use links listed below to access the departments for each school.
-          </Card.Text>
-          <ListGroup className="list-group-flush">
-            {dept.map((school) => {
-              return (
-                <ListGroupItem key={school.department}>
-                  <Card.Link href="#">{school.department}</Card.Link>
-                </ListGroupItem>
-              );
-            })}
-          </ListGroup>
-        </Card.Body>
+        <Card style={{ width: "18rem" }}>
+          <Card.Body>
+            <Card.Title>Departments:</Card.Title>
+            <Card.Text>
+              Use links listed below to access the departments for each school.
+            </Card.Text>
+            <ListGroup className="list-group-flush">
+              {dept.map((school) => {
+                return (
+                  <ListGroupItem key={school.department}>
+                    <Card.Link href="#">{school.department}</Card.Link>
+                  </ListGroupItem>
+                );
+              })}
+            </ListGroup>
+          </Card.Body>
+        </Card>
       </div>
       <Form className="departmentForm" onSubmit={handleFormSubmit}>
         <Form.Group className="m-3" controlId="form">
@@ -69,6 +76,11 @@ function AllDepartments() {
             </Button> */}
         </Form.Group>
       </Form>
+      </>
+      ) : (
+        <Link to="/">You need to be logged in to view this page. Please 
+        login.</Link>)}
+      </div>
     </>
   );
 }

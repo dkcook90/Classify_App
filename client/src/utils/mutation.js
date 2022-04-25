@@ -39,10 +39,12 @@ export const ADD_SCHOOL = gql`
 		addSchool(name: $name) {
 			_id
 			name
+
 			principal
 			budget
 			department
 			teachers
+
 		}
 	}
 `;

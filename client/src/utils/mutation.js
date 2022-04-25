@@ -89,6 +89,17 @@ export const REMOVE_STUDENT = gql`
 	}
 `;
 
+// export const EDIT_STUDENT = gql`
+// 	mutation editStudent($studentId: ID!) {
+// 		editStudent(studentId: $studentId) {
+// 			_id
+// 			name
+// 			grade
+// 			note
+// 		}
+// 	}
+// `;
+
 export const ADD_DEPT_SCHOOL = gql`
   mutation addDepToSchool($schoolId: String!, $departmentId: String!) {
     addDeptToSchool(schoolId: $schoolId, departmentId: $departmentId) {

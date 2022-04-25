@@ -16,7 +16,7 @@ export const QUERY_SCHOOL = gql`
     school(_id: $_id) {
       _id
       name
-      principle
+      principal
       budget
       department {
         _id
@@ -44,7 +44,7 @@ export const QUERY_ALLSCHOOLS = gql`
     schools {
       _id
       name
-      principle
+      principal
       budget
       department {
         _id

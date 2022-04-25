@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Button, ButtonGroup } from "react-bootstrap";
+import { Form, Button, ButtonGroup, Container } from "react-bootstrap";
 import "./Home.css";
 import Image from "react-bootstrap/Image";
 import { Link } from "react-router-dom";
@@ -14,7 +14,7 @@ function Home() {
 			<div>
 			{Auth.loggedIn() ? (
 				<>
-				<container className="justify-content-center text-center container row">
+				<Container className="justify-content-center text-center container row">
 					<Image
 						className="homeBackground"
 						src={HomeLibrary}
@@ -38,7 +38,7 @@ function Home() {
 						</Button>
 					</ButtonGroup>
 					<h1>Welcome to School District 925!</h1>
-				</container>
+				</Container>
 				<Form className="p-3">
 					<Form.Group className="mb-3" controlId="formSearch">
 						<Form.Label className="justify-content-center text-center container row">

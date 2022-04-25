@@ -16,7 +16,7 @@ function School() {
 	const schools = data?.schools
 	console.log(schools);
 
-	const [schoolFormData, setSchoolFormData] = useState({ name: "", principle: "", budget:"" });
+	const [schoolFormData, setSchoolFormData] = useState({ name: "", principal: "", budget:"" });
 	const [showAlert, setShowAlert] = useState(false);
 	const [addSchool, {er}] = useMutation(ADD_SCHOOL);
 
@@ -50,7 +50,7 @@ function School() {
 		}
 
 		setSchoolFormData({
-			name: "", principle: "", budget:"",
+			name: "", principal: "", budget:"",
 		});
 	}
 
@@ -72,7 +72,7 @@ function School() {
 								<Card.Title>{school.name}</Card.Title>
 								<Card.Text>
 									Address: <br />
-									{school.principle} <br />
+									{school.principal} <br />
 									{school.budget} <br />
 								</Card.Text>
 								<ListGroup className="list-group-flush">
@@ -135,12 +135,12 @@ function School() {
 							type="text"
 							placeholder="School Name"
 						/>
-						<Form.Label>Principle:</Form.Label>
+						<Form.Label>principal:</Form.Label>
 						<Form.Control
 							className="mb-2"
-							name="principle"
+							name="principal"
 							onChange={handleInputChange}
-							value={schoolFormData.principle}
+							value={schoolFormData.principal}
 							required
 							type="text"
 							placeholder="Principal"

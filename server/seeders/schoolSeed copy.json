@@ -1,7 +1,7 @@
 [
   {
     "name": "Spring Hill High School",
-    "principle": "Taylor Brown",
+    "principal": "Taylor Brown",
     "budget": 250000,
     "teachers": [
       {
@@ -140,7 +140,7 @@
   },
   {
     "name": "Lincon High School",
-    "principle": "George Jackson",
+    "principal": "George Jackson",
     "budget": 500000,
     "teachers": [
       {

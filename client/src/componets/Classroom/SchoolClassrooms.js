@@ -40,7 +40,7 @@ function SchoolClassrooms() {
           })}
         </ListGroup>
       </Card.Body>
-      <Button variant="primary"><Link className="backHome" to={'/schools'}> Back to Schools</Link></Button>
+      <Button className="homeBttn" variant=""><Link className="backHome" to={'/schools'}> Back to Schools</Link></Button>
       </>
 				) : (
 					<Link to="/">You need to be logged in to view this page. Please 

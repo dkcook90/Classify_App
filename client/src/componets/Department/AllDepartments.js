@@ -37,22 +37,23 @@ function AllDepartments() {
       {Auth.loggedIn() ? (
 				<>
       <div className="allDepartmentContainer">
-        <Card style={{ width: "18rem" }}></Card>
-        <Card.Body>
-          <Card.Title>Departments:</Card.Title>
-          <Card.Text>
-            Use links listed below to access the departments for each school.
-          </Card.Text>
-          <ListGroup className="list-group-flush">
-            {dept.map((school) => {
-              return (
-                <ListGroupItem key={school.department}>
-                  <Card.Link href="#">{school.department}</Card.Link>
-                </ListGroupItem>
-              );
-            })}
-          </ListGroup>
-        </Card.Body>
+        <Card style={{ width: "18rem" }}>
+          <Card.Body>
+            <Card.Title>Departments:</Card.Title>
+            <Card.Text>
+              Use links listed below to access the departments for each school.
+            </Card.Text>
+            <ListGroup className="list-group-flush">
+              {dept.map((school) => {
+                return (
+                  <ListGroupItem key={school.department}>
+                    <Card.Link href="#">{school.department}</Card.Link>
+                  </ListGroupItem>
+                );
+              })}
+            </ListGroup>
+          </Card.Body>
+        </Card>
       </div>
       <Form className="departmentForm" onSubmit={handleFormSubmit}>
         <Form.Group className="m-3" controlId="form">

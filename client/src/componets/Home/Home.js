@@ -11,7 +11,7 @@ import Auth from "../../utils/auth";
 function Home() {
 	return (
 		<>
-			<div className="m-3">
+			<div className="mt-3">
 			{Auth.loggedIn() ? (
 				<>
 				<Container className="justify-content-center text-center container row">

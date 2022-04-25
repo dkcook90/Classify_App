@@ -77,7 +77,7 @@ function School() {
 				</Container>
 
 
-				<Form className="schoolForm bg-light m-3 p-3 rounded" onSubmit={handleFormSubmit}>
+				{/* <Form className="schoolForm bg-light m-3 p-3 rounded" onSubmit={handleFormSubmit}>
 				<Alert
 					dismissible
 					onClose={() => setShowAlert(false)}
@@ -124,7 +124,7 @@ function School() {
 							ADD SCHOOL
 						</Button>
 					</Form.Group>
-				</Form>
+				</Form> */}
 
 				<AddSchoolForm></AddSchoolForm>
 

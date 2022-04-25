@@ -67,6 +67,7 @@ function AddDepartmentToSchool() {
                 <>loading...</>
               )}
             </Form.Select>
+
             
           </Form.Group> */}
           <DropdownButton
@@ -92,6 +93,7 @@ function AddDepartmentToSchool() {
             )}
           </DropdownButton>
           {/* <h4>You selected {departmentState}</h4> */}
+
         </Form>
       </>
     );

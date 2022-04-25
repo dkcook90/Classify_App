@@ -58,7 +58,7 @@ function AllDepartments() {
             value={departmentState.department}
             onChange={(e) => setDepartmentState(e.target.value)}
           />
-          <Button variant="secondary" type="submit" onClick={() => {
+          <Button className="addbtn" variant="secondary" type="submit" onClick={() => {
 												addDepartment({ variables: { department: departmentState } })
 												window.location.reload()
 											}}>

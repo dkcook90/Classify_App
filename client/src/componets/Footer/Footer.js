@@ -21,6 +21,7 @@ function Footer() {
 						<a
 							href="https://github.com/eeoerkeedu"
 							className="teamLinks"
+							target="_blank"
 							rel="noopener noreferrer"
 						>
 							Erik Oerke

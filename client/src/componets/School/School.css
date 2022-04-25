@@ -1,6 +1,8 @@
 .card {
 display: flex;
 width: 18rem;
+padding-right: 0px;
+padding-left: 0px
 }
 
 .addbtn {

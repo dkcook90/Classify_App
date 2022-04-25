@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import "./School.css";
 import editIcon from "../../img/twotone_edit_white_24dp.png";
 import deleteIcon from "../../img/twotone_delete_forever_white_24dp.png";
+import Img1 from "../../img/Spring Hill High School.jpg";
 
 function School() {
 	const { loading, error, data } = useQuery(QUERY_ALLSCHOOLS);
@@ -68,6 +69,7 @@ function School() {
 					<h1>Schools in District:</h1>
 					{schools.map((school) => (
 						<Card className="col-12 m-1" key={school._id}>
+							<Card.Img className="cardImage" variant="top" src={Img1}/>
 							<Card.Body>
 								<Card.Title>{school.name}</Card.Title>
 								<Card.Text>
@@ -83,7 +85,7 @@ function School() {
 									</ListGroupItem>
 									<ListGroupItem>
 										<Card.Link href={`classrooms/${school._id}`}>
-										{school.name}'s Classrooms
+											{school.name}'s Classrooms
 										</Card.Link>
 									</ListGroupItem>
 									<ListGroupItem>
@@ -122,7 +124,7 @@ function School() {
 					Something went wrong with your school input!
 				</Alert>
 					<Form.Label className="mx-3">
-						Create a New School
+						<h4>Create a New School:</h4>
 					</Form.Label>
 					<Form.Group className="mx-3" controlId="form">
 						<Form.Label>School Name:</Form.Label>

@@ -48,7 +48,7 @@ function Department() {
                 <>loading...</>
               )}
             </ListGroup>
-            <Button variant="primary">
+            <Button className="homeBttn" variant="">
               <Link className="backHome" to={"/schools"}>
                 {" "}
                 Back to Schools

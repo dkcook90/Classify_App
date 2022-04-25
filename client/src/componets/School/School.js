@@ -17,6 +17,47 @@ function School() {
 	const { loading, error, data } = useQuery(QUERY_ALLSCHOOLS);
 	const schools = data?.schools
 
+	console.log(schools);
+
+	const [schoolFormData, setSchoolFormData] = useState({ name: "", principal: "", budget:"" });
+	const [showAlert, setShowAlert] = useState(false);
+	const [addSchool, {er}] = useMutation(ADD_SCHOOL);
+
+	const handleInputChange = (event) => {
+		const { name, value } = event.target;
+		setSchoolFormData({ ...schoolFormData, [name]: value });
+	};
+
+	const handleFormSubmit = async (event) => {
+		event.preventDefault();
+		console.log(schoolFormData);
+
+		const form = event.currentTarget;
+		if (form.checkValidity() === false) {
+			event.preventDefault();
+			event.stopPropagation();
+		}
+
+		// console.log("reached try/catch")
+		try {
+			const { data } = await addSchool({
+				variables: { ...schoolFormData },
+			});
+
+			if (!data) {
+				throw new Error("something went wrong!");
+			}
+		} catch (err) {
+			console.error(err);
+			setShowAlert(true);
+		}
+
+		setSchoolFormData({
+			name: "", principal: "", budget:"",
+		});
+	}
+
+
 	const [removeSchool, { err }] = useMutation(REMOVE_SCHOOL);
 
 	if (loading) return "Loading...";
@@ -36,7 +77,7 @@ function School() {
 								<Card.Title>{school.name}</Card.Title>
 								<Card.Text>
 									Address: <br />
-									{school.principle} <br />
+									{school.principal} <br />
 									{school.budget} <br />
 								</Card.Text>
 								<ListGroup className="list-group-flush">
@@ -100,12 +141,12 @@ function School() {
 							type="text"
 							placeholder="School Name"
 						/>
-						<Form.Label>Principle:</Form.Label>
+						<Form.Label>principal:</Form.Label>
 						<Form.Control
 							className="mb-2"
-							name="principle"
+							name="principal"
 							onChange={handleInputChange}
-							value={schoolFormData.principle}
+							value={schoolFormData.principal}
 							required
 							type="text"
 							placeholder="Principal"

@@ -67,8 +67,8 @@ const resolvers = {
 			return { token, user };
 		},
 
-		addSchool: async (parent, { name, principle, budget }) => {
-			return await School.create({ name, principle, budget });
+		addSchool: async (parent, { name, principal, budget }) => {
+			return await School.create({ name, principal, budget });
 		},
 		addDepartment: async (parent, { department }) => {
 			return await Department.create({ department });
@@ -80,12 +80,12 @@ const resolvers = {
 			return await Student.create({ name, grade, note });
 		},
 
-		updateSchool: async (parent, { schoolId, name, principle, department }) => {
+		updateSchool: async (parent, { schoolId, name, principal, department }) => {
 			const schoolData = await School.findOneAndUpdate(
 				{ _id: schoolId },
 				{
 					name: name,
-					principle: principle,
+					principal: principal,
 					$push: { department: department },
 				},
 				{ new: true }

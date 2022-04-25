@@ -8,7 +8,7 @@ const schoolSchema = new Schema({
     maxlength: 40,
     trim: true,
   },
-  principle: {
+  principal : {
     type: String,
     required: true,
   },

@@ -52,31 +52,11 @@ function AddDepartmentToSchool() {
 				<>
         <Form.Label>Please Choose A Department to Add</Form.Label>
         <Form className="addDepartmentOption" onSubmit={handleFormSubmit}>
-          {/* <Form.Group className="m-3" controlId="form">
-            <Form.Select
-              value={this.departmentState.selectValue}
-              onChange={this.handleChange}
-            >
-              <Form.Control value={departmentState} />
-              <option>Choose a Department</option>
-              {deptResults ? (
-                deptResults.map((data) => {
-                  return (
-                    <option key={data._id} value={data._id}>
-                      {data.department}
-                    </option>
-                  );
-                })
-              ) : (
-                <>loading...</>
-              )}
-            </Form.Select>
-
-            
-          </Form.Group> */}
+         
           <DropdownButton
             alignRight
             title="Click to Add a Department"
+            className="deptBttn"
             id="dropdown-menu-align-right"
             onSelect={handleSelect}
           >
@@ -96,7 +76,6 @@ function AddDepartmentToSchool() {
               <>loading...</>
             )}
           </DropdownButton>
-          {/* <h4>You selected {departmentState}</h4> */}
 
         </Form>
       </>

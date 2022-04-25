@@ -40,9 +40,7 @@ export const ADD_SCHOOL = gql`
 			_id
 			name
 			principle
-			budget
-			department
-			teachers
+
 		}
 	}
 `;

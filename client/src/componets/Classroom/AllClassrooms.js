@@ -34,10 +34,7 @@ function AllClassrooms() {
           </ListGroup>
       </Card.Body>
       </Card>
-      </>
-				) : (
-					<Link to="/">You need to be logged in to view this page. Please 
-					login.</Link>)}
+
     
           <Form className="teacherForm bg-light m-2 p-3 rounded">
               <Form.Label className="mx-3">
@@ -66,7 +63,10 @@ function AllClassrooms() {
                   ADD CLASSROOM
                 </Button>
               </Form.Group>
-            </Form>
+            </Form>      </>
+				) : (
+					<Link to="/">You need to be logged in to view this page. Please 
+					login.</Link>)}
 </div>
   );
 }

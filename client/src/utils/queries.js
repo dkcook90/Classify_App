@@ -103,3 +103,19 @@ export const QUERY_SINGLE_TEACHER = gql`
       }
     }
   }`
+
+// export const QUERY_SINGLE_STUDENT = gql`
+// query getSingleStudent($teacherId: ID!) {
+//   teacher(teacherId: $teacherId) {
+//     _id
+//     name
+//     department
+//     office
+//     students {
+//       _id
+//       name
+//       grade
+//       note
+//     }
+//   }
+// }`

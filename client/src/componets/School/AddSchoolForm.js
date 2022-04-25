@@ -1,0 +1,100 @@
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+
+import { QUERY_ALLSCHOOLS, QUERY_SCHOOL } from "../../utils/queries";
+import { ADD_SCHOOL, REMOVE_SCHOOL } from "../../utils/mutation";
+
+import { Alert, Container, Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import "./School.css";
+
+function AddSchoolForm() {
+    const [schoolFormData, setSchoolFormData] = useState({ name: "", principal: "", budget:"" });
+    const [showAlert, setShowAlert] = useState(false);
+    const [addSchool, {er}] = useMutation(ADD_SCHOOL);
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setSchoolFormData({ ...schoolFormData, [name]: value });
+    };
+
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+        console.log("New School Submitted");
+
+        // console.log("reached try/catch")
+        try {
+            const { data } = await addSchool({
+                variables: { ...schoolFormData },
+            });
+            console.log(data);
+
+            if (!data) {
+                throw new Error("something went wrong!");
+            }
+
+            setSchoolFormData({
+            name: "", principal: "", budget:"",
+            });
+
+        } catch (err) {
+            console.error(err);
+            setShowAlert(true);
+        }
+    };
+
+    return (
+        <>
+            <Form className="schoolForm bg-light m-3 p-3 rounded" onSubmit={handleFormSubmit}>
+            <Alert
+                dismissible
+                onClose={() => setShowAlert(false)}
+                show={showAlert}
+                variant="danger"
+            >
+                Something went wrong!
+            </Alert>
+                <Form.Label className="mx-3">
+                    Create a New School
+                </Form.Label>
+                <Form.Group className="mx-3" controlId="schoolForm">
+                    <Form.Label>School Name:</Form.Label>
+                    <Form.Control
+                        className="mb-2"
+                        name="name"
+                        onChange={handleInputChange}
+                        value={schoolFormData.name}
+                        required
+                        type="text"
+                        placeholder="School Name"
+                    />
+                    <Form.Label>Principle:</Form.Label>
+                    <Form.Control
+                        className="mb-2"
+                        name="principal"
+                        onChange={handleInputChange}
+                        value={schoolFormData.principal}
+                        required
+                        type="text"
+                        placeholder="Principal"
+                    />
+                    <Form.Label>Budget:</Form.Label>
+                    <Form.Control
+                        className="mb-2"
+                        name="budget"
+                        onChange={handleInputChange}
+                        value={schoolFormData.budget}
+                        required
+                        type="number"
+                        placeholder="Budget"
+                    />
+                    <Button variant="success" type="submit">
+                        ADD SCHOOL
+                    </Button>
+                </Form.Group>
+            </Form>
+        </>
+    );
+};
+
+export default AddSchoolForm;

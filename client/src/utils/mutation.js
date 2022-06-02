@@ -35,19 +35,18 @@ export const ADD_USER = gql`
 // `;
 
 export const ADD_SCHOOL = gql`
-	mutation addSchool($name: String!, $principal: String!, $budget: Int!) {
+	mutation addSchool($name: String!, $principal: String!, $budget: Int) {
 		addSchool(name: $name) {
 			_id
 			name
-
 			principal
 			budget
 			department
 			teachers
-
 		}
 	}
 `;
+
 export const UPDATE_SCHOOL = gql`
   mutation updateSchool($name: String!) {
     updateSchool(name: $name) {
@@ -60,6 +59,7 @@ export const UPDATE_SCHOOL = gql`
     }
   }
 `;
+
 export const REMOVE_SCHOOL = gql`
   mutation removeSchool($schoolId: ID!) {
     removeSchool(schoolId: $schoolId) {
@@ -70,6 +70,7 @@ export const REMOVE_SCHOOL = gql`
     }
   }
 `;
+
 export const ADD_DEPT = gql`
   mutation addDepartment($department: String!) {
     addDepartment(department: $department) {

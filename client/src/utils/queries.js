@@ -65,6 +65,7 @@ export const QUERY_ALLSCHOOLS = gql`
     }
   }
 `;
+
 export const QUERY_ALLDEPT = gql`
 query getDepartments {
   departments {
@@ -73,6 +74,7 @@ query getDepartments {
     budget
   }
 }`
+
 export const QUERY_ALLCLASSROOMS = gql`
 query getAllClassrooms {
   teachers {
@@ -88,6 +90,7 @@ query getAllClassrooms {
     }
   }
 }`
+
 export const QUERY_SINGLE_TEACHER = gql`
   query getSingleTeacher($teacherId: ID!) {
     teacher(teacherId: $teacherId) {

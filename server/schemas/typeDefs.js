@@ -61,7 +61,7 @@ const typeDefs = gql`
 
 		login(email: String!, password: String!): Auth
 
-		addSchool(name: String!, principal: String!): School
+		addSchool(name: String!, principal: String!, budget:Int): School
 		addDepartment(department: String!): Department
 		addTeacher(name: String!, department: String!, office: String!): Teacher
 		addStudent(name: String!, grade: Int!, note: String): Student
@@ -74,6 +74,7 @@ const typeDefs = gql`
 		updateSchool(
 			schoolId: ID!
 			name: String
+			budget: Int
 			principal: String
 			department: String
 		): School

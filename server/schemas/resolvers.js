@@ -80,12 +80,13 @@ const resolvers = {
 			return await Student.create({ name, grade, note });
 		},
 
-		updateSchool: async (parent, { schoolId, name, principal, department }) => {
+		updateSchool: async (parent, { schoolId, name, budget, principal, department }) => {
 			const schoolData = await School.findOneAndUpdate(
 				{ _id: schoolId },
 				{
 					name: name,
 					principal: principal,
+					budget: budget,
 					$push: { department: department },
 				},
 				{ new: true }

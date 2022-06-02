@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 
-import { QUERY_ALLSCHOOLS, QUERY_SCHOOL } from "../../utils/queries";
-import { ADD_SCHOOL, REMOVE_SCHOOL } from "../../utils/mutation";
+import { ADD_SCHOOL } from "../../utils/mutation";
 
-import { Alert, Container, Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Alert,  Form, Button } from "react-bootstrap";
 import "./School.css";
 
-function AddSchoolForm() {
+const AddSchoolForm = () => {
     const [schoolFormData, setSchoolFormData] = useState({ name: "", principal: "", budget:"" });
     const [showAlert, setShowAlert] = useState(false);
-    const [addSchool, {er}] = useMutation(ADD_SCHOOL);
+    const [addSchool] = useMutation(ADD_SCHOOL);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -20,9 +18,8 @@ function AddSchoolForm() {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log("New School Submitted");
+        console.log("New School Submitted -", schoolFormData);
 
-        // console.log("reached try/catch")
         try {
             const { data } = await addSchool({
                 variables: { ...schoolFormData },
@@ -37,8 +34,9 @@ function AddSchoolForm() {
             name: "", principal: "", budget:"",
             });
 
-        } catch (err) {
-            console.error(err);
+        } catch (error) {
+            console.log("Caught")
+            console.error(error);
             setShowAlert(true);
         }
     };
@@ -68,7 +66,7 @@ function AddSchoolForm() {
                         type="text"
                         placeholder="School Name"
                     />
-                    <Form.Label>Principle:</Form.Label>
+                    <Form.Label>Principal:</Form.Label>
                     <Form.Control
                         className="mb-2"
                         name="principal"

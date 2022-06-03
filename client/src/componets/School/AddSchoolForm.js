@@ -9,7 +9,8 @@ import "./School.css";
 const AddSchoolForm = () => {
     const [schoolFormData, setSchoolFormData] = useState({ name: "", principal: "", budget:"" });
     const [showAlert, setShowAlert] = useState(false);
-    const [addSchool] = useMutation(ADD_SCHOOL);
+    
+    const [addSchool, {err}] = useMutation(ADD_SCHOOL);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -21,8 +22,8 @@ const AddSchoolForm = () => {
         console.log("New School Submitted -", schoolFormData);
 
         try {
-            const { data } = await addSchool({
-                variables: { ...schoolFormData },
+            const {data} = await addSchool({
+                variables: { schoolFormData },
             });
             console.log(data);
 
@@ -35,8 +36,8 @@ const AddSchoolForm = () => {
             });
 
         } catch (error) {
-            console.log("Caught")
-            console.error(error);
+            console.log("Caught", schoolFormData, error.networkError.result.errors);
+            console.error(error.message);
             setShowAlert(true);
         }
     };
@@ -63,7 +64,7 @@ const AddSchoolForm = () => {
                         onChange={handleInputChange}
                         value={schoolFormData.name}
                         required
-                        type="text"
+                        type="input"
                         placeholder="School Name"
                     />
                     <Form.Label>Principal:</Form.Label>
@@ -73,7 +74,7 @@ const AddSchoolForm = () => {
                         onChange={handleInputChange}
                         value={schoolFormData.principal}
                         required
-                        type="text"
+                        type="input"
                         placeholder="Principal"
                     />
                     <Form.Label>Budget:</Form.Label>

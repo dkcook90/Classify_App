@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import  Auth  from "../../utils/auth";
 import { QUERY_ALLSCHOOLS, QUERY_SCHOOL } from "../../utils/queries";
-import { ADD_SCHOOL, REMOVE_SCHOOL } from "../../utils/mutation";
+import { ADD_SCHOOL, REMOVE_SCHOOL, UPDATE_SCHOOL } from "../../utils/mutation";
 
 import AddSchoolForm from "./AddSchoolForm"
 import "./School.css";
@@ -19,46 +19,8 @@ function School() {
 
 	console.log(schools);
 
-	const [schoolFormData, setSchoolFormData] = useState({ name: "", principal: "", budget:"" });
-	const [showAlert, setShowAlert] = useState(false);
-	const [addSchool, {er}] = useMutation(ADD_SCHOOL);
-
-	const handleInputChange = (event) => {
-		const { name, value } = event.target;
-		setSchoolFormData({ ...schoolFormData, [name]: value });
-	};
-
-	const handleFormSubmit = async (event) => {
-		event.preventDefault();
-		console.log(schoolFormData);
-
-		const form = event.currentTarget;
-		if (form.checkValidity() === false) {
-			event.preventDefault();
-			event.stopPropagation();
-		}
-
-		// console.log("reached try/catch")
-		try {
-			const { data } = await addSchool({
-				variables: { ...schoolFormData },
-			});
-
-			if (!data) {
-				throw new Error("something went wrong!");
-			}
-		} catch (err) {
-			console.error(err);
-			setShowAlert(true);
-		}
-
-		setSchoolFormData({
-			name: "", principal: "", budget:"",
-		});
-	}
-
-
-	const [removeSchool, { err }] = useMutation(REMOVE_SCHOOL);
+	const [updateSchool] = useMutation(UPDATE_SCHOOL);
+	const [removeSchool] = useMutation(REMOVE_SCHOOL);
 
 	if (loading) return "Loading...";
 	if (error) return `Error! ${error.message}`;
@@ -96,6 +58,10 @@ function School() {
 											className="mx-2 bg-warning"
 											variant="secondary"
 											type=""
+											// onClick={() => {
+											// 	updateSchool({ variables: { schoolId: school._id } })
+											// 	window.location.reload()
+											// }}
 										>
 											<img alt="edit school" src={editIcon}></img>
 										</Button>

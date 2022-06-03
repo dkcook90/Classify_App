@@ -3,11 +3,11 @@ import { useMutation } from '@apollo/client';
 
 import { ADD_SCHOOL } from "../../utils/mutation";
 
-import { Alert,  Form, Button } from "react-bootstrap";
+import { Alert, Form, Button } from "react-bootstrap";
 import "./School.css";
 
 const AddSchoolForm = () => {
-    const [schoolFormData, setSchoolFormData] = useState({ name: "", principal: "", budget:"" });
+    const [schoolFormData, setSchoolFormData] = useState({ name:"", principal:"", budget:0 });
     const [showAlert, setShowAlert] = useState(false);
     
     const [addSchool, {err}] = useMutation(ADD_SCHOOL);
@@ -19,11 +19,11 @@ const AddSchoolForm = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log("New School Submitted -", schoolFormData);
+        console.log("New School Submitted -");
 
         try {
             const {data} = await addSchool({
-                variables: { schoolFormData },
+                variables: { ...schoolFormData, budget:parseInt(schoolFormData.budget) },
             });
             console.log(data);
 
@@ -32,8 +32,10 @@ const AddSchoolForm = () => {
             }
 
             setSchoolFormData({
-            name: "", principal: "", budget:"",
+            name:"", principal:"", budget:0,
             });
+
+            window.location.reload()
 
         } catch (error) {
             console.log("Caught", schoolFormData, error.networkError.result.errors);

@@ -36,13 +36,11 @@ export const ADD_USER = gql`
 
 export const ADD_SCHOOL = gql`
 	mutation addSchool($name: String!, $principal: String!, $budget: Int) {
-		addSchool(name: $name) {
+		addSchool(name: $name, principal: $principal, budget: $budget) {
 			_id
 			name
 			principal
 			budget
-			department
-			teachers
 		}
 	}
 `;

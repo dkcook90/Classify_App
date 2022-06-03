@@ -3,13 +3,14 @@ import { useMutation } from '@apollo/client';
 
 import { ADD_SCHOOL } from "../../utils/mutation";
 
-import { Alert,  Form, Button } from "react-bootstrap";
+import { Alert, Form, Button } from "react-bootstrap";
 import "./School.css";
 
 const AddSchoolForm = () => {
-    const [schoolFormData, setSchoolFormData] = useState({ name: "", principal: "", budget:"" });
+    const [schoolFormData, setSchoolFormData] = useState({ name:"", principal:"", budget:0 });
     const [showAlert, setShowAlert] = useState(false);
-    const [addSchool] = useMutation(ADD_SCHOOL);
+    
+    const [addSchool, {err}] = useMutation(ADD_SCHOOL);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -18,11 +19,11 @@ const AddSchoolForm = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log("New School Submitted -", schoolFormData);
+        console.log("New School Submitted -");
 
         try {
-            const { data } = await addSchool({
-                variables: { ...schoolFormData },
+            const {data} = await addSchool({
+                variables: { ...schoolFormData, budget:parseInt(schoolFormData.budget) },
             });
             console.log(data);
 
@@ -31,12 +32,14 @@ const AddSchoolForm = () => {
             }
 
             setSchoolFormData({
-            name: "", principal: "", budget:"",
+            name:"", principal:"", budget:0,
             });
 
+            window.location.reload()
+
         } catch (error) {
-            console.log("Caught")
-            console.error(error);
+            console.log("Caught", schoolFormData, error.networkError.result.errors);
+            console.error(error.message);
             setShowAlert(true);
         }
     };
@@ -63,7 +66,7 @@ const AddSchoolForm = () => {
                         onChange={handleInputChange}
                         value={schoolFormData.name}
                         required
-                        type="text"
+                        type="input"
                         placeholder="School Name"
                     />
                     <Form.Label>Principal:</Form.Label>
@@ -73,7 +76,7 @@ const AddSchoolForm = () => {
                         onChange={handleInputChange}
                         value={schoolFormData.principal}
                         required
-                        type="text"
+                        type="input"
                         placeholder="Principal"
                     />
                     <Form.Label>Budget:</Form.Label>

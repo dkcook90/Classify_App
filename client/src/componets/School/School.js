@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
-import { Alert, Container, Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Alert, Container, Form, Button, Card, ListGroup, ListGroupItem, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import  Auth  from "../../utils/auth";
@@ -21,6 +21,13 @@ function School() {
 
 	const [updateSchool] = useMutation(UPDATE_SCHOOL);
 	const [removeSchool] = useMutation(REMOVE_SCHOOL);
+
+	// variable to show modal on button click
+	const [show, setShow] = useState(false);
+	// varibales to toggle the modal setShow state
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
+
 
 	if (loading) return "Loading...";
 	if (error) return `Error! ${error.message}`;
@@ -58,13 +65,27 @@ function School() {
 											className="mx-2 bg-warning"
 											variant="secondary"
 											type=""
-											// onClick={() => {
-											// 	updateSchool({ variables: { schoolId: school._id } })
-											// 	window.location.reload()
-											// }}
+											onClick={handleShow}
 										>
 											<img alt="edit school" src={editIcon}></img>
 										</Button>
+										{/* modal to edit a school */}
+
+										<Modal show={show} onHide={handleClose}>
+        									<Modal.Header closeButton>
+          										<Modal.Title>Modal heading</Modal.Title>
+        									</Modal.Header>
+        									<Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        									<Modal.Footer>
+          										<Button variant="secondary" onClick={handleClose}>
+            										Close
+												</Button>
+          										<Button variant="primary" onClick={handleClose}>
+													Save Changes
+          										</Button>
+        									</Modal.Footer>
+										</Modal>
+
 										<Button
 											className="mx-2 bg-danger"
 											variant="secondary"

@@ -74,8 +74,8 @@ const typeDefs = gql`
 		updateSchool(
 			schoolId: ID!
 			name: String
-			budget: Int
 			principal: String
+			budget: Int
 			department: String
 		): School
 		updateDepartment(departmentId: ID!, department: String): Department

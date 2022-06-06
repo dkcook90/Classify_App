@@ -46,8 +46,8 @@ export const ADD_SCHOOL = gql`
 `;
 
 export const UPDATE_SCHOOL = gql`
-  mutation updateSchool($name: String!) {
-    updateSchool(name: $name) {
+  mutation updateSchool($schoolId: ID!, $name: String, $principal: String, $budget: Int) {
+    updateSchool(schoolId: $schoolId) {
       _id
       name
       principal

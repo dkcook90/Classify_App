@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import  Auth  from "../../utils/auth";
 import { QUERY_ALLSCHOOLS, QUERY_SCHOOL } from "../../utils/queries";
-import { ADD_SCHOOL, REMOVE_SCHOOL, UPDATE_SCHOOL } from "../../utils/mutation";
+import { REMOVE_SCHOOL, UPDATE_SCHOOL } from "../../utils/mutation";
 
 import AddSchoolForm from "./AddSchoolForm"
 import "./School.css";
@@ -16,6 +16,7 @@ import Img1 from "../../img/Spring Hill High School.jpg";
 function School() {
 	const { loading, error, data } = useQuery(QUERY_ALLSCHOOLS);
 	const schools = data?.schools
+	const [showAlert, setShowAlert] = useState(false);
 
 	console.log(schools);
 
@@ -27,6 +28,41 @@ function School() {
 	// varibales to toggle the modal setShow state
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
+
+	// variable and state variable that will capture the information from the edit school modal
+	const [editSchoolData, setEditSchoolData] = useState({ schoolId:'', name:'', principal:'', budget:0 })
+	const editFormInfo = (event) => {
+		const { name, value } = event.target;
+		setEditSchoolData({ ...editSchoolData, [name]: value })
+	}
+
+	// function to handle the submisison of editing a school's information
+	const handleFormSubmit = async (event) => {
+        event.preventDefault();
+        console.log("Button Clicked");
+
+        try {
+            const {data} = await updateSchool({
+                variables: { ...editSchoolData, budget:parseInt(editSchoolData.budget) },
+            });
+            console.log(data);
+
+            if (!data) {
+                throw new Error("something went wrong!");
+            }
+
+            setEditSchoolData({
+            schoolId:'', name:"", principal:"", budget:0,
+            });
+
+            window.location.reload()
+
+        } catch (error) {
+            console.log("Caught", editSchoolData, error.networkError.result.errors);
+            console.error(error.message);
+            setShowAlert(true);
+        }
+    };
 
 
 	if (loading) return "Loading...";
@@ -73,14 +109,48 @@ function School() {
 
 										<Modal show={show} onHide={handleClose}>
         									<Modal.Header closeButton>
-          										<Modal.Title>Modal heading</Modal.Title>
+          										<Modal.Title>Edit {school.name}'s Info</Modal.Title>
         									</Modal.Header>
-        									<Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        									<Modal.Body>
+												<Form onSubmit={handleFormSubmit}>
+												<Alert 
+													dismissible 
+													onClose={() => setShowAlert(false)} 
+													show={showAlert} 
+													variant="danger"
+            									>Something went wrong!</Alert>
+													<Form.Group>
+														<Form.Label>School Name</Form.Label>
+														<Form.Control 
+															onChange={editFormInfo}
+															name="name"
+															value={editSchoolData.name}
+															type="text" 
+															placeholder={school.name}/>
+													</Form.Group>
+													<Form.Group>
+														<Form.Label>Principal</Form.Label>
+														<Form.Control 
+															onChange={editFormInfo}
+															name="principal" 
+															value={editSchoolData.principal}
+															type="text" 
+															placeholder={school.principal}/>
+													</Form.Group>
+													<Form.Group>
+														<Form.Label>Budget</Form.Label>
+														<Form.Control 
+															onChange={editFormInfo}
+															name="budget" 
+															value={editSchoolData.budget}
+															type="number" 
+															step="0.01" 
+															placeholder={school.budget}/>
+													</Form.Group>
+												</Form>
+											</Modal.Body>
         									<Modal.Footer>
-          										<Button variant="secondary" onClick={handleClose}>
-            										Close
-												</Button>
-          										<Button variant="primary" onClick={handleClose}>
+          										<Button variant="primary" type="submit" onClick={handleClose}>
 													Save Changes
           										</Button>
         									</Modal.Footer>

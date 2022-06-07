@@ -18,22 +18,39 @@ function SchoolClassrooms() {
 	if (loading) return "Loading...";
 	if (error) return `Error! ${error.message}`;
 
+	// alphabetizes the teacher roster
+	const teacherListForSort = [...teacherList];
+	const teacherListSorted = teacherListForSort.sort(function (a, b) {
+		const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+		const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+		if (nameA < nameB) {
+			return -1;
+		}
+		if (nameA > nameB) {
+			return 1;
+		}
+		// names must be equal
+		return 0;
+	});
+	// console.log(teacherListSorted);
+
 	return (
 		<div className="m-3 schoolClassroomContainer">
 			{Auth.loggedIn() ? (
 				<>
-					<Card style={{ width: "18rem" }}></Card>
 					<Card.Body>
 						<Card.Title>Classrooms for {school.name}</Card.Title>
 						<Card.Text>
 							Use links listed below to view classes for each teacher.
 						</Card.Text>
 						<ListGroup className="list-group-flush">
-							{teacherList.map((teacher) => {
+							{teacherListSorted.map((teacher) => {
 								return (
 									<ListGroupItem>
 										<Card.Link href={`/classroom/${teacher._id}`}>
 											{teacher.name}
+											{"  ---  "}
+											{teacher.department}
 										</Card.Link>
 									</ListGroupItem>
 								);

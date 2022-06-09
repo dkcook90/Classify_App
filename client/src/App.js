@@ -14,6 +14,7 @@ import Footer from "./componets/Footer/Footer";
 import Home from "./componets/Home/Home";
 import Login from "./componets/Login/Login";
 import School from "./componets/School/School";
+import EditSchool from "./componets/School/EditSchool";
 import Department from "./componets/Department/Department";
 import Classroom from "./componets/Classroom/Classroom";
 import AllDepartments from "./componets/Department/AllDepartments.js";
@@ -56,6 +57,7 @@ function App() {
 							<Route path="/home" element={<Home />} />
 							<Route path="/login" element={<Login />} />
 							<Route path="/schools" element={<School />} />
+							<Route path="/schools/:schoolId" element={<EditSchool />} />
 							<Route path="/classrooms/:id" element={<SchoolClassrooms />} />
 							<Route path="/departments/:id" element={<Department />} />
 							<Route path="/classroom/:teacherId" element={<Classroom />} />

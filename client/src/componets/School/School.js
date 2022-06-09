@@ -139,8 +139,8 @@ function School() {
 												>
 													<img alt="edit school" src={editIcon}></img>
 												</Button>
-												{/* modal to edit a school */}
 
+												{/* modal to edit a school */}
 												<Modal show={show} onHide={handleClose}>
 													<Modal.Header closeButton>
 														<Modal.Title>Edit {school.name}'s Info</Modal.Title>

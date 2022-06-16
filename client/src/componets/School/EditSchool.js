@@ -13,8 +13,6 @@ import Img1 from "../../img/Spring Hill High School.jpg";
 const EditSchool = () => {
 	const [showAlert, setShowAlert] = useState(false);
 
-	const [updateSchool] = useMutation(UPDATE_SCHOOL);
-
 	//queries a single school to use with the edit school function via modal
 	const { schoolId } = useParams();
 
@@ -24,24 +22,29 @@ const EditSchool = () => {
 	});
 
 	const school = data?.school || {};
-	console.log = school;
+	// console.log(school._id);
+
+	const [updateSchool, { err }] = useMutation(UPDATE_SCHOOL);
 
 	// variable and state variable that will capture the information from the edit school modal
 	const [editSchoolData, setEditSchoolData] = useState({
-		schoolId: "",
+		schoolId: schoolId,
 		name: "",
 		principal: "",
-		budget: 0,
+		budget: "",
 	});
 	const editFormInfo = (event) => {
 		const { name, value } = event.target;
-		setEditSchoolData({ ...editSchoolData, [name]: value });
+		setEditSchoolData({
+			...editSchoolData,
+			[name]: value,
+		});
 	};
 
 	// function to handle the submisison of editing a school's information
 	const handleSchoolUpdate = async (event) => {
 		event.preventDefault();
-		console.log("Button Clicked", editSchoolData);
+		console.log("Button Clicked", editSchoolData.schoolId);
 
 		try {
 			const { data } = await updateSchool({
@@ -60,12 +63,12 @@ const EditSchool = () => {
 				schoolId: "",
 				name: "",
 				principal: "",
-				budget: 0,
+				budget: "",
 			});
 
 			window.location.reload();
 		} catch (error) {
-			// console.log("Caught", editSchoolData, error.networkError.result.errors);
+			console.log("Caught", editSchoolData, error.networkError);
 			console.error(error.message);
 			setShowAlert(true);
 		}
@@ -83,7 +86,7 @@ const EditSchool = () => {
 									<Card.Img className="cardImage" variant="top" src={Img1} />
 								</Card.Header>
 								<Card.Body>
-									<Form onSubmit={handleSchoolUpdate}>
+									<Form>
 										<Alert
 											dismissible
 											onClose={() => setShowAlert(false)}

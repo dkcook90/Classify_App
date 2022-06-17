@@ -8,12 +8,14 @@ const resolvers = {
 			return await School.find()
 				.populate("department")
 				.populate("teachers")
+				.populate("students")
 				.populate({ path: "teachers", populate: "students" });
 		},
 		school: async (parent, { _id }) => {
 			return await School.findOne({ _id: _id })
 				.populate("department")
 				.populate("teachers")
+				.populate("students")
 				.populate({ path: "teachers", populate: "students" });
 		},
 		departments: async () => {
@@ -67,8 +69,8 @@ const resolvers = {
 			return { token, user };
 		},
 
-		addSchool: async (parent, { name, principal, budget }) => {
-			return await School.create({ name, principal, budget });
+		addSchool: async (parent, { name, principal, budget, image, address }) => {
+			return await School.create({ name, principal, budget, image, address });
 		},
 		addDepartment: async (parent, { department }) => {
 			return await Department.create({ department });
@@ -80,13 +82,18 @@ const resolvers = {
 			return await Student.create({ name, grade, note });
 		},
 
-		updateSchool: async (parent, { schoolId, name, budget, principal, department }) => {
+		updateSchool: async (
+			parent,
+			{ schoolId, name, budget, principal, department }
+		) => {
 			const schoolData = await School.findOneAndUpdate(
 				{ _id: schoolId },
 				{
 					name: name,
 					principal: principal,
 					budget: budget,
+					image: image,
+					address: address,
 					$push: { department: department },
 				},
 				{ new: true }
@@ -148,6 +155,22 @@ const resolvers = {
 			);
 			return teachData;
 		},
+		addStuToSchool: async (parent, { schoolId, studentId }) => {
+			const teachData = await School.findOneAndUpdate(
+				{ _id: schoolId },
+				{ $push: { student: studentId } },
+				{ new: true }
+			);
+			return stuData;
+		},
+		rmvStuFrmSchool: async (parent, { schoolId, studentId }) => {
+			const teachData = await School.findOneAndUpdate(
+				{ _id: schoolId },
+				{ $pull: { students: studentId } }
+			);
+			return stuData;
+		},
+
 		addStuToTeacher: async (parent, { teacherId, studentId }) => {
 			const teachData = await Teacher.findOneAndUpdate(
 				{ _id: teacherId },

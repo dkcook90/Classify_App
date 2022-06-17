@@ -11,6 +11,8 @@ const AddSchoolForm = () => {
 		name: "",
 		principal: "",
 		budget: 0,
+		image: "",
+		address: "",
 	});
 	const [showAlert, setShowAlert] = useState(false);
 
@@ -42,6 +44,8 @@ const AddSchoolForm = () => {
 				name: "",
 				principal: "",
 				budget: 0,
+				image: "",
+				address: "",
 			});
 
 			window.location.reload();
@@ -78,6 +82,16 @@ const AddSchoolForm = () => {
 						type="input"
 						placeholder="School Name"
 					/>
+					<Form.Label>Address:</Form.Label>
+					<Form.Control
+						className="mb-2"
+						name="address"
+						onChange={handleInputChange}
+						value={schoolFormData.address}
+						required
+						type="input"
+						placeholder="Address"
+					/>
 					<Form.Label>Principal:</Form.Label>
 					<Form.Control
 						className="mb-2"
@@ -96,7 +110,17 @@ const AddSchoolForm = () => {
 						value={schoolFormData.budget}
 						required
 						type="number"
+						step="0.01"
 						placeholder="Budget"
+					/>
+					<Form.Label>Image URL address:</Form.Label>
+					<Form.Control
+						className="mb-2"
+						name="image"
+						onChange={handleInputChange}
+						value={schoolFormData.image}
+						type="input"
+						placeholder="https:// ..."
 					/>
 					<Button variant="success" type="submit">
 						ADD SCHOOL

@@ -84,7 +84,7 @@ const resolvers = {
 
 		updateSchool: async (
 			parent,
-			{ schoolId, name, budget, principal, department }
+			{ schoolId, name, budget, principal, department, image, address }
 		) => {
 			const schoolData = await School.findOneAndUpdate(
 				{ _id: schoolId },

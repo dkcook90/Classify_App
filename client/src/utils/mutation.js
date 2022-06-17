@@ -35,12 +35,26 @@ export const ADD_USER = gql`
 // `;
 
 export const ADD_SCHOOL = gql`
-	mutation addSchool($name: String!, $principal: String!, $budget: Int) {
-		addSchool(name: $name, principal: $principal, budget: $budget) {
+	mutation addSchool(
+		$name: String!
+		$principal: String!
+		$budget: Int
+		$address: String!
+		$image: String
+	) {
+		addSchool(
+			name: $name
+			principal: $principal
+			budget: $budget
+			address: $address
+			image: $image
+		) {
 			_id
 			name
 			principal
 			budget
+			address
+			image
 		}
 	}
 `;
@@ -51,17 +65,23 @@ export const UPDATE_SCHOOL = gql`
 		$name: String
 		$principal: String
 		$budget: Int
+		$address: String
+		$image: String
 	) {
 		updateSchool(
 			schoolId: $schoolId
 			name: $name
 			principal: $principal
 			budget: $budget
+			address: $address
+			image: $image
 		) {
 			_id
 			name
 			principal
 			budget
+			address
+			image
 		}
 	}
 `;
@@ -73,6 +93,8 @@ export const REMOVE_SCHOOL = gql`
 			name
 			principal
 			budget
+			address
+			image
 		}
 	}
 `;

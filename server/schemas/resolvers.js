@@ -72,8 +72,12 @@ const resolvers = {
 		addSchool: async (parent, { name, principal, budget, image, address }) => {
 			return await School.create({ name, principal, budget, image, address });
 		},
-		addDepartment: async (parent, { department }) => {
-			return await Department.create({ department });
+		addDepartment: async (parent, { department, school, budget }) => {
+			return await Department.create({
+				department,
+				school,
+				budget,
+			});
 		},
 		addTeacher: async (parent, { name, department, office }) => {
 			return await Teacher.create({ name, department, office });
@@ -100,10 +104,17 @@ const resolvers = {
 			);
 			return schoolData;
 		},
-		updateDepartment: async (parent, { departmentId, department }) => {
+		updateDepartment: async (
+			parent,
+			{ departmentId, department, schoolId, budget }
+		) => {
 			const departmentData = await Department.findOneAndUpdate(
 				{ _id: departmentId },
-				{ department: department },
+				{
+					department: department,
+					school: schoolId,
+					budget: budget,
+				},
 				{ new: true }
 			);
 			return departmentData;
@@ -169,6 +180,37 @@ const resolvers = {
 				{ $pull: { students: studentId } }
 			);
 			return stuData;
+		},
+
+		addTeachToDep: async (parent, { departmentId, teacherId }) => {
+			const teachData = await School.findOneAndUpdate(
+				{ _id: departmentId },
+				{ $push: { teachers: teacherId } },
+				{ new: true }
+			);
+			return teachData;
+		},
+		rmvTeachFrmDep: async (parent, { departmentId, teacherId }) => {
+			const teachData = await School.findOneAndUpdate(
+				{ _id: departmentId },
+				{ $pull: { teachers: teacherId } }
+			);
+			return teachData;
+		},
+		addClassToDep: async (parent, { departmentId, classroomId }) => {
+			const teachData = await School.findOneAndUpdate(
+				{ _id: departmentId },
+				{ $push: { teachers: classroomId } },
+				{ new: true }
+			);
+			return teachData;
+		},
+		rmvClassFrmDep: async (parent, { departmentId, classroomId }) => {
+			const teachData = await School.findOneAndUpdate(
+				{ _id: departmentId },
+				{ $pull: { teachers: classroomId } }
+			);
+			return teachData;
 		},
 
 		addStuToTeacher: async (parent, { teacherId, studentId }) => {

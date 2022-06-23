@@ -35,7 +35,17 @@ const typeDefs = gql`
 	type Department {
 		_id: ID!
 		department: String!
+		school: String
 		budget: Int
+		teachers: [Teacher]
+		classrooms: [ClassRoom]
+	}
+	type ClassRoom {
+		_id: ID!
+		className: String!
+		grade: Int
+		teacher: [Teacher]
+		department: Department
 	}
 	type Query {
 		schools: [School]!
@@ -71,8 +81,11 @@ const typeDefs = gql`
 			address: String!
 			image: String
 		): School
-		addDepartment(department: String!): Department
+
+		addDepartment(department: String!, school: String!, budget: Int): Department
+
 		addTeacher(name: String!, department: String!, office: String!): Teacher
+
 		addStudent(name: String!, grade: Int!, note: String): Student
 
 		removeSchool(schoolId: ID!): School
@@ -89,7 +102,11 @@ const typeDefs = gql`
 			address: String
 			image: String
 		): School
-		updateDepartment(departmentId: ID!, department: String): Department
+		updateDepartment(
+			departmentId: ID!
+			department: String!
+			budget: Int
+		): Department
 		updateTeacher(
 			teacherId: ID!
 			name: String
@@ -111,6 +128,11 @@ const typeDefs = gql`
 		rmvStuFrmSchool(schoolId: ID!, studentId: ID): School
 		# addNTEToSchool(schoolId: ID!, nteId: ID): School
 		# rmvNTEToSchool(schoolId: ID!, nteId: ID): School
+
+		addTeachToDep(schoolId: ID!, teacherId: ID): Department
+		rmvTeachFrmDep(schoolId: ID!, teacherId: ID): Department
+		addClassToDep(schoolId: ID!, classroomId: ID): Department
+		rmvClassFrmDep(schoolId: ID!, classroomId: ID): Department
 
 		addStuToTeacher(teacherId: ID!, studentId: ID): Teacher
 		rmvStuFrmTeacher(teacherId: ID!, studentId: ID): Teacher

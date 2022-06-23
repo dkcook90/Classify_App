@@ -4,6 +4,7 @@ const departmentSchema = new Schema({
 	department: {
 		type: String,
 		required: true,
+		unique: true,
 	},
 	school: {
 		type: Schema.Types.ObjectId,
@@ -12,6 +13,12 @@ const departmentSchema = new Schema({
 	budget: {
 		type: Number,
 	},
+	classrooms: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: "ClassRoom",
+		},
+	],
 	teachers: [
 		{
 			type: Schema.Types.ObjectId,

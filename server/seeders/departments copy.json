@@ -1,0 +1,41 @@
+[
+    {
+        "department": "Admin",
+		"budget": "10000"
+    },
+    {
+        "department": "Science",
+		"budget": "10000",
+		"teachers": ["Zach Pearl", "Ben Novinger"]
+    },
+    {
+        "department": "English",
+		"budget": "10000",
+		"teachers": ["Marry Lou"]
+    },
+    {
+        "department": "Math",
+		"budget": "10000",
+		"teachers": ["Bill Paxton"]
+    },
+    {
+        "department": "Political Science",
+		"budget": "10000",
+		"teachers": ["Jennifer Matsui"]
+    },
+    {
+        "department": "History",
+		"budget": "10000",
+		"teachers": ["Jennifer Matsui", "Tim Burwitz"]
+    },
+    {
+        "department": "Art",
+		"budget": "10000",
+		"teachers": ["Jim Archer", "Marry Lou"]
+    },
+    {
+        "department": "Physical Education",
+		"budget": "10000",
+		"teachers": ["Ben Novinger", "Jennifer Matsui", "Tim Burwitz"]
+    }
+]

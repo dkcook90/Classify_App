@@ -1,48 +1,139 @@
 [
     {
-        "department": "Admin",
+        "_id":"62b5e090dc9d19f13891e2e3",
+		"department": "Admin",
 		"budget": "10000"
     },
     {
-        "department": "Science",
+        "_id":"62b5e090dc9d19f13891e2e4",
+		"department": "Science",
 		"budget": "10000",
 		"classrooms": ["Bio", "Chem", "Physics", "Com Sci"],
 		"teachers": ["Zach Pearl", "Ben Novinger"]
     },
     {
-        "department": "English",
+        "_id":"62b5e090dc9d19f13891e2e5",
+		"department": "English",
 		"budget": "10000",
 		"classrooms": ["English", "Literature", "Poetry", "Language-Arts"],
 		"teachers": ["Marry Lou"]
     },
     {
-        "department": "Math",
+        "_id":"62b5e090dc9d19f13891e2e6",
+		"department": "Math",
 		"budget": "10000",
 		"classrooms": ["Trig", "Pre-Calc", "Algebra-2", "Geometry", "Statistics"],
 		"teachers": ["Bill Paxton"]
     },
     {
-        "department": "Political Science",
+        "_id":"62b5e090dc9d19f13891e2e7",
+		"department": "Political Science",
 		"budget": "10000",
 		"classrooms": ["Intro to Gov", "Con Law", "World Institutions"],
 		"teachers": ["Jennifer Matsui"]
     },
     {
-        "department": "History",
+        "_id":"62b5e090dc9d19f13891e2e8",
+		"department": "History",
 		"budget": "10000",
 		"classrooms": ["History of the World pt1", "Modern American History"],
 		"teachers": ["Jennifer Matsui", "Tim Burwitz"]
     },
     {
-        "department": "Art",
+        "_id":"62b5e090dc9d19f13891e2e9",
+		"department": "Art",
 		"budget": "10000",
 		"classrooms": ["Ceramics", "Painting", "Music", "Theater", "Mixed Media"],
 		"teachers": ["Jim Archer", "Marry Lou"]
     },
     {
-        "department": "Physical Education",
+        "_id":"62b5e090dc9d19f13891e2ea",
+		"department": "Physical Education",
 		"budget": "10000",
 		"classrooms": ["Lacross", "Basketball", "WeightLifting", "Badmitten", "UnderWater Basket Weaving"],
 		"teachers": ["Ben Novinger", "Jennifer Matsui", "Tim Burwitz"]
+    }
+]
+
+[
+    {
+        "_id":"62b5e3496f4510d86e983cbf",
+		"department": "Admin",
+		"budget": "3400"
+    },
+    {
+        "_id":"62b5e3496f4510d86e983cc0",
+		"department": "Science",
+		"budget": "10000"
+    },
+    {
+        "_id":"62b5e3496f4510d86e983cc1",
+		"department": "English",
+		"budget": "6800"
+    },
+    {
+        "_id":"62b5e3496f4510d86e983cc2",
+		"department": "Math",
+		"budget": "8400"
+    },
+    {
+        "_id":"62b5e3496f4510d86e983cc3",
+		"department": "Political Science",
+		"budget": "7500"
+    },
+    {
+        "_id":"62b5e3496f4510d86e983cc4",
+		"department": "History",
+		"budget": "8000"
+    },
+    {
+        "_id":"62b5e3496f4510d86e983cc5",
+		"department": "Art",
+		"budget": "9500"
+    },
+    {
+        "_id":"62b5e3496f4510d86e983cc6",
+		"department": "Physical Education",
+		"budget": "15000"
+    },
+	{
+        "_id":"62b5e090dc9d19f13891e2e3",
+		"department": "Admin",
+		"budget": "3400"
+    },
+    {
+        "_id":"62b5e090dc9d19f13891e2e4",
+		"department": "Science",
+		"budget": "10000"
+    },
+    {
+        "_id":"62b5e090dc9d19f13891e2e5",
+		"department": "English",
+		"budget": "6800"
+    },
+    {
+        "_id":"62b5e090dc9d19f13891e2e6",
+		"department": "Math",
+		"budget": "8400"
+    },
+    {
+        "_id":"62b5e090dc9d19f13891e2e7",
+		"department": "Political Science",
+		"budget": "7500"
+    },
+    {
+        "_id":"62b5e090dc9d19f13891e2e8",
+		"department": "History",
+		"budget": "8000"
+    },
+    {
+        "_id":"62b5e090dc9d19f13891e2e9",
+		"department": "Art",
+		"budget": "9500"
+    },
+    {
+        "_id":"62b5e090dc9d19f13891e2ea",
+		"department": "Physical Education",
+		"budget": "15000"
     }
 ]

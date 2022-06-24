@@ -1,6 +1,5 @@
 [
 	{
-		"_id": "school1",
 		"name": "Spring Hill High School",
 		"address": "19701 S Ridgeview Rd, Spring Hill, KS 66083",
 		"image": "https://scontent.fapa1-1.fna.fbcdn.net/v/t39.30808-6/278186107_370662098402506_3552167079355992174_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=e3f864&_nc_ohc=yVSQsmpfMn0AX_E1kHe&_nc_ht=scontent.fapa1-1.fna&oh=00_AT_BflV0qPLlpwaLjxVW9W65N87arYe96I6yquAA20fQ9A&oe=62B0810E",
@@ -8,7 +7,6 @@
 		"budget": 250000
     },
 	{
-		"_id": "school2",
 		"name": "Lincoln High School",
 		"address": "2285 S. Federal Blvd. Denver, CO 80219",
 		"image": "https://media-exp1.licdn.com/dms/image/C4E1BAQEljiYVyvYdPQ/company-background_10000/0/1586359933688?e=2147483647&v=beta&t=buAxMUDwSiTiXkvYZalFuIpyP27nETfQUMmT6uccEM4",

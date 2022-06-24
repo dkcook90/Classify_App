@@ -17,7 +17,7 @@ const typeDefs = gql`
 	type Teacher {
 		_id: ID!
 		name: String!
-		department: String!
+		department: [Department]
 		office: String!
 		students: [Student]
 	}
@@ -82,7 +82,7 @@ const typeDefs = gql`
 			image: String
 		): School
 
-		addDepartment(department: String!, school: String!, budget: Int): Department
+		addDepartment(department: String!, school: String, budget: Int): Department
 
 		addTeacher(name: String!, department: String!, office: String!): Teacher
 

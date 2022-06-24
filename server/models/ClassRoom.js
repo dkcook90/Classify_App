@@ -11,12 +11,10 @@ const classRoomSchema = new Schema({
 	teacher: {
 		type: Schema.Types.ObjectId,
 		ref: "Teacher",
-		required: true,
 	},
 	department: {
 		type: Schema.Types.ObjectId,
 		ref: "Department",
-		required: true,
 	},
 });
 

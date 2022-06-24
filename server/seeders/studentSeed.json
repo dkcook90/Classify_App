@@ -1,7 +1,7 @@
 [
     {
         "name":"Timmy",
-        "grade":9,
+        "grade":11,
         "note":"Nut Allergy"
     },
     {
@@ -26,17 +26,17 @@
     },
     {
         "name":"Rick",
-        "grade":9,
+        "grade":12,
         "note":"ICE Call Father@ 555-555-5555"
     },
     {
         "name":"Caitlin",
-        "grade":9,
+        "grade":10,
         "note":""
     },
     {
         "name":"Hannah",
-        "grade":9,
+        "grade":11,
         "note":"Early release for Band"
     },
     {
@@ -66,7 +66,7 @@
     },
     {
         "name":"Jackie",
-        "grade":9,
+        "grade":12,
         "note":""
     },
     {
@@ -76,12 +76,12 @@
     },
     {
         "name":"Drew",
-        "grade":9,
+        "grade":11,
         "note":""
     },
     {
         "name":"Lucas",
-        "grade":9,
+        "grade":10,
         "note":""
     },
     {

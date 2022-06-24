@@ -1,48 +1,34 @@
 [
     {
         "department": "Admin",
-		"budget": "10000"
+		"budget": "3400"
     },
     {
         "department": "Science",
-		"budget": "10000",
-		"classrooms": ["Bio", "Chem", "Physics", "Com Sci"],
-		"teachers": ["Zach Pearl", "Ben Novinger"]
+		"budget": "10000"
     },
     {
         "department": "English",
-		"budget": "10000",
-		"classrooms": ["English", "Literature", "Poetry", "Language-Arts"],
-		"teachers": ["Marry Lou"]
+		"budget": "6800"
     },
     {
         "department": "Math",
-		"budget": "10000",
-		"classrooms": ["Trig", "Pre-Calc", "Algebra-2", "Geometry", "Statistics"],
-		"teachers": ["Bill Paxton"]
+		"budget": "8400"
     },
     {
         "department": "Political Science",
-		"budget": "10000",
-		"classrooms": ["Intro to Gov", "Con Law", "World Institutions"],
-		"teachers": ["Jennifer Matsui"]
+		"budget": "7500"
     },
     {
         "department": "History",
-		"budget": "10000",
-		"classrooms": ["History of the World pt1", "Modern American History"],
-		"teachers": ["Jennifer Matsui", "Tim Burwitz"]
+		"budget": "8000"
     },
     {
         "department": "Art",
-		"budget": "10000",
-		"classrooms": ["Ceramics", "Painting", "Music", "Theater", "Mixed Media"],
-		"teachers": ["Jim Archer", "Marry Lou"]
+		"budget": "9500"
     },
     {
         "department": "Physical Education",
-		"budget": "10000",
-		"classrooms": ["Lacross", "Basketball", "WeightLifting", "Badmitten", "UnderWater Basket Weaving"],
-		"teachers": ["Ben Novinger", "Jennifer Matsui", "Tim Burwitz"]
+		"budget": "15000"
     }
 ]

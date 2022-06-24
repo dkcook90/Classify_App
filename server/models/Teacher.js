@@ -5,10 +5,11 @@ const teacherSchema = new Schema({
 		type: String,
 		// required: true,
 	},
-	department: {
-		type: String,
-		required: true,
-	},
+	department: [
+		{
+			type: String,
+		},
+	],
 	office: {
 		type: String,
 		required: true,

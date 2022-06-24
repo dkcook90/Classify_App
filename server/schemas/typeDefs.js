@@ -13,13 +13,16 @@ const typeDefs = gql`
 		name: String
 		grade: Int
 		note: String
+		classes: [classroomId]
+		teachers: [Teacher]
 	}
 	type Teacher {
 		_id: ID!
 		name: String!
-		department: [Department]
+		departments: [Department]
 		office: String!
 		students: [Student]
+		classes: [ClassRoom]
 	}
 	type School {
 		_id: ID!
@@ -28,17 +31,17 @@ const typeDefs = gql`
 		image: String
 		principal: String!
 		budget: Int
-		department: [Department]
+		departments: [Department]
 		teachers: [Teacher]
 		students: [Student]
 	}
 	type Department {
 		_id: ID!
 		department: String!
-		school: String
+		school: School
 		budget: Int
 		teachers: [Teacher]
-		classrooms: [ClassRoom]
+		classes: [ClassRoom]
 	}
 	type ClassRoom {
 		_id: ID!
@@ -58,6 +61,8 @@ const typeDefs = gql`
 		student(studentId: ID!): Student
 		users: [User]
 		user(email: String!): User
+		classrooms: [ClassRoom]!
+		classroom: (classroomId: ID!): ClassRoom
 	}
 	type Auth {
 		token: ID!
@@ -81,36 +86,34 @@ const typeDefs = gql`
 			address: String!
 			image: String
 		): School
-
 		addDepartment(department: String!, school: String, budget: Int): Department
-
 		addTeacher(name: String!, department: String!, office: String!): Teacher
-
 		addStudent(name: String!, grade: Int!, note: String): Student
+		addClassroom(className: String!, grade: Int, department:departmentId, teacher: teacherId)
 
 		removeSchool(schoolId: ID!): School
 		removeDepartment(departmentId: ID!): Department
 		removeTeacher(teacherId: ID!): Teacher
 		removeStudent(studentId: ID!): Student
+		removeClassroom(classroomId: ID!): ClassRoom
 
 		updateSchool(
 			schoolId: ID!
 			name: String
 			principal: String
 			budget: Int
-			department: String
 			address: String
 			image: String
 		): School
 		updateDepartment(
 			departmentId: ID!
 			department: String!
+			school: schoolId
 			budget: Int
 		): Department
 		updateTeacher(
 			teacherId: ID!
 			name: String
-			department: String
 			office: String
 		): Teacher
 		updateStudent(
@@ -119,7 +122,15 @@ const typeDefs = gql`
 			grade: String
 			note: String
 		): Student
+		updateClassroom(
+			classroomId: ID!
+			className: String
+			grade: String
+			department: departmentId
+			teacher: teacherId
+		): ClassRoom
 
+		# school specific
 		addDepToSchool(schoolId: ID!, departmentId: ID): School
 		rmvDepFrmSchool(schoolId: ID!, departmentId: ID): School
 		addTeachToSchool(schoolId: ID!, teacherId: ID): School
@@ -129,15 +140,32 @@ const typeDefs = gql`
 		# addNTEToSchool(schoolId: ID!, nteId: ID): School
 		# rmvNTEToSchool(schoolId: ID!, nteId: ID): School
 
+		# department specific
 		addTeachToDep(schoolId: ID!, teacherId: ID): Department
 		rmvTeachFrmDep(schoolId: ID!, teacherId: ID): Department
 		addClassToDep(schoolId: ID!, classroomId: ID): Department
 		rmvClassFrmDep(schoolId: ID!, classroomId: ID): Department
 
+		# teacher specific
 		addStuToTeacher(teacherId: ID!, studentId: ID): Teacher
 		rmvStuFrmTeacher(teacherId: ID!, studentId: ID): Teacher
+		addClassToTeacher(teacherId: ID!, classroomId: ID): Teacher
+		rmvClassFrmTeacher(teacherId: ID!, classroomId: ID): Teacher
+		addDepToTeacher(teacherId: ID!, departmentId: ID): Teacher
+		rmvDepFrmTeacher(teacherId: ID!, departmentId: ID): Teacher
+		
+		# ClassRoom specific
+		# addTeacherToClass(classroomId: ID, teacherId: ID!): ClassRoom
+		# rmvTeacherFrmClass(classroomId: ID, teacherId: ID!): ClassRoom
+		addStuToClass(classroomId: ID!, studentId: ID): ClassRoom
+		rmvStuFrmClass(classroomId: ID!, studentId: ID): ClassRoom
+
+		# student specific
 		addTeachToStudent(studentId: ID!, teacherId: ID): Student
 		rmvTeachFrmStudent(studentId: ID!, teacherId: ID): Student
+		addClassToStudent(studentId: ID!, classroomId: ID): Student
+		rmvClassFrmStudent(studentId: ID!, classroomId: ID): Student
+
 	}
 `;
 

@@ -16,6 +16,13 @@ const classRoomSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: "Department",
 	},
+	// add student roster as able
+	// students: [
+	// 	{
+	// 		type: Schema.Types.ObjectId,
+	// 		ref: "Student",
+	// 	},
+	// ],
 });
 
 const ClassRoom = model("ClassRoom", classRoomSchema);

@@ -5,19 +5,26 @@ const teacherSchema = new Schema({
 		type: String,
 		// required: true,
 	},
-	department: [
-		{
-			type: String,
-		},
-	],
 	office: {
 		type: String,
 		required: true,
 	},
+	departments: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: "Department",
+		},
+	],
 	students: [
 		{
 			type: Schema.Types.ObjectId,
 			ref: "Student",
+		},
+	],
+	classes: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: "ClassRoom",
 		},
 	],
 });

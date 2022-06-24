@@ -24,7 +24,7 @@ const schoolSchema = new Schema({
 	budget: {
 		type: Number,
 	},
-	department: [
+	departments: [
 		{
 			type: Schema.Types.ObjectId,
 			ref: "Department",
@@ -42,12 +42,12 @@ const schoolSchema = new Schema({
 			ref: "Student",
 		},
 	],
-	nte: [
-		{
-			type: Schema.Types.ObjectId,
-			ref: "NTE",
-		},
-	],
+	// nte: [
+	// 	{
+	// 		type: Schema.Types.ObjectId,
+	// 		ref: "NTE",
+	// 	},
+	// ],
 });
 
 const School = model("School", schoolSchema);

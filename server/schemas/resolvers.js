@@ -1,4 +1,11 @@
-const { User, School, Department, Teacher, Student } = require("../models");
+const {
+	User,
+	School,
+	Department,
+	Teacher,
+	Student,
+	ClassRoom,
+} = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 
@@ -6,14 +13,14 @@ const resolvers = {
 	Query: {
 		schools: async () => {
 			return await School.find()
-				.populate("department")
+				.populate("departments")
 				.populate("teachers")
 				.populate("students")
 				.populate({ path: "teachers", populate: "students" });
 		},
 		school: async (parent, { _id }) => {
 			return await School.findOne({ _id: _id })
-				.populate("department")
+				.populate("departments")
 				.populate("teachers")
 				.populate("students")
 				.populate({ path: "teachers", populate: "students" });
@@ -41,6 +48,12 @@ const resolvers = {
 		},
 		user: async (parent, { email }) => {
 			return User.findOne({ email });
+		},
+		classrooms: async () => {
+			return await ClassRoom.find();
+		},
+		classroom: async (parent, { classroomId }) => {
+			return await ClassRoom.findOne({ _id: classroomId });
 		},
 	},
 
@@ -85,10 +98,13 @@ const resolvers = {
 		addStudent: async (parent, { name, grade, note }) => {
 			return await Student.create({ name, grade, note });
 		},
+		addClassroom: async (parent, { className, grade, teacher, department }) => {
+			return await ClassRoom.create({ className, grade, teacher, department });
+		},
 
 		updateSchool: async (
 			parent,
-			{ schoolId, name, budget, principal, department, image, address }
+			{ schoolId, name, budget, principal, image, address }
 		) => {
 			const schoolData = await School.findOneAndUpdate(
 				{ _id: schoolId },
@@ -98,7 +114,7 @@ const resolvers = {
 					budget: budget,
 					image: image,
 					address: address,
-					$push: { department: department },
+					$push: { department: Department },
 				},
 				{ new: true }
 			);
@@ -135,51 +151,67 @@ const resolvers = {
 			);
 			return studentData;
 		},
+		updateClassroom: async (
+			parent,
+			{ classroomId, className, grade, teacherId, departmentId }
+		) => {
+			const classroomData = await ClassRoom.findOneAndUpdate(
+				{ _id: classroomId },
+				{
+					className: className,
+					grade: grade,
+					teacher: teacherId,
+					department: departmentId,
+				},
+				{ new: true }
+			);
+			return classroomData;
+		},
 
 		addDepToSchool: async (parent, { schoolId, departmentId }) => {
-			const depData = await School.findOneAndUpdate(
+			const schData = await School.findOneAndUpdate(
 				{ _id: schoolId },
 				{ $push: { department: departmentId } },
 				{ new: true }
 			);
-			return depData;
+			return schData;
 		},
 		rmvDepFrmSchool: async (parent, { schoolId, departmentId }) => {
-			const depData = await School.findOneAndUpdate(
+			const schData = await School.findOneAndUpdate(
 				{ _id: schoolId },
 				{ $pull: { department: departmentId } }
 			);
-			return depData;
+			return schData;
 		},
 		addTeachToSchool: async (parent, { schoolId, teacherId }) => {
-			const teachData = await School.findOneAndUpdate(
+			const schData = await School.findOneAndUpdate(
 				{ _id: schoolId },
 				{ $push: { teachers: teacherId } },
 				{ new: true }
 			);
-			return teachData;
+			return schData;
 		},
 		rmvTeachFrmSchool: async (parent, { schoolId, teacherId }) => {
-			const teachData = await School.findOneAndUpdate(
+			const schData = await School.findOneAndUpdate(
 				{ _id: schoolId },
 				{ $pull: { teachers: teacherId } }
 			);
-			return teachData;
+			return schData;
 		},
 		addStuToSchool: async (parent, { schoolId, studentId }) => {
-			const teachData = await School.findOneAndUpdate(
+			const schData = await School.findOneAndUpdate(
 				{ _id: schoolId },
 				{ $push: { student: studentId } },
 				{ new: true }
 			);
-			return stuData;
+			return schData;
 		},
 		rmvStuFrmSchool: async (parent, { schoolId, studentId }) => {
-			const teachData = await School.findOneAndUpdate(
+			const schData = await School.findOneAndUpdate(
 				{ _id: schoolId },
 				{ $pull: { students: studentId } }
 			);
-			return stuData;
+			return schData;
 		},
 
 		addTeachToDep: async (parent, { departmentId, teacherId }) => {
@@ -200,7 +232,7 @@ const resolvers = {
 		addClassToDep: async (parent, { departmentId, classroomId }) => {
 			const teachData = await School.findOneAndUpdate(
 				{ _id: departmentId },
-				{ $push: { teachers: classroomId } },
+				{ $push: { classes: classroomId } },
 				{ new: true }
 			);
 			return teachData;
@@ -208,7 +240,7 @@ const resolvers = {
 		rmvClassFrmDep: async (parent, { departmentId, classroomId }) => {
 			const teachData = await School.findOneAndUpdate(
 				{ _id: departmentId },
-				{ $pull: { teachers: classroomId } }
+				{ $pull: { classes: classroomId } }
 			);
 			return teachData;
 		},
@@ -228,20 +260,82 @@ const resolvers = {
 			);
 			return teachData;
 		},
-		addTeachToStudent: async (parent, { studentId, teacherId }) => {
-			const teachData = await Student.findOneAndUpdate(
-				{ _id: studentId },
-				{ $push: { teachers: teacherId } },
+		addClassToTeacher: async (parent, { teacherId, classroomId }) => {
+			const teachData = await Teacher.findOneAndUpdate(
+				{ _id: teacherId },
+				{ $push: { classes: classroomId } },
 				{ new: true }
 			);
 			return teachData;
 		},
+		rmvClassFrmTeacher: async (parent, { teacherId, classroomId }) => {
+			const teachData = await Teacher.findOneAndUpdate(
+				{ _id: teacherId },
+				{ $pull: { classes: classroomId } }
+			);
+			return teachData;
+		},
+		addDepToTeacher: async (parent, { teacherId, departmentId }) => {
+			const teachData = await Teacher.findOneAndUpdate(
+				{ _id: teacherId },
+				{ $push: { departments: departmentId } },
+				{ new: true }
+			);
+			return teachData;
+		},
+		rmvDepFrmTeacher: async (parent, { teacherId, departmentId }) => {
+			const teachData = await Teacher.findOneAndUpdate(
+				{ _id: teacherId },
+				{ $pull: { departments: departmentId } }
+			);
+			return teachData;
+		},
+
+		addStuToClass: async (parent, { classroomId, studentId }) => {
+			const classData = await ClassRoom.findOneAndUpdate(
+				{ _id: classroomId },
+				{ $push: { students: studentId } },
+				{ new: true }
+			);
+			return classData;
+		},
+		rmvStuFrmClass: async (parent, { classroomId, studentId }) => {
+			const classData = await ClassRoom.findOneAndUpdate(
+				{ _id: classroomId },
+				{ $pull: { students: studentId } }
+			);
+			return classData;
+		},
+
+		addTeachToStudent: async (parent, { studentId, teacherId }) => {
+			const stuData = await Student.findOneAndUpdate(
+				{ _id: studentId },
+				{ $push: { teachers: teacherId } },
+				{ new: true }
+			);
+			return stuData;
+		},
 		rmvTeachFrmStudent: async (parent, { studentId, teacherId }) => {
-			const teachData = await Student.findOneAndUpdate(
+			const stuData = await Student.findOneAndUpdate(
 				{ _id: studentId },
 				{ $pull: { teachers: teacherId } }
 			);
-			return teachData;
+			return stuData;
+		},
+		addClassToStudent: async (parent, { studentId, classroomId }) => {
+			const stuData = await Student.findOneAndUpdate(
+				{ _id: studentId },
+				{ $push: { classes: classroomId } },
+				{ new: true }
+			);
+			return stuData;
+		},
+		rmvClassFrmStudent: async (parent, { studentId, classroomId }) => {
+			const stuData = await Student.findOneAndUpdate(
+				{ _id: studentId },
+				{ $pull: { classes: classroomId } }
+			);
+			return stuData;
 		},
 
 		removeSchool: async (parent, { schoolId }) => {
@@ -255,6 +349,9 @@ const resolvers = {
 		},
 		removeStudent: async (parent, { studentId }) => {
 			return await Student.findOneAndDelete({ _id: studentId });
+		},
+		removeClass: async (parent, { classroomId }) => {
+			return await ClassRoom.findOneAndDelete({ _id: classroomId });
 		},
 	},
 };

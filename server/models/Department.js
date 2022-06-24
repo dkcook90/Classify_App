@@ -13,7 +13,7 @@ const departmentSchema = new Schema({
 	budget: {
 		type: Number,
 	},
-	classrooms: [
+	classes: [
 		{
 			type: Schema.Types.ObjectId,
 			ref: "ClassRoom",

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
-import { Alert, Container, Form, Button, Card } from "react-bootstrap";
+import { Alert, Container, Form, Button, Card, Img } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 
 import Auth from "../../utils/auth";
 import { QUERY_SCHOOL } from "../../utils/queries";
 import { UPDATE_SCHOOL } from "../../utils/mutation";
 
-import "./School.css";
+// import "./School.css";
 import Img1 from "../../img/Spring Hill High School.jpg";
 
 const EditSchool = () => {
@@ -32,6 +32,8 @@ const EditSchool = () => {
 		name: "",
 		principal: "",
 		budget: "",
+		image: "",
+		address: "",
 	});
 	const editFormInfo = (event) => {
 		const { name, value } = event.target;
@@ -64,6 +66,8 @@ const EditSchool = () => {
 				name: "",
 				principal: "",
 				budget: "",
+				image: "",
+				address: "",
 			});
 
 			window.location.reload();
@@ -83,7 +87,11 @@ const EditSchool = () => {
 							<Card>
 								<Card.Header>
 									<Card.Title>Edit {school.name}'s Info</Card.Title>
-									<Card.Img className="cardImage" variant="top" src={Img1} />
+									<Card.Img
+										className="cardImage"
+										variant="top"
+										src={school.image}
+									/>
 								</Card.Header>
 								<Card.Body>
 									<Form>
@@ -104,8 +112,14 @@ const EditSchool = () => {
 												type="text"
 												placeholder={school.name}
 											/>
-										</Form.Group>
-										<Form.Group>
+											<Form.Label>Address</Form.Label>
+											<Form.Control
+												onChange={editFormInfo}
+												name="address"
+												value={editSchoolData.address}
+												type="text"
+												placeholder={school.address}
+											/>
 											<Form.Label>Principal</Form.Label>
 											<Form.Control
 												onChange={editFormInfo}
@@ -114,8 +128,6 @@ const EditSchool = () => {
 												type="text"
 												placeholder={school.principal}
 											/>
-										</Form.Group>
-										<Form.Group>
 											<Form.Label>Budget</Form.Label>
 											<Form.Control
 												onChange={editFormInfo}
@@ -124,6 +136,14 @@ const EditSchool = () => {
 												type="number"
 												step="0.01"
 												placeholder={school.budget}
+											/>
+											<Form.Label>Image URL</Form.Label>
+											<Form.Control
+												onChange={editFormInfo}
+												name="image"
+												value={editSchoolData.image}
+												type="text"
+												placeholder={school.image}
 											/>
 										</Form.Group>
 									</Form>

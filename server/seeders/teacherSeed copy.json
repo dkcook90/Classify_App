@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Marry Lou",
+    "department": "English",
+    "office": "SB1"
+  },
+  {
+    "name": "Bill Paxton",
+    "department": "Math",
+    "office": "SB2"
+  },
+  {
+    "name": "Jennifer Matsui",
+    "department": "Political Science",
+    "office": "SB3"
+  },
+  {
+    "name": "Jim Archer",
+    "department": "Art",
+    "office": "SB3"
+  },
+  {
+    "name": "Ben Novinger",
+    "department": "Computer Science",
+    "office": "SB4"
+  },
+  {
+    "name": "Zach Pearl",
+    "department": "Science",
+    "office": "SB5"
+  }
+]

@@ -5,6 +5,12 @@ padding-right: 0px;
 padding-left: 0px
 }
 
+.cardImage {
+	height: 250px;
+	width: 100%;
+	overflow: hidden;
+}
+
 .addbtn {
 	background-color: #43AA8B;
 }

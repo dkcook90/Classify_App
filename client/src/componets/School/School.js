@@ -54,23 +54,37 @@ function School() {
 							<h1>Schools in District:</h1>
 							{schoolsSorted.map((school) => (
 								<Card className="col-12 m-1">
-									<Card.Img className="cardImage" variant="top" src={Img1} />
+									<Card.Img
+										className="cardImage"
+										variant="top"
+										src={school.image}
+									/>
 									<Card.Body>
 										<Card.Title>{school.name}</Card.Title>
 										<Card.Text>
-											Address: <br />
-											{school.principal} <br />
-											{school.budget} <br />
+											Address: {school.address} <br />
+											Principal: {school.principal} <br />
+											Budget: ${school.budget} <br />
 										</Card.Text>
 										<ListGroup className="list-group-flush">
 											<ListGroupItem>
 												<Card.Link href={`departments/${school._id}`}>
-													{school.name}'s Departments
+													Departments
+												</Card.Link>
+											</ListGroupItem>
+											<ListGroupItem>
+												<Card.Link href={`teachers/${school._id}`}>
+													Teachers
 												</Card.Link>
 											</ListGroupItem>
 											<ListGroupItem>
 												<Card.Link href={`classrooms/${school._id}`}>
-													{school.name}'s Classrooms
+													Classes
+												</Card.Link>
+											</ListGroupItem>
+											<ListGroupItem>
+												<Card.Link href={`students/${school._id}`}>
+													Students
 												</Card.Link>
 											</ListGroupItem>
 											<ListGroupItem>
@@ -79,6 +93,7 @@ function School() {
 													variant="secondary"
 													type=""
 													href={`schools/${school._id}`}
+													alt="Edit School"
 												>
 													<img alt="edit school" src={editIcon}></img>
 												</Button>
@@ -86,6 +101,7 @@ function School() {
 													className="mx-2 bg-danger"
 													variant="secondary"
 													type=""
+													alt="Delete School"
 													onClick={() => {
 														removeSchool({
 															variables: { schoolId: school._id },

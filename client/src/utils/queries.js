@@ -20,22 +20,25 @@ export const QUERY_SCHOOL = gql`
 			budget
 			address
 			image
-			department {
+			departments {
 				_id
 				department
+				school
 				budget
+				teachers
+				classes
 			}
 			teachers {
 				_id
 				name
 				department
 				office
-				students {
-					_id
-					name
-					grade
-					note
-				}
+			}
+			students {
+				_id
+				name
+				grade
+				note
 			}
 		}
 	}
@@ -50,21 +53,14 @@ export const QUERY_ALLSCHOOLS = gql`
 			budget
 			address
 			image
-			department {
+			departments {
 				_id
-				department
 			}
 			teachers {
 				_id
-				name
-				department
-				office
-				students {
-					_id
-					name
-					grade
-					note
-				}
+			}
+			students {
+				_id
 			}
 		}
 	}
@@ -76,6 +72,12 @@ export const QUERY_ALLDEPT = gql`
 			_id
 			department
 			budget
+			classes {
+				_id
+			}
+			teachers {
+				_id
+			}
 		}
 	}
 `;

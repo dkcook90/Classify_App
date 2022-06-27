@@ -12,10 +12,10 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
 	Query: {
 		schools: async () => {
-			return await School.find()
-				.populate("departments")
-				.populate("teachers")
-				.populate("students");
+			return await School.find();
+			// .populate("departments")
+			// .populate("teachers")
+			// .populate("students");
 			// .populate({ path: "teachers", populate: "students" });
 		},
 		school: async (parent, { _id }) => {

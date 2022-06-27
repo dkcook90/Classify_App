@@ -13,7 +13,7 @@ const typeDefs = gql`
 		name: String
 		grade: Int
 		note: String
-		classes: [classroomId]
+		classes: [ClassRoom]
 		teachers: [Teacher]
 	}
 	type Teacher {
@@ -62,7 +62,7 @@ const typeDefs = gql`
 		users: [User]
 		user(email: String!): User
 		classrooms: [ClassRoom]!
-		classroom: (classroomId: ID!): ClassRoom
+		classroom(classroomId: ID!): ClassRoom
 	}
 	type Auth {
 		token: ID!
@@ -89,13 +89,18 @@ const typeDefs = gql`
 		addDepartment(department: String!, school: String, budget: Int): Department
 		addTeacher(name: String!, department: String!, office: String!): Teacher
 		addStudent(name: String!, grade: Int!, note: String): Student
-		addClassroom(className: String!, grade: Int, department:departmentId, teacher: teacherId)
+		addClassroom(
+			className: String!
+			grade: Int
+			department: ID!
+			teacher: ID!
+		): ClassRoom
 
 		removeSchool(schoolId: ID!): School
 		removeDepartment(departmentId: ID!): Department
 		removeTeacher(teacherId: ID!): Teacher
 		removeStudent(studentId: ID!): Student
-		removeClassroom(classroomId: ID!): ClassRoom
+		removeClass(classroomId: ID!): ClassRoom
 
 		updateSchool(
 			schoolId: ID!
@@ -108,14 +113,10 @@ const typeDefs = gql`
 		updateDepartment(
 			departmentId: ID!
 			department: String!
-			school: schoolId
+			school: ID!
 			budget: Int
 		): Department
-		updateTeacher(
-			teacherId: ID!
-			name: String
-			office: String
-		): Teacher
+		updateTeacher(teacherId: ID!, name: String, office: String): Teacher
 		updateStudent(
 			studentId: ID!
 			name: String
@@ -126,8 +127,8 @@ const typeDefs = gql`
 			classroomId: ID!
 			className: String
 			grade: String
-			department: departmentId
-			teacher: teacherId
+			department: ID!
+			teacher: ID!
 		): ClassRoom
 
 		# school specific
@@ -153,7 +154,7 @@ const typeDefs = gql`
 		rmvClassFrmTeacher(teacherId: ID!, classroomId: ID): Teacher
 		addDepToTeacher(teacherId: ID!, departmentId: ID): Teacher
 		rmvDepFrmTeacher(teacherId: ID!, departmentId: ID): Teacher
-		
+
 		# ClassRoom specific
 		# addTeacherToClass(classroomId: ID, teacherId: ID!): ClassRoom
 		# rmvTeacherFrmClass(classroomId: ID, teacherId: ID!): ClassRoom
@@ -165,7 +166,6 @@ const typeDefs = gql`
 		rmvTeachFrmStudent(studentId: ID!, teacherId: ID): Student
 		addClassToStudent(studentId: ID!, classroomId: ID): Student
 		rmvClassFrmStudent(studentId: ID!, classroomId: ID): Student
-
 	}
 `;
 

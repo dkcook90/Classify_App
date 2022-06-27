@@ -2,31 +2,49 @@
   {
     "_id": "62b5e7adf1bfcc0347fec8c2",
 	"name": "Marry Lou",
-    "office": "SB1"
+    "office": "SB1",
+	"departments" : ["62b5e090dc9d19f13891e2ea", "62b5e090dc9d19f13891e2e5"],
+	"students" : [],
+	"classes" : ["62b5eb16f4b840e66a7e0e42", "62b5eb16f4b840e66a7e0e56"]
   },
   {
     "_id": "62b5e7adf1bfcc0347fec8c3",
     "name": "Bill Paxton",
-    "office": "SB2"
+    "office": "SB2",
+	"departments" : ["62b5e090dc9d19f13891e2ea", "62b5e090dc9d19f13891e2e6"],
+	"students" : [],
+	"classes" : ["62b5eb16f4b840e66a7e0e47", "62b5eb16f4b840e66a7e0e47"]
   },
   {
     "_id": "62b5e7adf1bfcc0347fec8c4",
     "name": "Jennifer Matsui",
-    "office": "SB3"
+    "office": "SB3",
+	"departments" : ["62b5e090dc9d19f13891e2e7", "62b5e090dc9d19f13891e2e8"],
+	"students" : [],
+	"classes" : ["62b5eb16f4b840e66a7e0e49", "62b5eb16f4b840e66a7e0e48", "62b5eb16f4b840e66a7e0e4c", "62b5eb16f4b840e66a7e0e4b"]
   },
   {
     "_id": "62b5e7adf1bfcc0347fec8c5",
     "name": "Jim Archer",
-    "office": "SB3"
+    "office": "SB3",
+	"departments" : ["62b5e3496f4510d86e983cc5"],
+	"students" : [],
+	"classes" : ["62b5ec58c33026424138e704", "62b5ec58c33026424138e706"]
   },
   {
     "_id": "62b5e7adf1bfcc0347fec8c6",
     "name": "Ben Novinger",
-    "office": "SB4"
+    "office": "SB4",
+	"departments" : ["62b5e3496f4510d86e983cc4", "62b5e3496f4510d86e983cc0"],
+	"students" : [],
+	"classes" : ["62b5ec58c33026424138e702", "62b5ec58c33026424138e6f5"]
   },
   {
     "_id": "62b5e7adf1bfcc0347fec8c7",
     "name": "Zach Pearl",
-    "office": "SB5"
+    "office": "SB5",
+	"departments" : ["62b5e3496f4510d86e983cc6", "62b5e3496f4510d86e983cc0"],
+	"students" : [],
+	"classes" : ["62b5ec58c33026424138e6f2", "62b5ec58c33026424138e6f3", "62b5ec58c33026424138e70b", "62b5ec58c33026424138e709"]
   }
 ]

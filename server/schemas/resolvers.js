@@ -15,15 +15,15 @@ const resolvers = {
 			return await School.find()
 				.populate("departments")
 				.populate("teachers")
-				.populate("students")
-				.populate({ path: "teachers", populate: "students" });
+				.populate("students");
+			// .populate({ path: "teachers", populate: "students" });
 		},
 		school: async (parent, { _id }) => {
 			return await School.findOne({ _id: _id })
 				.populate("departments")
 				.populate("teachers")
-				.populate("students")
-				.populate({ path: "teachers", populate: "students" });
+				.populate("students");
+			// .populate({ path: "teachers", populate: "students" });
 		},
 		departments: async () => {
 			return await Department.find();
@@ -114,7 +114,7 @@ const resolvers = {
 					budget: budget,
 					image: image,
 					address: address,
-					$push: { department: Department },
+					// $push: { department: Department },
 				},
 				{ new: true }
 			);

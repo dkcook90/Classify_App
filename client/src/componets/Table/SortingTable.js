@@ -1,26 +1,27 @@
 import React, { useMemo } from 'react'
-import { useTable } from 'react-table'
+import { useTable, useSortBy } from 'react-table'
 import STUDENT_DATA from './studentSeed.json'  
 // need to fix this link to the json data
 import { COLUMNS } from "./columns.js"
 import './table.css'
 
 
-export const BasicTable = () => {
-  
-  const columns = useMemo(() => COLUMNS, [])
-  const data = useMemo(() => STUDENT_DATA, [])
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    footerGroups,
-    rows,
-    prepareRow,
-  } = useTable({
-    columns,
-    data
-  })
+export const SortingTable = () => {
+
+    const columns = useMemo(() => COLUMNS, [])
+    const data = useMemo(() => STUDENT_DATA, [])
+    const {
+        getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        footerGroups,
+        rows,
+        prepareRow,
+    } = useTable({
+        columns,
+        data
+    },
+    useSortBy)
 
   return (
     <table {...getTableProps()}>
@@ -28,7 +29,12 @@ export const BasicTable = () => {
         {headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+              <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  {column.render('Header')}
+                  <span>
+                      {column.isSorted ? (column.isSortedDesc ? 'DSC' : 'ASC') : ''}
+                  </span>
+                </th>
             ))}
         </tr>
         ))}

@@ -15,5 +15,8 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^7.1.0"
+  },
+  "dependencies": {
+    "react-table": "^7.8.0"
   }
 }

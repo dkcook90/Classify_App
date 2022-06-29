@@ -16,7 +16,7 @@ const resolvers = {
 				.populate("departments")
 				.populate("teachers")
 				.populate("students");
-			// .populate({ path: "teachers", populate: "departments" })
+			// .populate({ path: "teachers", populate: "departments" });
 			// .populate({ path: "teachers", populate: "classes" })
 			// .populate({ path: "departments", populate: "classes" })
 			// .populate({ path: "departments", populate: "teachers" });
@@ -29,7 +29,10 @@ const resolvers = {
 			// .populate({ path: "teachers", populate: "students" });
 		},
 		departments: async () => {
-			return await Department.find().populate("teachers").populate("classes");
+			return await Department.find()
+				.populate("teachers")
+				.populate("classes")
+				.populate("school");
 		},
 		department: async (parent, { departmentId }) => {
 			return await Department.findOne({ _id: departmentId })
@@ -39,8 +42,8 @@ const resolvers = {
 		},
 		teachers: async () => {
 			return await Teacher.find()
-				.populate("students")
 				.populate("departments")
+				.populate("students")
 				.populate("classes");
 		},
 		teacher: async (parent, { teacherId }) => {
@@ -110,8 +113,8 @@ const resolvers = {
 				budget,
 			});
 		},
-		addTeacher: async (parent, { name, department, office }) => {
-			return await Teacher.create({ name, department, office });
+		addTeacher: async (parent, { name, office }) => {
+			return await Teacher.create({ name, office });
 		},
 		addStudent: async (parent, { name, grade, note }) => {
 			return await Student.create({ name, grade, note });
@@ -153,10 +156,10 @@ const resolvers = {
 			);
 			return departmentData;
 		},
-		updateTeacher: async (parent, { teacherId, name, department, office }) => {
+		updateTeacher: async (parent, { teacherId, name, office }) => {
 			const teacherData = await Teacher.findOneAndUpdate(
 				{ _id: teacherId },
-				{ name: name, department: department, office: office },
+				{ name: name, office: office },
 				{ new: true }
 			);
 			return teacherData;

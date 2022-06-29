@@ -21,8 +21,8 @@ import Img1 from "../../img/Spring Hill High School.jpg";
 
 function School() {
 	const { loading, error, data } = useQuery(QUERY_ALLSCHOOLS);
-	const schools = data?.schools;
-	console.log(schools);
+	const schools = data?.schools || [];
+	// console.log(schools);
 
 	const [removeSchool] = useMutation(REMOVE_SCHOOL);
 
@@ -43,7 +43,7 @@ function School() {
 		// names must be equal
 		return 0;
 	});
-	console.log(schoolsSorted);
+	// console.log(schoolsSorted);
 
 	return (
 		<>
@@ -61,58 +61,59 @@ function School() {
 									/>
 									<Card.Body>
 										<Card.Title>{school.name}</Card.Title>
-										<Card.Text>
-											Address: {school.address} <br />
-											Principal: {school.principal} <br />
-											Budget: ${school.budget} <br />
-										</Card.Text>
+
 										<ListGroup className="list-group-flush">
-											<ListGroupItem>
+											<ListGroupItem className="list-group-flush">
+												Address: {school.address}
+											</ListGroupItem>
+											<ListGroupItem className="list-group-flush">
+												Principal: {school.principal}
+											</ListGroupItem>
+											<ListGroupItem className="list-group-flush">
+												Budget: ${school.budget}
+											</ListGroupItem>
+											<ListGroupItem className="list-group-flush">
 												<Card.Link href={`departments/${school._id}`}>
 													Departments
 												</Card.Link>
 											</ListGroupItem>
-											<ListGroupItem>
+											<ListGroupItem className="list-group-flush">
 												<Card.Link href={`teachers/${school._id}`}>
 													Teachers
 												</Card.Link>
 											</ListGroupItem>
-											<ListGroupItem>
-												<Card.Link href={`classrooms/${school._id}`}>
-													Classes
-												</Card.Link>
-											</ListGroupItem>
-											<ListGroupItem>
+											<ListGroupItem className="list-group-flush">
 												<Card.Link href={`students/${school._id}`}>
 													Students
 												</Card.Link>
 											</ListGroupItem>
-											<ListGroupItem>
-												<Button
-													className="mx-2 bg-warning"
-													variant="secondary"
-													type=""
-													href={`schools/${school._id}`}
-													alt="Edit School"
-												>
-													<img alt="edit school" src={editIcon}></img>
-												</Button>
-												<Button
-													className="mx-2 bg-danger"
-													variant="secondary"
-													type=""
-													alt="Delete School"
-													onClick={() => {
-														removeSchool({
-															variables: { schoolId: school._id },
-														});
-														window.location.reload();
-													}}
-												>
-													<img alt="delete school" src={deleteIcon}></img>
-												</Button>
-											</ListGroupItem>
 										</ListGroup>
+										<Card.Body></Card.Body>
+										<Card.Footer>
+											<Button
+												className="mx-2 bg-warning"
+												variant="secondary"
+												type=""
+												href={`schools/${school._id}`}
+												alt="Edit School"
+											>
+												<img alt="edit school" src={editIcon}></img>
+											</Button>
+											<Button
+												className="mx-2 bg-danger"
+												variant="secondary"
+												type=""
+												alt="Delete School"
+												onClick={() => {
+													removeSchool({
+														variables: { schoolId: school._id },
+													});
+													window.location.reload();
+												}}
+											>
+												<img alt="delete school" src={deleteIcon}></img>
+											</Button>
+										</Card.Footer>
 									</Card.Body>
 								</Card>
 							))}

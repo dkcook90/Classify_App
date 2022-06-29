@@ -11,33 +11,6 @@ export const QUERY_USER = gql`
 	}
 `;
 
-export const QUERY_SCHOOL = gql`
-	query school($_id: String!) {
-		school(_id: $_id) {
-			_id
-			name
-			principal
-			budget
-			address
-			image
-			departments {
-				_id
-				department
-				budget
-			}
-			teachers {
-				_id
-			}
-			students {
-				_id
-				name
-				grade
-				note
-			}
-		}
-	}
-`;
-
 export const QUERY_ALLSCHOOLS = gql`
 	query getSchools {
 		schools {
@@ -54,6 +27,37 @@ export const QUERY_ALLSCHOOLS = gql`
 			}
 			teachers {
 				_id
+				name
+				office
+			}
+			students {
+				_id
+				name
+				grade
+				note
+			}
+		}
+	}
+`;
+
+export const QUERY_SCHOOL = gql`
+	query school($_id: String!) {
+		school(_id: $_id) {
+			_id
+			name
+			principal
+			budget
+			address
+			image
+			departments {
+				_id
+				department
+				budget
+			}
+			teachers {
+				_id
+				name
+				office
 			}
 			students {
 				_id
@@ -73,12 +77,21 @@ export const QUERY_ALLDEPT = gql`
 			budget
 			school {
 				_id
+				name
+				principal
+				budget
+				address
+				image
 			}
 			classes {
 				_id
+				className
+				grade
 			}
 			teachers {
 				_id
+				name
+				office
 			}
 		}
 	}
@@ -90,12 +103,23 @@ export const QUERY_DEPT = gql`
 			_id
 			department
 			budget
-			school
+			school {
+				_id
+				name
+				principal
+				budget
+				address
+				image
+			}
 			classes {
 				_id
+				className
+				grade
 			}
 			teachers {
 				_id
+				name
+				office
 			}
 		}
 	}
@@ -103,7 +127,7 @@ export const QUERY_DEPT = gql`
 
 export const QUERY_ALLCLASSROOMS = gql`
 	query getAllClassrooms {
-		teachers {
+		classrooms {
 			_id
 			name
 			grade
@@ -113,51 +137,127 @@ export const QUERY_ALLCLASSROOMS = gql`
 				budget
 				school
 			}
-			office
-			students {
+			teacher {
 				_id
 				name
-				grade
-				note
+				office
 			}
 		}
 	}
 `;
 
-export const QUERY_SINGLE_TEACHER = gql`
-	query getSingleTeacher($teacherId: ID!) {
-		teacher(teacherId: $teacherId) {
+export const QUERY_CLASSROOM = gql`
+	query getClassroom($_id: ID!) {
+		classroom(_id: $_id) {
 			_id
 			name
+			grade
 			department {
 				_id
 				department
 				budget
 				school
 			}
+			teacher {
+				_id
+				name
+				office
+			}
+		}
+	}
+`;
+
+export const QUERY_ALLTEACHERS = gql`
+	query getTeachers {
+		teachers {
+			_id
+			name
 			office
+			departments {
+				_id
+				department
+				budget
+			}
 			students {
 				_id
 				name
 				grade
 				note
 			}
+			classes {
+				_id
+				className
+				grade
+			}
 		}
 	}
 `;
 
-// export const QUERY_SINGLE_STUDENT = gql`
-// query getSingleStudent($teacherId: ID!) {
-//   teacher(teacherId: $teacherId) {
-//     _id
-//     name
-//     department
-//     office
-//     students {
-//       _id
-//       name
-//       grade
-//       note
-//     }
-//   }
-// }`
+export const QUERY_SINGLE_TEACHER = gql`
+	query getSingleTeacher($_id: ID!) {
+		teacher(_id: $_id) {
+			_id
+			name
+			office
+			departments {
+				_id
+				department
+				budget
+				school
+			}
+			students {
+				_id
+				name
+				grade
+				note
+			}
+			classes {
+				_id
+				className
+				grade
+			}
+		}
+	}
+`;
+
+export const QUERY_ALLSTUDENTS = gql`
+	query getStudents {
+		students {
+			_id
+			name
+			grade
+			note
+			classes {
+				_id
+				className
+				grade
+			}
+			teachers {
+				_id
+				name
+				office
+			}
+		}
+	}
+`;
+
+export const QUERY_SINGLE_STUDENT = gql`
+	query getSingleStudent($_id: ID!) {
+		student(_id: $_id) {
+			_id
+			name
+			grade
+			note
+			classes {
+				_id
+				className
+				grade
+			}
+			teachers {
+				_id
+				name
+				office
+			}
+		}
+	}
+`;

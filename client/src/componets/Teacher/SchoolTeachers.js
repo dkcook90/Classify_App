@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
-import "./Classroom.css";
+import "./Teacher.css";
 import { QUERY_SCHOOL } from "../../utils/queries";
 import Auth from "../../utils/auth";
 import { useParams, Link } from "react-router-dom";
@@ -49,8 +49,6 @@ function SchoolClassrooms() {
 									<ListGroupItem>
 										<Card.Link href={`/classroom/${teacher._id}`}>
 											{teacher.name}
-											{"  ---  "}
-											{teacher.department}
 										</Card.Link>
 									</ListGroupItem>
 								);

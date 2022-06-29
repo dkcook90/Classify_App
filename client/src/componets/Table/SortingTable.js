@@ -23,6 +23,23 @@ export const SortingTable = () => {
 		useSortBy
 	);
 
+	const columns = useMemo(() => COLUMNS, []);
+	const data = useMemo(() => STUDENT_DATA, []);
+	const {
+		getTableProps,
+		getTableBodyProps,
+		headerGroups,
+		footerGroups,
+		rows,
+		prepareRow,
+	} = useTable(
+		{
+			columns,
+			data,
+		},
+		useSortBy
+	);
+
 	return (
 		<table {...getTableProps()}>
 			<thead>
@@ -32,7 +49,7 @@ export const SortingTable = () => {
 							<th {...column.getHeaderProps(column.getSortByToggleProps())}>
 								{column.render("Header")}
 								<span>
-									{column.isSorted ? (column.isSortedDesc ? "DSC" : "ASC") : ""}
+									{column.isSorted ? (column.isSortedDesc ? "🔽" : "🔼") : ""}
 								</span>
 							</th>
 						))}

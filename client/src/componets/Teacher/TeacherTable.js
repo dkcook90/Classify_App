@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
-import { Card, ListGroup, ListGroupItem, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import AddTeacherForm from "./AddTeacherForm";
 import "./Teacher.css";
@@ -31,7 +31,7 @@ function TeachersTable() {
 	} = useTable(
 		{
 			columns,
-			data,
+			teachers,
 		},
 		useSortBy
 	);
@@ -39,45 +39,46 @@ function TeachersTable() {
 	if (loading) return "Loading...";
 	if (error) return `Error! ${error.message}`;
 
-	return (
-		<table {...getTableProps()}>
-			<thead>
-				{headerGroups.map((headerGroup) => (
-					<tr {...headerGroup.getHeaderGroupProps()}>
-						{headerGroup.headers.map((column) => (
-							<th {...column.getHeaderProps(column.getSortByToggleProps())}>
-								{column.render("Header")}
-								<span>
-									{column.isSorted ? (column.isSortedDesc ? "DSC" : "ASC") : ""}
-								</span>
-							</th>
-						))}
-					</tr>
-				))}
-			</thead>
-			<tbody {...getTableBodyProps()}>
-				{rows.map((row) => {
-					prepareRow(row);
-					return (
-						<tr {...row.getRowProps()}>
-							{row.cells.map((cell) => {
-								return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
-							})}
-						</tr>
-					);
-				})}
-			</tbody>
-			<tfoot>
-				{footerGroups.map((footerGroup) => (
-					<tr {...footerGroup.getFooterGroupProps()}>
-						{footerGroup.headers.map((column) => (
-							<td {...column.getFooterProps}>{column.render("Footer")}</td>
-						))}
-					</tr>
-				))}
-			</tfoot>
-		</table>
-	);
+	return;
+	// (
+	// <table {...getTableProps()}>
+	// 	<thead>
+	// 		{headerGroups.map((headerGroup) => (
+	// 			<tr {...headerGroup.getHeaderGroupProps()}>
+	// 				{headerGroup.headers.map((column) => (
+	// 					<th {...column.getHeaderProps(column.getSortByToggleProps())}>
+	// 						{column.render("Header")}
+	// 						<span>
+	// 							{column.isSorted ? (column.isSortedDesc ? "🔽" : "🔼") : ""}
+	// 						</span>
+	// 					</th>
+	// 				))}
+	// 			</tr>
+	// 		))}
+	// 	</thead>
+	// 	<tbody {...getTableBodyProps()}>
+	// 		{rows.map((row) => {
+	// 			prepareRow(row);
+	// 			return (
+	// 				<tr {...row.getRowProps()}>
+	// 					{row.cells.map((cell) => {
+	// 						return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+	// 					})}
+	// 				</tr>
+	// 			);
+	// 		})}
+	// 	</tbody>
+	// 	<tfoot>
+	// 		{footerGroups.map((footerGroup) => (
+	// 			<tr {...footerGroup.getFooterGroupProps()}>
+	// 				{footerGroup.headers.map((column) => (
+	// 					<td {...column.getFooterProps}>{column.render("Footer")}</td>
+	// 				))}
+	// 			</tr>
+	// 		))}
+	// 	</tfoot>
+	// </table>
+	// );
 }
 
 export default TeachersTable;

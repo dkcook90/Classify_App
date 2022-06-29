@@ -23,23 +23,6 @@ export const SortingTable = () => {
 		useSortBy
 	);
 
-	const columns = useMemo(() => COLUMNS, []);
-	const data = useMemo(() => STUDENT_DATA, []);
-	const {
-		getTableProps,
-		getTableBodyProps,
-		headerGroups,
-		footerGroups,
-		rows,
-		prepareRow,
-	} = useTable(
-		{
-			columns,
-			data,
-		},
-		useSortBy
-	);
-
 	return (
 		<table {...getTableProps()}>
 			<thead>

@@ -109,6 +109,17 @@ export const ADD_DEPT = gql`
 	}
 `;
 
+export const ADD_STUDENT = gql`
+	mutation addStudent($name: String!, $grade: Int!, $note: String) {
+		addStudent(name: $name, grade: $grade, note: $note) {
+			_id
+			name
+			grade
+			note
+		}
+	}
+`;
+
 export const REMOVE_STUDENT = gql`
 	mutation removeStudent($studentId: ID!) {
 		removeStudent(studentId: $studentId) {

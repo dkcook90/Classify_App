@@ -12,8 +12,8 @@ function AddDepartmentToSchool() {
 	let { id } = useParams();
 	const { loading, error, data } = useQuery(QUERY_ALLDEPT);
 	const deptResults = data?.departments || [];
-	console.log(deptResults);
-	console.log(data);
+	// console.log(deptResults);
+	// console.log(data);
 	const [departmentState, setDepartmentState] = useState({
 		departmentId: "",
 	});
@@ -53,7 +53,6 @@ function AddDepartmentToSchool() {
 							<Form.Label>Please Choose A Department to Add</Form.Label>
 							<Form className="addDepartmentOption" onSubmit={handleFormSubmit}>
 								<DropdownButton
-									alignRight
 									title="Click to Add a Department"
 									className="deptBttn"
 									id="dropdown-menu-align-right"

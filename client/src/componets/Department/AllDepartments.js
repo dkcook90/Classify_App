@@ -74,7 +74,7 @@ function AllDepartments() {
 						</div>
 						<Form className="departmentForm" onSubmit={handleFormSubmit}>
 							<Form.Group className="m-3" controlId="form">
-								<Form.Label>Department Name:</Form.Label>
+								<Form.Label>Add a Department:</Form.Label>
 								<Form.Control
 									className="mb-2"
 									type="input"

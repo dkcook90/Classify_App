@@ -1,60 +1,4 @@
 [
-    {
-        "_id":"62b5e3496f4510d86e983cbf",
-		"department": "Lincoln High Admin",
-		"budget": "3400",
-		"school" : "62b5dfef4b1ff2dba706502e"
-    },
-    {
-        "_id":"62b5e3496f4510d86e983cc0",
-		"department": "Lincoln High Science",
-		"budget": "10000",
-		"school" : "62b5dfef4b1ff2dba706502e",
-		"teachers": ["62b5e7adf1bfcc0347fec8c6", "62b5e7adf1bfcc0347fec8c7"],
-		"classes": ["62b5ec58c33026424138e6f2", "62b5ec58c33026424138e6f3", "62b5ec58c33026424138e6f5"]
-    },
-    {
-        "_id":"62b5e3496f4510d86e983cc1",
-		"department": "Lincoln High English",
-		"budget": "6800",
-		"school" : "62b5dfef4b1ff2dba706502e"
-    },
-    {
-        "_id":"62b5e3496f4510d86e983cc2",
-		"department": "Lincoln High Math",
-		"budget": "8400",
-		"school" : "62b5dfef4b1ff2dba706502e"
-    },
-    {
-        "_id":"62b5e3496f4510d86e983cc3",
-		"department": "Lincoln High Political Science",
-		"budget": "7500",
-		"school" : "62b5dfef4b1ff2dba706502e"
-    },
-    {
-        "_id":"62b5e3496f4510d86e983cc4",
-		"department": "Lincoln High History",
-		"budget": "8000",
-		"school" : "62b5dfef4b1ff2dba706502e",
-		"teachers": ["62b5e7adf1bfcc0347fec8c6"],
-		"classes": ["62b5ec58c33026424138e702"]
-    },
-    {
-        "_id":"62b5e3496f4510d86e983cc5",
-		"department": "Lincoln High Art",
-		"budget": "9500",
-		"school" : "62b5dfef4b1ff2dba706502e",
-		"teachers": ["62b5e7adf1bfcc0347fec8c5"],
-		"classes": ["62b5ec58c33026424138e704", "62b5ec58c33026424138e706"]
-    },
-    {
-        "_id":"62b5e3496f4510d86e983cc6",
-		"department": "Lincoln High Physical Education",
-		"budget": "15000",
-		"school" : "62b5dfef4b1ff2dba706502e",
-		"teachers": ["62b5e7adf1bfcc0347fec8c7"],
-		"classes": ["62b5ec58c33026424138e70b", "62b5ec58c33026424138e709"]
-    },
 	{
         "_id":"62b5e090dc9d19f13891e2e3",
 		"department": "Spring Hill Admin",
@@ -65,7 +9,9 @@
         "_id":"62b5e090dc9d19f13891e2e4",
 		"department": "Spring Hill Science",
 		"budget": "10000",
-		"school" : "62b5dfef4b1ff2dba706502d"
+		"school" : "62b5dfef4b1ff2dba706502d",
+		"teachers": ["62b5e7adf1bfcc0347fec8c6", "62b5e7adf1bfcc0347fec8c7"],
+		"classes": ["62b5ec58c33026424138e6f2", "62b5ec58c33026424138e6f3", "62b5ec58c33026424138e6f5"]
     },
     {
         "_id":"62b5e090dc9d19f13891e2e5",
@@ -96,21 +42,23 @@
 		"department": "Spring Hill History",
 		"budget": "8000",
 		"school" : "62b5dfef4b1ff2dba706502d",
-		"teachers": ["62b5e7adf1bfcc0347fec8c4"],
-		"classes": ["62b5eb16f4b840e66a7e0e4c", "62b5eb16f4b840e66a7e0e4b"]
+		"teachers": ["62b5e7adf1bfcc0347fec8c4", "62b5e7adf1bfcc0347fec8c6"],
+		"classes": ["62b5eb16f4b840e66a7e0e4c", "62b5eb16f4b840e66a7e0e4b", "62b5ec58c33026424138e702"]
     },
     {
         "_id":"62b5e090dc9d19f13891e2e9",
 		"department": "Spring Hill Art",
 		"budget": "9500",
-		"school" : "62b5dfef4b1ff2dba706502d"
+		"school" : "62b5dfef4b1ff2dba706502d",
+		"teachers": ["62b5e7adf1bfcc0347fec8c5"],
+		"classes": ["62b5ec58c33026424138e704", "62b5ec58c33026424138e706"]
     },
     {
         "_id":"62b5e090dc9d19f13891e2ea",
 		"department": "Spring Hill Physical Education",
 		"budget": "15000",
 		"school" : "62b5dfef4b1ff2dba706502d",
-		"teachers": ["62b5e7adf1bfcc0347fec8c3", "62b5e7adf1bfcc0347fec8c2"],
-		"classes": ["62b5eb16f4b840e66a7e0e56", "62b5eb16f4b840e66a7e0e55", "62b5eb16f4b840e66a7e0e53"]
+		"teachers": ["62b5e7adf1bfcc0347fec8c3", "62b5e7adf1bfcc0347fec8c2", "62b5e7adf1bfcc0347fec8c7"],
+		"classes": ["62b5eb16f4b840e66a7e0e56", "62b5eb16f4b840e66a7e0e55", "62b5eb16f4b840e66a7e0e54", "62b5eb16f4b840e66a7e0e53", "62b5eb16f4b840e66a7e0e52"]
     }
 ]

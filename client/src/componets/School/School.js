@@ -22,7 +22,7 @@ import Img1 from "../../img/Spring Hill High School.jpg";
 function School() {
 	const { loading, error, data } = useQuery(QUERY_ALLSCHOOLS);
 	const schools = data?.schools;
-	// console.log(schools);
+	console.log(schools);
 
 	const [removeSchool] = useMutation(REMOVE_SCHOOL);
 

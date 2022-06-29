@@ -3,22 +3,8 @@
 		"_id":"62b5dfef4b1ff2dba706502d",
 		"name": "Spring Hill High School",
 		"address": "19701 S Ridgeview Rd, Spring Hill, KS 66083",
-		"image": "https://scontent.fapa1-1.fna.fbcdn.net/v/t39.30808-6/278186107_370662098402506_3552167079355992174_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=e3f864&_nc_ohc=yVSQsmpfMn0AX_E1kHe&_nc_ht=scontent.fapa1-1.fna&oh=00_AT_BflV0qPLlpwaLjxVW9W65N87arYe96I6yquAA20fQ9A&oe=62B0810E",
+		"image": "https://cdn5-ss13.sharpschool.com/UserFiles/Servers/Server_56297/Image/News/SHHS.png",
 		"principal": "Taylor Brown",
-		"budget": 250000,
-		"departments": ["62b5e090dc9d19f13891e2e3", "62b5e090dc9d19f13891e2e4", "62b5e090dc9d19f13891e2e5", "62b5e090dc9d19f13891e2e6", "62b5e090dc9d19f13891e2e7", "62b5e090dc9d19f13891e2e8", "62b5e090dc9d19f13891e2e9", "62b5e090dc9d19f13891e2ea"],
-		"teachers": ["62b5e7adf1bfcc0347fec8c2", "62b5e7adf1bfcc0347fec8c3", "62b5e7adf1bfcc0347fec8c4"],
-		"students": ["62b5e90668aeb015375caa38", "62b5e90668aeb015375caa39", "62b5e90668aeb015375caa3a", "62b5e90668aeb015375caa3b", "62b5e90668aeb015375caa3c", "62b5e90668aeb015375caa3d", "62b5e90668aeb015375caa3e", "62b5e90668aeb015375caa3f", "62b5e90668aeb015375caa40"]
-    },
-	{
-		"_id":"62b5dfef4b1ff2dba706502e",
-		"name": "Lincoln High School",
-		"address": "2285 S. Federal Blvd. Denver, CO 80219",
-		"image": "https://media-exp1.licdn.com/dms/image/C4E1BAQEljiYVyvYdPQ/company-background_10000/0/1586359933688?e=2147483647&v=beta&t=buAxMUDwSiTiXkvYZalFuIpyP27nETfQUMmT6uccEM4",
-		"principal": "George Jackson",
-		"budget": 500000,
-		"departments": ["62b5e3496f4510d86e983cbf", "62b5e3496f4510d86e983cc0", "62b5e3496f4510d86e983cc1", "62b5e3496f4510d86e983cc2", "62b5e3496f4510d86e983cc3", "62b5e3496f4510d86e983cc4", "62b5e3496f4510d86e983cc5", "62b5e3496f4510d86e983cc6"],
-		"teachers": ["62b5e7adf1bfcc0347fec8c5", "62b5e7adf1bfcc0347fec8c6", "62b5e7adf1bfcc0347fec8c7"],
-		"students": ["62b5e90668aeb015375caa41", "62b5e90668aeb015375caa42", "62b5e90668aeb015375caa43", "62b5e90668aeb015375caa44", "62b5e90668aeb015375caa45", "62b5e90668aeb015375caa46", "62b5e90668aeb015375caa47", "62b5e90668aeb015375caa48", "62b5e90668aeb015375caa49"]
-	}
+		"budget": 250000
+    }
 ]

@@ -12,11 +12,14 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
 	Query: {
 		schools: async () => {
-			return await School.find();
-			// .populate("departments")
-			// .populate("teachers")
-			// .populate("students");
-			// .populate({ path: "teachers", populate: "students" });
+			return await School.find()
+				.populate("departments")
+				.populate("teachers")
+				.populate("students");
+			// .populate({ path: "teachers", populate: "departments" })
+			// .populate({ path: "teachers", populate: "classes" })
+			// .populate({ path: "departments", populate: "classes" })
+			// .populate({ path: "departments", populate: "teachers" });
 		},
 		school: async (parent, { _id }) => {
 			return await School.findOne({ _id: _id })
@@ -26,16 +29,25 @@ const resolvers = {
 			// .populate({ path: "teachers", populate: "students" });
 		},
 		departments: async () => {
-			return await Department.find();
+			return await Department.find().populate("teachers").populate("classes");
 		},
 		department: async (parent, { departmentId }) => {
-			return await Department.findOne({ _id: departmentId });
+			return await Department.findOne({ _id: departmentId })
+				.populate("teachers")
+				.populate("classes")
+				.populate("school");
 		},
 		teachers: async () => {
-			return await Teacher.find().populate("students");
+			return await Teacher.find()
+				.populate("students")
+				.populate("departments")
+				.populate("classes");
 		},
 		teacher: async (parent, { teacherId }) => {
-			return await Teacher.findOne({ _id: teacherId }).populate("students");
+			return await Teacher.findOne({ _id: teacherId })
+				.populate("students")
+				.populate("departments")
+				.populate("classes");
 		},
 		students: async () => {
 			return await Student.find().populate("teachers");
@@ -50,10 +62,16 @@ const resolvers = {
 			return User.findOne({ email });
 		},
 		classrooms: async () => {
-			return await ClassRoom.find();
+			return await ClassRoom.find()
+				.populate("teachers")
+				.populate("departments")
+				.populate("students");
 		},
 		classroom: async (parent, { classroomId }) => {
-			return await ClassRoom.findOne({ _id: classroomId });
+			return await ClassRoom.findOne({ _id: classroomId })
+				// .populate("students")
+				.populate("teachers")
+				.populate("departments");
 		},
 	},
 

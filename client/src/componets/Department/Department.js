@@ -3,18 +3,24 @@ import { Form, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import "./Department.css";
 import { useQuery, useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
-import { QUERY_SCHOOL } from "../../utils/queries";
+import { QUERY_SCHOOL, QUERY_DEPT, QUERY_ALLDEPT } from "../../utils/queries";
 import { useParams, Link } from "react-router-dom";
 import AddDepartmentToSchool from "./AddDepartmentSchool";
 
 function Department() {
 	let { id } = useParams();
-	console.log(id);
-	const { loading, data } = useQuery(QUERY_SCHOOL, {
+	// console.log(id);
+
+	const { loading, data, error } = useQuery(QUERY_SCHOOL, {
 		variables: { _id: id },
 	});
+
+	if (loading) return "Loading...";
+	if (error) return `Error! ${error.message}`;
+
 	const school = data?.school || [];
-	const deptList = school.department;
+	const schoolDepts = school.departments;
+	// console.log(schoolDepts);
 
 	return (
 		<>
@@ -22,10 +28,7 @@ function Department() {
 				{Auth.loggedIn() ? (
 					<>
 						<Card style={{ width: "18rem" }}>
-							<Card.Img
-								variant="top"
-								src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Camberwell_High_School.jpg/1200px-Camberwell_High_School.jpg"
-							/>
+							<Card.Img variant="top" src={school.image} />
 							<Card.Body>
 								<Card.Title>{school.name}</Card.Title>
 								<Card.Text>
@@ -35,11 +38,11 @@ function Department() {
 									department.)
 								</Card.Text>
 								<ListGroup className="list-group-flush">
-									{deptList ? (
-										school.department.map((school) => {
+									{schoolDepts ? (
+										schoolDepts.map((dept) => {
 											return (
-												<ListGroupItem key={school.department._id}>
-													<Card.Link href="#">{school.department}</Card.Link>
+												<ListGroupItem key={dept.department}>
+													<Card.Link href="#">{dept.department}</Card.Link>
 												</ListGroupItem>
 											);
 										})

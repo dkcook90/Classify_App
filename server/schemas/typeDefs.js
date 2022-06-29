@@ -54,15 +54,15 @@ const typeDefs = gql`
 		schools: [School]!
 		school(_id: String!): School
 		departments: [Department]!
-		department(departmentId: ID!): Department
+		department(departmentId: String!): Department
 		teachers: [Teacher]!
-		teacher(teacherId: ID!): Teacher
+		teacher(teacherId: String!): Teacher
 		students: [Student]!
-		student(studentId: ID!): Student
+		student(studentId: String!): Student
 		users: [User]
 		user(email: String!): User
 		classrooms: [ClassRoom]!
-		classroom(classroomId: ID!): ClassRoom
+		classroom(classroomId: String!): ClassRoom
 	}
 	type Auth {
 		token: ID!

@@ -23,16 +23,10 @@ export const QUERY_SCHOOL = gql`
 			departments {
 				_id
 				department
-				school
 				budget
-				teachers
-				classes
 			}
 			teachers {
 				_id
-				name
-				department
-				office
 			}
 			students {
 				_id
@@ -55,12 +49,17 @@ export const QUERY_ALLSCHOOLS = gql`
 			image
 			departments {
 				_id
+				department
+				budget
 			}
 			teachers {
 				_id
 			}
 			students {
 				_id
+				name
+				grade
+				note
 			}
 		}
 	}
@@ -72,6 +71,26 @@ export const QUERY_ALLDEPT = gql`
 			_id
 			department
 			budget
+			school {
+				_id
+			}
+			classes {
+				_id
+			}
+			teachers {
+				_id
+			}
+		}
+	}
+`;
+
+export const QUERY_DEPT = gql`
+	query department($_id: String!) {
+		department(_id: $_id) {
+			_id
+			department
+			budget
+			school
 			classes {
 				_id
 			}
@@ -87,7 +106,13 @@ export const QUERY_ALLCLASSROOMS = gql`
 		teachers {
 			_id
 			name
-			department
+			grade
+			department {
+				_id
+				department
+				budget
+				school
+			}
 			office
 			students {
 				_id
@@ -104,7 +129,12 @@ export const QUERY_SINGLE_TEACHER = gql`
 		teacher(teacherId: $teacherId) {
 			_id
 			name
-			department
+			department {
+				_id
+				department
+				budget
+				school
+			}
 			office
 			students {
 				_id

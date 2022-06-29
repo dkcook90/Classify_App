@@ -1,10 +1,28 @@
 import React, { useMemo } from 'react'
 import { useTable, useGlobalFilter, useFilters } from 'react-table'
-import STUDENT_DATA from './studentSeed.json'  
-// need to fix this link to the json data
+//data
+
 import { COLUMNS } from "./columns.js"
 import './table.css'
 import { GlobalFilter } from './GlobalFilter'
+
+
+function Students() {
+	let { id } = useParams();
+	const { loading, error, data } = useQuery(QUERY_SCHOOL, {
+		variables: { _id: id },
+	});
+
+	const school = data?.school || [];
+
+	const students = data?.school.students || [];
+
+	if (loading) return "Loading...";
+	if (error) return `Error! ${error.message}`;
+
+	// alphabetizes the Students roster
+	const studentsForSort = [...students];
+}
 
 
 export const FilteringTable = () => {

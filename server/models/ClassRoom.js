@@ -8,14 +8,18 @@ const classRoomSchema = new Schema({
 	grade: {
 		type: Number,
 	},
-	teacher: {
-		type: Schema.Types.ObjectId,
-		ref: "Teacher",
-	},
-	department: {
-		type: Schema.Types.ObjectId,
-		ref: "Department",
-	},
+	teachers: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: "Teacher",
+		},
+	],
+	departments: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: "Department",
+		},
+	],
 	// add student roster as able
 	// students: [
 	// 	{

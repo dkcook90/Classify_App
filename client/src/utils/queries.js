@@ -129,15 +129,14 @@ export const QUERY_ALLCLASSROOMS = gql`
 	query getAllClassrooms {
 		classrooms {
 			_id
-			name
+			className
 			grade
-			department {
+			departments {
 				_id
 				department
 				budget
-				school
 			}
-			teacher {
+			teachers {
 				_id
 				name
 				office

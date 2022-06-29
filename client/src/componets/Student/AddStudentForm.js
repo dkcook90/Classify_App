@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 
-import { ADD_SCHOOL, ADD_STUDENT } from "../../utils/mutation";
+import { ADD_STU_SCHOOL, ADD_STUDENT } from "../../utils/mutation";
 
 import { Alert, Form, Button, DropdownButton, Dropdown } from "react-bootstrap";
-import FormCheckLabel from "react-bootstrap/esm/FormCheckLabel";
+import { useParams, Link } from "react-router-dom";
 
 const AddStudentForm = () => {
+	let { id } = useParams();
 	const [studentFormData, setStudentFormData] = useState({
+		studentId: "",
 		name: "",
 		grade: 0,
 		note: "",
@@ -15,6 +17,9 @@ const AddStudentForm = () => {
 	const [showAlert, setShowAlert] = useState(false);
 
 	const [addStudent, { err }] = useMutation(ADD_STUDENT);
+	const [addStuToSchool, { error }] = useMutation(ADD_STU_SCHOOL, {
+		variables: { schoolId: id, studentId: studentFormData.studentId },
+	});
 
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
@@ -35,23 +40,27 @@ const AddStudentForm = () => {
 					grade: parseInt(studentFormData.grade),
 				},
 			});
-			// await addStuToSchool({
-			// 	variable: { ...studentFormData, students: _id },
-			// });
+			const { data: results } = await addStuToSchool({
+				variable: {
+					studentFormData,
+				},
+			});
 
 			console.log(data);
+			console.log(results);
 
-			if (!data) {
+			if (!data | !results) {
 				throw new Error("something went wrong!");
 			}
 
 			setStudentFormData({
+				_id: "",
 				name: "",
 				grade: 0,
 				note: "",
 			});
 
-			window.location.reload();
+			// window.location.reload();
 		} catch (error) {
 			console.log("Caught", studentFormData, error.networkError.result.errors);
 			console.error(error.message);

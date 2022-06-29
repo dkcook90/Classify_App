@@ -1,23 +1,41 @@
 import React from "react";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
-import { Form, Card, ListGroup, ListGroupItem, Button } from "react-bootstrap";
+import {
+	Card,
+	ListGroup,
+	ListGroupItem,
+	Button,
+	Container,
+	Row,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Classroom";
 import { QUERY_ALLCLASSROOMS } from "../../utils/queries";
+import { REMOVE_CLASSROOM } from "../../utils/mutation";
+import editIcon from "../../img/twotone_edit_white_24dp.png";
+import deleteIcon from "../../img/twotone_delete_forever_white_24dp.png";
+
 function AllClassrooms() {
 	const { loading, error, data } = useQuery(QUERY_ALLCLASSROOMS);
-	console.log(data);
-	const teachers = data?.teachers || [];
+	// console.log(data);
+	const classrooms = data?.classrooms || [];
+
+	const [removeClassroom] = useMutation(REMOVE_CLASSROOM);
+
 	if (loading) return "Loading...";
 	if (error) return `Error! ${error.message}`;
-	console.log(teachers);
+	// console.log(classrooms);
 
-	// alphabetizes the teachers roster
-	const teachersForSort = [...teachers];
-	const teachersSorted = teachersForSort.sort(function (a, b) {
-		const nameA = a.name.toUpperCase(); // ignore upper and lowercase
-		const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+	if (loading) return "Loading...";
+	if (error) return `Error! ${error.message}`;
+	// console.log(teachers);
+
+	// alphabetizes the classes roster
+	const classesForSort = [...classrooms];
+	const classesSorted = classesForSort.sort(function (a, b) {
+		const nameA = a.className.toUpperCase(); // ignore upper and lowercase
+		const nameB = b.className.toUpperCase(); // ignore upper and lowercase
 		if (nameA < nameB) {
 			return -1;
 		}
@@ -27,59 +45,70 @@ function AllClassrooms() {
 		// names must be equal
 		return 0;
 	});
-	// console.log(teachersSorted);
+	console.log(classesSorted);
 
 	return (
 		<div className="m-3 allDepartmentContainer">
 			{Auth.loggedIn() ? (
 				<>
-					<Card.Body>
-						<Card.Title>Classrooms:</Card.Title>
-						<Card.Text>
-							Use links listed below to any of the classrooms for each school.
-						</Card.Text>
-						<ListGroup className="list-group-flush">
-							{teachersSorted.map((teacher) => {
+					<Container>
+						<h1>District Teachers:</h1>
+						<p>
+							Use links listed below to view any of the Teachers for each
+							school.
+						</p>
+						<Row className="row mb-3">
+							{classesSorted.map((clas) => {
 								return (
-									<ListGroupItem>
-										<Card.Link href={`/classroom/${teacher._id}`}>
-											{teacher.name}
-											{"  ---  "}
-											{teacher.department}
-										</Card.Link>
-									</ListGroupItem>
+									<Card className="m-1">
+										<Card.Title className="m-1">
+											<Card.Link href={`/classroom/${clas._id}`}>
+												{clas.className}
+											</Card.Link>
+										</Card.Title>
+										<ListGroupItem className="list-group-flush">
+											Grade: {clas.grade}
+										</ListGroupItem>
+										<ListGroupItem className="list-group-flush">
+											Departments:
+											{clas.departments.map((dept) => (
+												<div className="mx-1"> {dept.department}</div>
+											))}
+										</ListGroupItem>
+										<Card.Body></Card.Body>
+										<Card.Footer className="">
+											<Button
+												disabled
+												className="mx-2 bg-warning"
+												size="sm"
+												variant="secondary"
+												type=""
+												href={`classroom/${clas._id}`}
+												alt="Edit Classroom"
+											>
+												<img alt="edit Classroom" src={editIcon}></img>
+											</Button>
+											<Button
+												className="mx-2 bg-danger"
+												size="sm"
+												variant="secondary"
+												type=""
+												alt="Delete Classroom"
+												onClick={() => {
+													removeClassroom({
+														variables: { classroomId: clas._id },
+													});
+													window.location.reload();
+												}}
+											>
+												<img alt="delete school" src={deleteIcon}></img>
+											</Button>
+										</Card.Footer>
+									</Card>
 								);
 							})}
-						</ListGroup>
-					</Card.Body>
-					<Form className="teacherForm bg-light m-2 p-3 rounded">
-						<Form.Label className="mx-3">
-							<h4>Add New Classroom:</h4>
-						</Form.Label>
-						<Form.Group className="mx-3" controlId="form">
-							<Form.Label>Teacher Name:</Form.Label>
-							<Form.Control
-								className="mb-2"
-								type="input"
-								placeholder="Teacher Name"
-							/>
-							<Form.Label>Department:</Form.Label>
-							<Form.Control
-								className="mb-2"
-								type="input"
-								placeholder="Department"
-							/>
-							<Form.Label>Office/Classroom:</Form.Label>
-							<Form.Control
-								className="mb-2"
-								type="input"
-								placeholder="Office/Classroom"
-							/>
-							<Button className="addbtn" variant="secondary" type="submit">
-								ADD CLASSROOM
-							</Button>
-						</Form.Group>
-					</Form>{" "}
+						</Row>
+					</Container>
 				</>
 			) : (
 				<Link to="/">

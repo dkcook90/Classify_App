@@ -67,8 +67,8 @@ const resolvers = {
 		classrooms: async () => {
 			return await ClassRoom.find()
 				.populate("teachers")
-				.populate("departments")
-				.populate("students");
+				.populate("departments");
+			// .populate("students");
 		},
 		classroom: async (parent, { classroomId }) => {
 			return await ClassRoom.findOne({ _id: classroomId })
@@ -222,7 +222,7 @@ const resolvers = {
 		addStuToSchool: async (parent, { schoolId, studentId }) => {
 			const schData = await School.findOneAndUpdate(
 				{ _id: schoolId },
-				{ $push: { student: studentId } },
+				{ $push: { students: studentId } },
 				{ new: true }
 			);
 			return schData;

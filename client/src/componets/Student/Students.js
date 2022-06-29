@@ -47,7 +47,7 @@ function Students() {
 		// names must be equal
 		return 0;
 	});
-	// console.log(studentsSorted);
+	console.log(studentsSorted);
 
 	return (
 		<>

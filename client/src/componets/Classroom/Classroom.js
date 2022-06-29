@@ -22,20 +22,25 @@ function Classroom() {
 	const { loading, error, data } = useQuery(QUERY_SINGLE_TEACHER, {
 		variables: { teacherId: teacherId },
 	});
+	// console.log(teacherId);
+	// console.log(data);
+
 	const [removeStudent, { err }] = useMutation(REMOVE_STUDENT);
 
 	// loads classroom data and notifies of errors
-	console.log(data);
 	const teacher = data?.teacher || [];
+	const classes = data?.teacher.classes || [];
+	const departments = data?.teacher.departments || [];
+
 	if (loading) return "Loading...";
 	if (error) return `Error! ${error.message}`;
-	console.log(teacher);
+	// console.log(teacherId);
 
-	// alphabetizes the student roster for the classroom
-	const studentListForSort = [...teacher.students];
-	const studentListSorted = studentListForSort.sort(function (a, b) {
-		const nameA = a.name.toUpperCase(); // ignore upper and lowercase
-		const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+	// alphabetizes the class roster for the classroom
+	const classListForSort = [...classes];
+	const classListSorted = classListForSort.sort(function (a, b) {
+		const nameA = a.className.toUpperCase(); // ignore upper and lowercase
+		const nameB = b.className.toUpperCase(); // ignore upper and lowercase
 		if (nameA < nameB) {
 			return -1;
 		}
@@ -45,7 +50,7 @@ function Classroom() {
 		// names must be equal
 		return 0;
 	});
-	// console.log(studentListSorted);
+	// console.log(classListSorted);
 
 	return (
 		<>
@@ -53,43 +58,45 @@ function Classroom() {
 				{Auth.loggedIn() ? (
 					<>
 						<Container className="justify-content-center text-center container row mb-3">
-							<h1 className="">
-								{teacher.name}'s {teacher.department} Class
-							</h1>
-							{studentListSorted.map((student) => (
+							<h1 className="">{teacher.name}'s Departments</h1>
+							{departments.map((dept) => (
 								<Card className="col-12 m-2">
 									<Card.Body>
 										<Card.Header>
-											<Card.Title>{student.name}</Card.Title>
+											<Card.Title>
+												<Card.Link href="#">{dept.department}</Card.Link>
+											</Card.Title>
 										</Card.Header>
 										<ListGroup className="list-group-flush">
 											<ListGroupItem>
 												<Card.Text>
-													<b>Grade Level:</b> {student.grade}
+													<b>Grade Level:</b> {dept.grade}
 												</Card.Text>
 												<Card.Text>
-													<b>Notes:</b> {student.note}
+													<b>Notes:</b> {dept.note}
 												</Card.Text>
-												<Button
-													className="mx-2 btn-sm bg-warning"
-													variant="secondary"
-													type=""
-												>
-													<img alt="edit school" src={editIcon}></img>
-												</Button>
-												<Button
-													className="mx-2 btn-sm bg-danger"
-													variant="secondary"
-													type=""
-													onClick={() => {
-														removeStudent({
-															variables: { studentId: student._id },
-														});
-														window.location.reload();
-													}}
-												>
-													<img alt="delete school" src={deleteIcon}></img>
-												</Button>
+											</ListGroupItem>
+										</ListGroup>
+									</Card.Body>
+								</Card>
+							))}
+							<h1 className="mt-3">{teacher.name}'s Classes</h1>
+							{classListSorted.map((clas) => (
+								<Card className="col-12 m-2">
+									<Card.Body>
+										<Card.Header>
+											<Card.Title>
+												<Card.Link href="#">{clas.className}</Card.Link>
+											</Card.Title>
+										</Card.Header>
+										<ListGroup className="list-group-flush">
+											<ListGroupItem>
+												<Card.Text>
+													<b>Grade Level:</b> {clas.grade}
+												</Card.Text>
+												<Card.Text>
+													<b>Notes:</b> {clas.note}
+												</Card.Text>
 											</ListGroupItem>
 										</ListGroup>
 									</Card.Body>
@@ -98,7 +105,7 @@ function Classroom() {
 						</Container>
 
 						<div className="schoolContainer">
-							<Form className="studentForm bg-light m-2 p-3 rounded">
+							{/*<Form className="studentForm bg-light m-2 p-3 rounded">
 								<Form.Label className="mx-3">
 									<h4>Add New Student</h4>
 								</Form.Label>
@@ -125,9 +132,9 @@ function Classroom() {
 										ADD STUDENT
 									</Button>
 								</Form.Group>
-							</Form>
+							</Form> */}
 							<Button className="m-2" variant="primary" href="/classroom">
-								Back to All Classrooms
+								Back to Teacher's List
 							</Button>
 						</div>
 					</>

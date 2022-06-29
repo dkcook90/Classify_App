@@ -129,15 +129,14 @@ export const QUERY_ALLCLASSROOMS = gql`
 	query getAllClassrooms {
 		classrooms {
 			_id
-			name
+			className
 			grade
-			department {
+			departments {
 				_id
 				department
 				budget
-				school
 			}
-			teacher {
+			teachers {
 				_id
 				name
 				office
@@ -194,8 +193,8 @@ export const QUERY_ALLTEACHERS = gql`
 `;
 
 export const QUERY_SINGLE_TEACHER = gql`
-	query getSingleTeacher($_id: ID!) {
-		teacher(_id: $_id) {
+	query getSingleTeacher($teacherId: String!) {
+		teacher(teacherId: $teacherId) {
 			_id
 			name
 			office
@@ -203,7 +202,6 @@ export const QUERY_SINGLE_TEACHER = gql`
 				_id
 				department
 				budget
-				school
 			}
 			students {
 				_id

@@ -120,6 +120,30 @@ export const ADD_STUDENT = gql`
 	}
 `;
 
+export const REMOVE_CLASSROOM = gql`
+	mutation removeClassroom($classroomId: ID!) {
+		removeSchool(classroomId: $classroomId) {
+			_id
+			className
+			grade
+		}
+	}
+`;
+
+export const ADD_STU_SCHOOL = gql`
+	mutation addStuToSchool($schoolId: ID!, $studentId: ID!) {
+		addStuToSchool(schoolId: $schoolId, studentId: $studentId) {
+			_id
+			students {
+				_id
+				name
+				grade
+				note
+			}
+		}
+	}
+`;
+
 export const REMOVE_STUDENT = gql`
 	mutation removeStudent($studentId: ID!) {
 		removeStudent(studentId: $studentId) {

@@ -19,8 +19,8 @@ const typeDefs = gql`
 	type Teacher {
 		_id: ID!
 		name: String!
-		departments: [Department]
 		office: String!
+		departments: [Department]
 		students: [Student]
 		classes: [ClassRoom]
 	}
@@ -47,8 +47,8 @@ const typeDefs = gql`
 		_id: ID!
 		className: String!
 		grade: Int
-		teacher: [Teacher]
-		department: Department
+		teachers: [Teacher]
+		departments: [Department]
 	}
 	type Query {
 		schools: [School]!

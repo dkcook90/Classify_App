@@ -1,8 +1,11 @@
+import { ColumnFilter } from "./ColumnFilter"
+
 export const COLUMNS = [
     {
         Header: 'Id',
         Footer: 'Id',
-        accessor: '_id'
+        accessor: '_id',
+        disableFilters: true
     },
     {
         Header: 'Name',

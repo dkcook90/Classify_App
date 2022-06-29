@@ -16,10 +16,11 @@ import Login from "./componets/Login/Login";
 import School from "./componets/School/School";
 import EditSchool from "./componets/School/EditSchool";
 import Department from "./componets/Department/Department";
-import Classroom from "./componets/Classroom/Classroom";
 import AllDepartments from "./componets/Department/AllDepartments.js";
+import Classroom from "./componets/Classroom/Classroom";
 import AllClassrooms from "./componets/Classroom/AllClassrooms.js";
-import SchoolClassrooms from "./componets/Classroom/SchoolClassrooms";
+import Teachers from "./componets/Teacher/AllTeachers";
+import SchoolTeachers from "./componets/Teacher/SchoolTeachers";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -58,7 +59,8 @@ function App() {
 							<Route path="/login" element={<Login />} />
 							<Route path="/schools" element={<School />} />
 							<Route path="/schools/:schoolId" element={<EditSchool />} />
-							<Route path="/classrooms/:id" element={<SchoolClassrooms />} />
+							<Route path="/teachers" element={<Teachers />} />
+							<Route path="/teachers/:id" element={<SchoolTeachers />} />
 							<Route path="/departments/:id" element={<Department />} />
 							<Route path="/classroom/:teacherId" element={<Classroom />} />
 							<Route path="/classroom" element={<AllClassrooms />} />

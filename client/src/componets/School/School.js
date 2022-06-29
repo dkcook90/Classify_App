@@ -21,8 +21,8 @@ import Img1 from "../../img/Spring Hill High School.jpg";
 
 function School() {
 	const { loading, error, data } = useQuery(QUERY_ALLSCHOOLS);
-	const schools = data?.schools;
-	console.log(schools);
+	const schools = data?.schools || [];
+	// console.log(schools);
 
 	const [removeSchool] = useMutation(REMOVE_SCHOOL);
 
@@ -43,7 +43,7 @@ function School() {
 		// names must be equal
 		return 0;
 	});
-	console.log(schoolsSorted);
+	// console.log(schoolsSorted);
 
 	return (
 		<>
@@ -75,11 +75,6 @@ function School() {
 											<ListGroupItem>
 												<Card.Link href={`teachers/${school._id}`}>
 													Teachers
-												</Card.Link>
-											</ListGroupItem>
-											<ListGroupItem>
-												<Card.Link href={`classrooms/${school._id}`}>
-													Classes
 												</Card.Link>
 											</ListGroupItem>
 											<ListGroupItem>

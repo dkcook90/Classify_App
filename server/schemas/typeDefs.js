@@ -87,7 +87,7 @@ const typeDefs = gql`
 			image: String
 		): School
 		addDepartment(department: String!, school: String, budget: Int): Department
-		addTeacher(name: String!, department: String!, office: String!): Teacher
+		addTeacher(name: String!, office: String!): Teacher
 		addStudent(name: String!, grade: Int!, note: String): Student
 		addClassroom(
 			className: String!

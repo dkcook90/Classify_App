@@ -109,6 +109,17 @@ export const ADD_DEPT = gql`
 	}
 `;
 
+export const ADD_STUDENT = gql`
+	mutation addStudent($name: String!, $grade: Int!, $note: String) {
+		addStudent(name: $name, grade: $grade, note: $note) {
+			_id
+			name
+			grade
+			note
+		}
+	}
+`;
+
 export const REMOVE_STUDENT = gql`
 	mutation removeStudent($studentId: ID!) {
 		removeStudent(studentId: $studentId) {
@@ -155,6 +166,26 @@ export const ADD_DEPT_SCHOOL = gql`
 					note
 				}
 			}
+		}
+	}
+`;
+
+export const ADD_TEACHER = gql`
+	mutation addTeacher($name: String!, $office: String!) {
+		addTeacher(name: $name, office: $office) {
+			_id
+			name
+			office
+		}
+	}
+`;
+
+export const REMOVE_TEACHER = gql`
+	mutation removeTeacher($teacherId: ID!) {
+		removeTeacher(teacherId: $teacherId) {
+			_id
+			name
+			office
 		}
 	}
 `;

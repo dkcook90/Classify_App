@@ -1,29 +1,21 @@
 import React from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
-import {
-	Form,
-	Card,
-	ListGroup,
-	ListGroupItem,
-	Button,
-	DropdownButton,
-	Dropdown,
-} from "react-bootstrap";
+import { Card, ListGroup, ListGroupItem, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import AddTeacherForm from "./AddTeacherForm";
 import "./Teacher.css";
-import { QUERY_ALLTEACHERS, QUERY_ALLDEPT } from "../../utils/queries";
-import { ADD_DEPT_SCHOOL } from "../../utils/mutation";
+import { QUERY_ALLTEACHERS } from "../../utils/queries";
+import { REMOVE_TEACHER } from "../../utils/mutation";
+import editIcon from "../../img/twotone_edit_white_24dp.png";
+import deleteIcon from "../../img/twotone_delete_forever_white_24dp.png";
 
 function Teachers() {
 	const { loading, error, data } = useQuery(QUERY_ALLTEACHERS);
 	const teachers = data?.teachers || [];
-	// console.log(data);
+	console.log(teachers);
 
-	// queries all departments for new teacher function
-	const { data: dataD } = useQuery(QUERY_ALLDEPT);
-	const deptResults = dataD?.departments || [];
-	console.log(dataD);
+	const [removeTeacher] = useMutation(REMOVE_TEACHER);
 
 	if (loading) return "Loading...";
 	if (error) return `Error! ${error.message}`;
@@ -43,7 +35,7 @@ function Teachers() {
 		// names must be equal
 		return 0;
 	});
-	// console.log(teachersSorted);
+	console.log(teachersSorted);
 
 	return (
 		<div className="m-3 allDepartmentContainer">
@@ -57,61 +49,51 @@ function Teachers() {
 						<ListGroup className="list-group-flush">
 							{teachersSorted.map((teacher) => {
 								return (
-									<ListGroupItem>
-										<Card.Link href={`/classroom/${teacher._id}`}>
-											{teacher.name}
-											{" --- "}
-											{teacher.office}
-										</Card.Link>
-									</ListGroupItem>
+									<>
+										<ListGroupItem>
+											<Card.Link href={`/classroom/${teacher._id}`}>
+												{teacher.name}
+											</Card.Link>
+											<div className="vr mx-1" />
+											Office: {teacher.office}
+											<div className="vr mx-1" />
+											Departments:{" "}
+											{teacher.departments.map((dept) => (
+												<div className="mx-1 d-inline"> {dept.department}</div>
+											))}
+											<Button
+												className="mx-2 bg-warning "
+												size="sm"
+												variant="secondary"
+												type=""
+												href={`teachers/${teacher._id}`}
+												alt="Edit Teacher"
+											>
+												<img alt="edit teacher" src={editIcon}></img>
+											</Button>
+											<Button
+												className="mx-2 bg-danger"
+												size="sm"
+												variant="secondary"
+												type=""
+												alt="Delete Teacher"
+												onClick={() => {
+													removeTeacher({
+														variables: { teacherId: teacher._id },
+													});
+													window.location.reload();
+												}}
+											>
+												<img alt="delete school" src={deleteIcon}></img>
+											</Button>
+										</ListGroupItem>
+									</>
 								);
 							})}
 						</ListGroup>
 					</Card.Body>
-					<Form className="teacherForm bg-light m-2 p-3 rounded">
-						<Form.Label className="mx-3">
-							<h4>Add New Teacher:</h4>
-						</Form.Label>
-						<Form.Group className="mx-3" controlId="form">
-							<Form.Label>Teacher Name:</Form.Label>
-							<Form.Control
-								className="mb-2"
-								type="input"
-								placeholder="Teacher Name"
-							/>
-							<DropdownButton
-								title="Click to Choose a Department"
-								className="deptBttn m-2"
-								id="dropdown-menu-align-right"
-								// onSelect={handleSelect}
-							>
-								{deptResults ? (
-									deptResults.map((data) => {
-										return (
-											<Dropdown.Item
-												eventKey={data._id}
-												key={data._id}
-												value={data.department}
-											>
-												{data.department}
-											</Dropdown.Item>
-										);
-									})
-								) : (
-									<>loading...</>
-								)}
-							</DropdownButton>
-							<Form.Label>Office/Classroom:</Form.Label>
-							<Form.Control
-								className="mb-2"
-								type="input"
-								placeholder="Office/Classroom"
-							/>
-							<Button className="addbtn" variant="secondary" type="submit">
-								ADD TEACHER
-							</Button>
-						</Form.Group>
-					</Form>{" "}
+
+					<AddTeacherForm></AddTeacherForm>
 				</>
 			) : (
 				<Link to="/">

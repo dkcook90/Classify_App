@@ -158,3 +158,23 @@ export const ADD_DEPT_SCHOOL = gql`
 		}
 	}
 `;
+
+export const ADD_TEACHER = gql`
+	mutation addTeacher($name: String!, $office: String!) {
+		addTeacher(name: $name, office: $office) {
+			_id
+			name
+			office
+		}
+	}
+`;
+
+export const REMOVE_TEACHER = gql`
+	mutation removeTeacher($teacherId: ID!) {
+		removeTeacher(teacherId: $teacherId) {
+			_id
+			name
+			office
+		}
+	}
+`;

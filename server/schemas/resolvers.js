@@ -113,8 +113,8 @@ const resolvers = {
 				budget,
 			});
 		},
-		addTeacher: async (parent, { name, department, office }) => {
-			return await Teacher.create({ name, department, office });
+		addTeacher: async (parent, { name, office }) => {
+			return await Teacher.create({ name, office });
 		},
 		addStudent: async (parent, { name, grade, note }) => {
 			return await Student.create({ name, grade, note });
@@ -156,10 +156,10 @@ const resolvers = {
 			);
 			return departmentData;
 		},
-		updateTeacher: async (parent, { teacherId, name, department, office }) => {
+		updateTeacher: async (parent, { teacherId, name, office }) => {
 			const teacherData = await Teacher.findOneAndUpdate(
 				{ _id: teacherId },
-				{ name: name, department: department, office: office },
+				{ name: name, office: office },
 				{ new: true }
 			);
 			return teacherData;

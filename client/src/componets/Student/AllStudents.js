@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import "./Student.css";
 import { QUERY_SCHOOL, QUERY_ALLSTUDENTS } from "../../utils/queries";
 import Auth from "../../utils/auth";
-import { FilteringTable } from '../Table/FilteringTable.js'
+//import { FilteringTable } from '../Table/FilteringTable.js'
 
 function AllStudents() {
 	let { id } = useParams();
@@ -24,10 +24,7 @@ function AllStudents() {
 			<div className="m-3">
 				{Auth.loggedIn() ? (
 					<>
-						<Container>
-							<FilteringTable />
-                    
-						</Container>
+						<Container>{/* <FilteringTable /> */}</Container>
 					</>
 				) : (
 					<Link to="/">

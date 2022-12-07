@@ -11,6 +11,16 @@ export const QUERY_USER = gql`
 	}
 `;
 
+export const QUERY_ALLUSERS = gql`
+	query getUsers {
+		users {
+			username
+			email
+			password
+		}
+	}
+`;
+
 export const QUERY_ALLSCHOOLS = gql`
 	query getSchools {
 		schools {

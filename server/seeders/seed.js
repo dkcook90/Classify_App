@@ -8,6 +8,7 @@ const {
 	Student,
 	ClassRoom,
 } = require("../models");
+const bcrypt = require("bcrypt");
 
 const schoolSeed = require("./schoolSeed.json");
 const teacherSeed = require("./teacherSeed.json");
@@ -29,13 +30,30 @@ db.once("open", async () => {
 		console.log("DB deleted");
 
 		//  assembles arrays of the seeds to add to the upper level of models
+		const uIdArr = [];
 		const tIdArr = [];
 		const sIdArr = [];
 		const dIdArr = [];
 		const cIdArr = [];
 
+		// Hashes the user password data
+		for (let i = 0; i < userSeed.length; i++) {
+			let hashPass = await bcrypt.hash(userSeed[i].password, 12);
+
+			hashedUser = {
+				username: userSeed[i].username,
+				email: userSeed[i].email,
+				password: hashPass,
+				role: userSeed[i].role,
+			};
+
+			console.log(hashedUser);
+			uIdArr.push(hashedUser);
+			console.log(uIdArr);
+		}
+
 		// takes the seed data and adds it to the DB collection
-		await User.insertMany(userSeed);
+		await User.insertMany(uIdArr);
 		const students = await Student.insertMany(studentSeed);
 		const classrooms = await ClassRoom.insertMany(classroomsSeed);
 		const departments = await Department.insertMany(departmentSeed);

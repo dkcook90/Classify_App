@@ -1,16 +1,24 @@
 import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutation";
+import { QUERY_ALLUSERS } from "../../utils/queries";
+
 import "./Login.css";
 
 import Auth from "../../utils/auth";
 
 const LoginForm = () => {
+	const { data, err } = useQuery(QUERY_ALLUSERS);
+
 	const [userFormData, setUserFormData] = useState({ email: "", password: "" });
 	const [validated] = useState(false);
 	const [showAlert, setShowAlert] = useState(false);
 	const [loginUser, { error }] = useMutation(LOGIN_USER);
+
+	const allUsers = data?.users || [];
+	console.log(err);
+	console.log(allUsers);
 
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
